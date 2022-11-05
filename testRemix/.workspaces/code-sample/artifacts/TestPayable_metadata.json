@@ -1,0 +1,54 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"hh.sol": "TestPayable"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"hh.sol": {
+			"keccak256": "0xf941ac9061e09a03c605f2cec8ae4240aa336571436aaa27add528566f59db79",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://982c73d15814f723df32ec2dfa64cd4ee08fe69a368e84461e4d001ee2e5f3af",
+				"dweb:/ipfs/QmUEAr63u3dsM2KR8hDU1hahNLSCoWaYx5dTLCqSNYcuj9"
+			]
+		}
+	},
+	"version": 1
+}

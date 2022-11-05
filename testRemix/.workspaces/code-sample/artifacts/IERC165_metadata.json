@@ -1,0 +1,65 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes4",
+						"name": "interfaceID",
+						"type": "bytes4"
+					}
+				],
+				"name": "supportsInterface",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contract-910a3dd534.sol": "IERC165"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contract-910a3dd534.sol": {
+			"keccak256": "0xdb02b2379a477f1339161d3580284501fb0d57825a69de868796e0714e3b4bb2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fc853394380420946a39f3c885b072510d646cbacb1b80950b0918cea9b56924",
+				"dweb:/ipfs/QmcGsBzFxJjAZZNjhCoZ8KpwRsyLYLba47jX4zzDV2LGQ4"
+			]
+		}
+	},
+	"version": 1
+}
