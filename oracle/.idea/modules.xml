@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file:///mnt/Programming/ethOracle/.idea/ethOracle.iml" filepath="/mnt/Programming/ethOracle/.idea/ethOracle.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/oracle.iml" filepath="$PROJECT_DIR$/.idea/oracle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../uniswapCore/.idea/uniswap.iml" filepath="$PROJECT_DIR$/../uniswapCore/.idea/uniswap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../uniswapPeriphery/.idea/uniswapPeriphery.iml" filepath="$PROJECT_DIR$/../uniswapPeriphery/.idea/uniswapPeriphery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../weth/.idea/weth.iml" filepath="$PROJECT_DIR$/../weth/.idea/weth.iml" />
     </modules>
   </component>
 </project>
