@@ -4,7 +4,7 @@ pragma solidity ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0;
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 //import "@uniswap/v2-core/contracts/test/ERC20.sol";
-
+import "@uniswap/v2-periphery/contracts/interfaces/IWETH.sol";
 interface IUniswapV2Factory {
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
 
@@ -26,7 +26,7 @@ contract CreatePoolAttempt is ERC20{
     address payable immutable owner;
     IUniswapV2Factory immutable uniswapV2Factory;
     IUniswapV2Router02 immutable uniswapV2Router;
-    address immutable public override WETH;
+    address immutable public  WETH;
     address immutable IUniswapV2Factory_address = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f; // uniswap v2 factory on ethereum mainnet
     address immutable IUniswapV2Router02_address =0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;// uniswap v2 router on ethereum mainnet
 
@@ -38,7 +38,7 @@ contract CreatePoolAttempt is ERC20{
     {
         require (address(_uniswapV2Factory) != address(0));
         require (address(_uniswapV2Router) != address(0));
-        owner = msg.sender;
+        owner = payable(msg.sender);
 
         uniswapV2Factory = _uniswapV2Factory;
         uniswapV2Router = _uniswapV2Router;
@@ -52,7 +52,8 @@ contract CreatePoolAttempt is ERC20{
 
         uint256 totalLiquidityEth = 10;
         uint256 totalLiquidityUpp = 900; // pump price by 10% when uniswap is funded
-
+     uint256 initialLiquidityTokens;
+    uint256 minLiquidityCrisisTime;
 
         _mint(address(this), 1000); // liquidity (~20%) for uniswap + 10
         _approve(address(this), address(uniswapV2Router), totalLiquidityUpp);
@@ -78,11 +79,11 @@ contract CreatePoolAttempt is ERC20{
     }
 
     receive()external payable {
-        uint256 tokens = tokensPerEth * msg.value;
-        uint256 sold = soldEth;
-        require (address(groupManager) == address(0) && tokens > 0 && sold < maxSoldEth, "Tokens are not for sale or you did not send any ETH/WETH");
-        _mint(msg.sender, tokens);
-        soldEth = sold + msg.value;
+//        uint256 tokens = tokensPerEth * msg.value;
+//        uint256 sold = soldEth;
+//        require (address(groupManager) == address(0) && tokens > 0 && sold < maxSoldEth, "Tokens are not for sale or you did not send any ETH/WETH");
+//        _mint(msg.sender, tokens);
+//        soldEth = sold + msg.value;
     }
 
     }
