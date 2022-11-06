@@ -52,8 +52,8 @@ contract CreatePoolAttempt is ERC20{
 
         uint256 totalLiquidityEth = 10;
         uint256 totalLiquidityUpp = 900; // pump price by 10% when uniswap is funded
-     uint256 initialLiquidityTokens;
-    uint256 minLiquidityCrisisTime;
+        uint256 initialLiquidityTokens;
+        uint256 minLiquidityCrisisTime;
 
         _mint(address(this), 1000); // liquidity (~20%) for uniswap + 10
         _approve(address(this), address(uniswapV2Router), totalLiquidityUpp);
