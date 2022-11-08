@@ -1,10 +1,17 @@
 
+//pragma solidity >=0.4.22 <0.8.0;
 pragma solidity ^0.5.0 || ^0.6.0 || ^0.7.0 || ^0.8.0;
-
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
+//import "@uniswap/v2-periphery/contracts/UniswapV2Router02.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
+//import "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 //import "@uniswap/v2-core/contracts/test/ERC20.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IWETH.sol";
+import "@uniswap/lib/contracts/libraries/TransferHelper.sol";
+import "hardhat/console.sol";
+//import "../../weth/WETH10-main/contracts/interfaces/IERC20.sol";
+
 interface IUniswapV2Factory {
     event PairCreated(address indexed token0, address indexed token1, address pair, uint);
 
@@ -31,6 +38,7 @@ contract CreatePoolAttempt is ERC20{
     address immutable IUniswapV2Router02_address =0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;// uniswap v2 router on ethereum mainnet
 
     modifier ownerOnly() { require(msg.sender == owner, "Owner only"); _; }
+    event balances(uint reserve0, uint reserve1);
 
     constructor(IUniswapV2Router02 _uniswapV2Router,
                 IUniswapV2Factory _uniswapV2Factory
@@ -47,44 +55,138 @@ contract CreatePoolAttempt is ERC20{
         WETH = weth;
     }
 
-    function poolCreate()public ownerOnly {
+    event Received(address, uint);
+    receive() external payable {
+        emit Received(msg.sender, msg.value);
+    }
+
+
+    function poolCreate()public payable ownerOnly {
         uint256 wethBalance = IERC20(WETH).balanceOf(address(this));
-
+        console.log("weth address %o and balance %o", WETH, wethBalance);
         uint256 totalLiquidityEth = 10;
-        uint256 totalLiquidityUpp = 900; // pump price by 10% when uniswap is funded
-        uint256 initialLiquidityTokens;
-        uint256 minLiquidityCrisisTime;
+        uint256 _balance =  address(this).balance;
+        console.log("this is eth balance of contract %o",_balance);
+        console.log("contract address %o", address(this));
+        console.log("this is enders balance %o, address %o",(msg.sender.balance), _msgSender());
 
-        _mint(address(this), 1000); // liquidity (~20%) for uniswap + 10
-        _approve(address(this), address(uniswapV2Router), totalLiquidityUpp);
+       IWETH(WETH).deposit{value: 10 ether}();
+        wethBalance = IERC20(WETH).balanceOf(address(this));
+        console.log("weth address %o and balance %o", WETH, wethBalance);
+        address tokenA = address(this);
+        address tokenB = WETH;
+        uint256 amountADesired = 1000;
+        uint256 amountBDesired = 10;
+        uint8 amountAMin =0;
+        uint8 amountBMin = 0;
+        _mint(tokenA, 1000); // liquidity (~20%) for uniswap + 10
+
+        IWETH(WETH).deposit{value: amountBDesired}();
+        IERC20(WETH).approve(address(this),wethBalance);
+        IERC20(address(this)).approve(address(this), amountADesired);
+        console.log("weth address %o and balance %o", WETH, wethBalance);
+        uint bal =  IERC20(address(this)).balanceOf(address(this));
+        console.log("ballance %o",bal);
+        address paris = checkPoolCreated(IUniswapV2Factory_address,tokenA,tokenB);
+        console.log("new token balancer %o", paris);
+
+       // (uint amountA,uint amountB) = addLiquidity2(paris,tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin);
+//         IERC20(WETH).approve(IUniswapV2Router02_address, 10);
+        tryLiqu(1000  , 10);
+
+
+        (uint reserve0, uint reserve1,) = IUniswapV2Pair(paris).getReserves();
+        console.log("balance1 %o balance2 %o", reserve0,reserve1);
         //staking.increaseRewardsPot();
         //escrow.start();
-        if (wethBalance < totalLiquidityEth) {
-            IWETH(WETH).deposit{ value: totalLiquidityEth - wethBalance }();
-        }
-        IERC20(WETH).approve(address(uniswapV2Router), totalLiquidityEth);
-        (,,initialLiquidityTokens) = uniswapV2Router.addLiquidity(
-            address(this),
-            WETH,
-            totalLiquidityUpp,
-            totalLiquidityEth,
-            totalLiquidityUpp,
-            totalLiquidityEth,
-            address(this),
-            block.timestamp);
+
 
         //minLiquidityCrisisTime = block.timestamp + 60 * 60 * 24 * 30; // Creating a liquidity crisis isn't available for the first month
 
         //emit Sale(false);
     }
+    function tryLiqu(
+            uint amountADesired,
+            uint amountBDesired
+            )internal {
+         (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidityETH{value: msg.value}(
+            address(this),
+            amountADesired,
+            0, // slippage is unavoidable
+            0, // slippage is unavoidable
+            address(this),
+            block.timestamp + 360
+        );
 
-    receive()external payable {
-//        uint256 tokens = tokensPerEth * msg.value;
-//        uint256 sold = soldEth;
-//        require (address(groupManager) == address(0) && tokens > 0 && sold < maxSoldEth, "Tokens are not for sale or you did not send any ETH/WETH");
-//        _mint(msg.sender, tokens);
-//        soldEth = sold + msg.value;
+        console.log("liiquid toks %o",initialLiquidityTokens);
     }
+
+    function addLiquidity2(
+        address paris,
+        address tokenA,
+        address tokenB,
+        uint amountADesired,
+        uint amountBDesired,
+        uint amountAMin,
+        uint amountBMin
+    ) internal returns (uint amountA, uint amountB) {
+        console.log("made it this far");
+        // create the pair if it doesn't exist yet
+        if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(tokenA, tokenB) == address(0)) {
+            IUniswapV2Factory(IUniswapV2Factory_address).createPair(tokenA, tokenB);
+        }
+        console.log("step 1");
+        (uint reserveA, uint reserveB,) = IUniswapV2Pair(paris).getReserves();
+        if (reserveA == 0 && reserveB == 0) {
+            (amountA, amountB) = (amountADesired, amountBDesired);
+        }
+        TransferHelper.safeTransferFrom(tokenA, address(this), paris, amountADesired);
+        IWETH(WETH).deposit{value: amountBDesired}();
+        assert(IWETH(WETH).transfer(paris, amountBDesired));
+
+        uint liquidity = IUniswapV2Pair(paris).mint(address(this));
+        console.log("step 12 %o %o",reserveA, reserveB);
+        return (amountADesired, amountBDesired);
+    }
+
+    function checkPoolCreated(address factory,address tokenA,address tokenB) internal returns(address){
+        address paris = pairFor(factory, tokenB,tokenA);
+        console.log("paired address %o ", paris);
+        if (IUniswapV2Factory(factory).getPair(tokenA, tokenB) == address(0)) {
+            IUniswapV2Factory(factory).createPair(tokenA, tokenB);
+        }
+        return paris;
+    }
+
+    function sortTokens(address tokenA, address tokenB) internal pure returns (address token0, address token1) {
+        require(tokenA != tokenB, 'UniswapV2Library: IDENTICAL_ADDRESSES');
+        (token0, token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
+        require(token0 != address(0), 'UniswapV2Library: ZERO_ADDRESS');
+    }
+
+    function pairFor(address factory, address tokenA, address tokenB) internal pure returns (address pair) {
+        (address token0, address token1) = sortTokens(tokenA, tokenB);
+        pair = address(uint160(uint256(keccak256(abi.encodePacked(
+                hex'ff',
+                factory,
+                keccak256(abi.encodePacked(token0, token1)),
+                hex'96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f' // init code hash
+            )))));
+    }
+
+    function getPoolStats(address factory) public returns(uint,uint) {
+        address tokenA = address(this);
+        address tokenB = WETH;
+        console.log("factory address %o my aaddree %o", factory, address(this));
+        address paris = checkPoolCreated(factory, tokenA, tokenB);
+         (uint reserve0, uint reserve1,) = IUniswapV2Pair(paris).getReserves();
+        console.log("balance1 %o balance2 %o", reserve0,reserve1);
+        //(uint reserveA, uint reserveB) = UniswapV2Library.getReserves(factory, WETH, address(this));
+        emit balances(reserve0, reserve1);
+        return (reserve0, reserve1);
+    }
+
+
 
     }
 

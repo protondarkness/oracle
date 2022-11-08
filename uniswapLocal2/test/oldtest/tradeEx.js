@@ -1,6 +1,6 @@
 const { assert } = require("chai");
 const { ethers } = require("hardhat");
-const ERC20ABI = require('../scripts/erc20.abi.json');
+const ERC20ABI = require('../../scripts/erc20.abi.json');
 
 const UNISWAPV2ROUTER02_ADDRESS = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
 const DAI_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
