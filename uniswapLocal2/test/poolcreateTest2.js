@@ -42,6 +42,18 @@ describe("CreatePoolAttempt ICO", function () {
         });
     });
 
+    describe("Check buy", function(){
+        it("check on buy", async function () {
+  // ...deploy the contract as before...
+        const {pool_att } = await loadFixture(CreatePool);
+        const [owner,add1,add2,add3] = await ethers.getSigners();
+        await pool_att.connect(add1).buyFunc(1000 ,{value : ethers.utils.parseEther("1.0")});
+
+        await pool_att.connect(add2).buyFunc(1000 ,{value : ethers.utils.parseEther("12.0")});
+
+        await pool_att.connect(add3).buyFunc(1000 ,{value : ethers.utils.parseEther("13.0")});
+        });
+    });
 
 
 

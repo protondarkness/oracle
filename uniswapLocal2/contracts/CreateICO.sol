@@ -122,14 +122,15 @@ contract CreateICO {
         require(getBocktime()> 1676181769, "time is not resady");
         _;
     }
-    function buySome() public payable timeLock{
+    function buyFunc(uint256 _amnt) public payable {
         require(msg.value > 0,"need more eth!");
-        uint256 tokens = msg.value * 1000;
-        //_mint(address(this),tokens);
-       //_approve(address(this), msg.sender, tokens);
-        //_transfer(address(this), msg.sender,tokens);
+        uint256 tokens = _amnt;
+        IERC20(eft).approve(msg.sender, _amnt);
+        IERC20(eft).transfer(msg.sender, _amnt);
         //console.log("addy %o, amount %o", msg.sender, MyToken.balanceOf(msg.sender));
         emit buy(tokens, msg.sender);
+        console.log("sender %o, balance %o",msg.sender, IERC20(eft).balanceOf(msg.sender));
+        console.log("contract %o, balance %o",address(this), address(this).balance);
     }
 //
     function checkPoolCreated(address factory,address tokenA,address tokenB) internal returns(address){

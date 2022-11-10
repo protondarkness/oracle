@@ -11,6 +11,7 @@
     <orderEntry type="module" module-name="uniswapLocal" />
     <orderEntry type="module" module-name="uniswapLocal2" />
     <orderEntry type="module" module-name="uniswap3" />
+    <orderEntry type="module" module-name="Vesperr" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
