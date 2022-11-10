@@ -21,6 +21,24 @@ console.log(
   console.log(
     `Crating pool`
   );
+  const [owner, add1, add2,add3] = await ethers.getSigners();
+
+    const transactionHash = await owner.sendTransaction({
+    to: pool_att.address,
+    value: ethers.utils.parseEther("12.0"), // Sends exactly 1.0 ether
+});
+  await (pool_att.poolCreate());
+   timer =await (pool_att.getBocktime());
+  dt=new Date(timer * 1000).toLocaleString();
+    console.log(dt);
+    await network.provider.send("evm_setNextBlockTimestamp", [parseInt(timer)+18800])
+await network.provider.send("evm_mine");
+ timer =await (pool_att.getBocktime());
+  dt=new Date(timer * 1000).toLocaleString();
+    console.log(dt);
+
+    await pool_att.connect(add1).buySome({ value: 1 });
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere

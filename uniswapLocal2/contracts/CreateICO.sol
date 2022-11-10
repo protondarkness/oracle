@@ -30,7 +30,7 @@ interface IUniswapV2Factory {
     function setFeeToSetter(address) external;
 }
 
-contract CreatePoolAttempt is ERC20{
+contract CreateICO {
 
     address payable immutable owner;
     IUniswapV2Factory immutable uniswapV2Factory;
@@ -39,19 +39,20 @@ contract CreatePoolAttempt is ERC20{
     address immutable IUniswapV2Factory_address = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f; // uniswap v2 factory on ethereum mainnet
     address immutable IUniswapV2Router02_address =0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;// uniswap v2 router on ethereum mainnet
     IUniswapV2Pair public uniswapEthUppPair;
-    IERC20 MyToken;
+    IERC20 EFT;
+    address eft;
     modifier ownerOnly() { require(msg.sender == owner, "Owner only"); _; }
 
     event balances(uint reserve0, uint reserve1);
 
     constructor(IUniswapV2Router02 _uniswapV2Router,
                 IUniswapV2Factory _uniswapV2Factory
-                    )ERC20("Testor", "TrT")
+                    )
     {
         require (address(_uniswapV2Factory) != address(0));
         require (address(_uniswapV2Router) != address(0));
         owner = payable(msg.sender);
-        MyToken = IERC20(address(this));
+        //MyToken = IERC20(address(this));
         uniswapV2Factory = _uniswapV2Factory;
         uniswapV2Router = _uniswapV2Router;
 
@@ -59,6 +60,9 @@ contract CreatePoolAttempt is ERC20{
         WETH = weth;
     }
 
+    function setEFTaddress(address _address) public {
+        eft = _address;
+    }
     event Received(address, uint);
     receive() external payable {
         emit Received(msg.sender, msg.value);
@@ -75,35 +79,26 @@ contract CreatePoolAttempt is ERC20{
         console.log("weth address %o and balance %o", WETH, wethBalance);
         //uint256 totalLiquidityEth = 10;
         uint256 _balance =  address(this).balance;
-//        console.log("this is eth balance of contract %o",_balance);
-//        console.log("contract address %o", address(this));
-//        console.log("this is enders balance %o, address %o",(msg.sender.balance), _msgSender());
-
         IWETH(WETH).deposit{value: 10 ether}();
         wethBalance = IERC20(WETH).balanceOf(address(this));
         console.log("weth address %o and balance %o", WETH, wethBalance);
-        address tokenA = address(this);
+        address tokenA = eft;
         address tokenB = WETH;
         uint256 amountADesired = 1000000;
         uint256 amountBDesired = 10;
         uint8 amountAMin =0;
         uint8 amountBMin = 0;
-        _mint(tokenA, amountADesired); // liquidity (~20%) for uniswap + 10
-        //IWETH(WETH).deposit{value: amountBDesired}();
+
         IERC20(WETH).approve(address(this),wethBalance);
-        IERC20(address(this)).approve(address(this), amountADesired);
+        IERC20(eft).approve(address(this), amountADesired);
         console.log("weth address %o and balance %o", WETH, wethBalance);
-        uint bal =  IERC20(address(this)).balanceOf(address(this));
+        uint bal =  IERC20(eft).balanceOf(address(this));
         console.log("ballance %o",bal);
         address paris = checkPoolCreated(IUniswapV2Factory_address,tokenA,tokenB);
         console.log("new token balancer %o", paris);
 
-       // (uint amountA,uint amountB) = addLiquidity2(paris,tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin);
-//         IERC20(WETH).approve(IUniswapV2Router02_address, 10);
-        _approve(address(this), IUniswapV2Router02_address, amountADesired);
         IERC20(WETH).approve(IUniswapV2Router02_address, 10);
-        //uniswapEthUppPair = IUniswapV2Pair(uniswapV2Factory.createPair(WETH, address(this)));
-        //TransferHelper.safeTransfer(tokenA, paris, amountADesired);
+
          (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
             address(this),
             WETH,
@@ -118,13 +113,7 @@ contract CreatePoolAttempt is ERC20{
 
         (uint reserve0, uint reserve1,) = IUniswapV2Pair(paris).getReserves();
         console.log("balance1 %o balance2 %o", reserve0,reserve1);
-        //staking.increaseRewardsPot();
-        //escrow.start();
 
-
-        //minLiquidityCrisisTime = block.timestamp + 60 * 60 * 24 * 30; // Creating a liquidity crisis isn't available for the first month
-
-        //emit Sale(false);
     }
 
     event buy(uint256 a,address aa);
@@ -136,40 +125,13 @@ contract CreatePoolAttempt is ERC20{
     function buySome() public payable timeLock{
         require(msg.value > 0,"need more eth!");
         uint256 tokens = msg.value * 1000;
-        _mint(address(this),tokens);
-        _approve(address(this), msg.sender, tokens);
-        _transfer(address(this), msg.sender,tokens);
-        console.log("addy %o, amount %o", msg.sender, MyToken.balanceOf(msg.sender));
+        //_mint(address(this),tokens);
+       //_approve(address(this), msg.sender, tokens);
+        //_transfer(address(this), msg.sender,tokens);
+        //console.log("addy %o, amount %o", msg.sender, MyToken.balanceOf(msg.sender));
         emit buy(tokens, msg.sender);
     }
-//    function addLiquidity2(
-//        address paris,
-//        address tokenA,
-//        address tokenB,
-//        uint amountADesired,
-//        uint amountBDesired,
-//        uint amountAMin,
-//        uint amountBMin
-//    ) internal returns (uint amountA, uint amountB) {
-//        console.log("made it this far");
-//        // create the pair if it doesn't exist yet
-//        if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(tokenA, tokenB) == address(0)) {
-//            IUniswapV2Factory(IUniswapV2Factory_address).createPair(tokenA, tokenB);
-//        }
-//        console.log("step 1");
-//        (uint reserveA, uint reserveB,) = IUniswapV2Pair(paris).getReserves();
-//        if (reserveA == 0 && reserveB == 0) {
-//            (amountA, amountB) = (amountADesired, amountBDesired);
-//        }
-//        TransferHelper.safeTransferFrom(tokenA, address(this), paris, amountADesired);
-//        IWETH(WETH).deposit{value: amountBDesired}();
-//        assert(IWETH(WETH).transfer(paris, amountBDesired));
 //
-//        uint liquidity = IUniswapV2Pair(paris).mint(address(this));
-//        console.log("step 12 %o %o",reserveA, reserveB);
-//        return (amountADesired, amountBDesired);
-//    }
-
     function checkPoolCreated(address factory,address tokenA,address tokenB) internal returns(address){
         address paris = pairFor(factory, tokenB,tokenA);
         console.log("paired address %o ", paris);
@@ -196,7 +158,7 @@ contract CreatePoolAttempt is ERC20{
     }
 
     function getPoolStats(address factory) public returns(uint,uint) {
-        address tokenA = address(this);
+        address tokenA = address(eft);
         address tokenB = WETH;
         console.log("factory address %o my aaddree %o", factory, address(this));
         address paris = checkPoolCreated(factory, tokenA, tokenB);

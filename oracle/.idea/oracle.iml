@@ -10,6 +10,7 @@
     <orderEntry type="module" module-name="weth" />
     <orderEntry type="module" module-name="uniswapLocal" />
     <orderEntry type="module" module-name="uniswapLocal2" />
+    <orderEntry type="module" module-name="uniswap3" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
