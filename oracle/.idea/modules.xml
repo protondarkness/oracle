@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Vesperr/.idea/Vesperr.iml" filepath="$PROJECT_DIR$/../Vesperr/.idea/Vesperr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dapp/.idea/dapp.iml" filepath="$PROJECT_DIR$/../dapp/.idea/dapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ethOracle/.idea/ethOracle.iml" filepath="$PROJECT_DIR$/../ethOracle/.idea/ethOracle.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/oracle.iml" filepath="$PROJECT_DIR$/.idea/oracle.iml" />
       <module fileurl="file://$PROJECT_DIR$/../uniswap3/.idea/uniswap3.iml" filepath="$PROJECT_DIR$/../uniswap3/.idea/uniswap3.iml" />

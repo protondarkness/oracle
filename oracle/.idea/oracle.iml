@@ -12,6 +12,7 @@
     <orderEntry type="module" module-name="uniswap3" />
     <orderEntry type="module" module-name="Vesperr" />
     <orderEntry type="module" module-name="ethOracle" />
+    <orderEntry type="module" module-name="dapp" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
