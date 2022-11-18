@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="new try to merge">
+      <change afterPath="$PROJECT_DIR$/ethOracle/alert-red.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/constants.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/index1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/meta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/metamask-fox.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.cjs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/whatwg-encoding/node_modules/iconv-lite/.idea/iconv-lite.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/oracle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/scratch_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/signVoteMethod.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/signed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/signed_new.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/tokenomics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/twit2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/twitter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/verify.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="ed0eb8b3-e9e2-4afe-816e-f031724417be" />
+        <option name="url" value="https://github.com/protondarkness/coinRR" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HNv0N11vEBIONDTO0rASv1nQyO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/destro/Desktop/coinRR"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="" />
+      <created>1668138133116</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668138133116</updated>
+    </task>
+    <task id="LOCAL-00001" summary="new try to merge">
+      <created>1668795053935</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668795053935</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="new try to merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="new try to merge" />
+  </component>
+</project>
