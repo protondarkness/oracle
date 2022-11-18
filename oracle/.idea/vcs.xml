@@ -2,7 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/../dapp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../ethOracle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../test-dapp" vcs="Git" />
   </component>
 </project>
