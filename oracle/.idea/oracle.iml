@@ -3,16 +3,15 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/client/src/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8 (oracle)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="weth" />
-    <orderEntry type="module" module-name="uniswapLocal" />
     <orderEntry type="module" module-name="uniswapLocal2" />
-    <orderEntry type="module" module-name="uniswap3" />
     <orderEntry type="module" module-name="Vesperr" />
     <orderEntry type="module" module-name="ethOracle" />
-    <orderEntry type="module" module-name="dapp" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
