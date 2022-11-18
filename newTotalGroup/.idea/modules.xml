@@ -4,8 +4,10 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Vesperr/.idea/Vesperr.iml" filepath="$PROJECT_DIR$/../Vesperr/.idea/Vesperr.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ethOracle/.idea/ethOracle.iml" filepath="$PROJECT_DIR$/../ethOracle/.idea/ethOracle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/newTotalGroup.iml" filepath="$PROJECT_DIR$/.idea/newTotalGroup.iml" />
       <module fileurl="file://$PROJECT_DIR$/../.idea/truffle.iml" filepath="$PROJECT_DIR$/../.idea/truffle.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/uniswapLocal2.iml" filepath="$PROJECT_DIR$/.idea/uniswapLocal2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../uniswapLocal2/.idea/uniswapLocal2.iml" filepath="$PROJECT_DIR$/../uniswapLocal2/.idea/uniswapLocal2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../weth/.idea/weth.iml" filepath="$PROJECT_DIR$/../weth/.idea/weth.iml" />
     </modules>
   </component>
 </project>

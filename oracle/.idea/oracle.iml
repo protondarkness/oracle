@@ -10,7 +10,6 @@
     <orderEntry type="module" module-name="uniswapLocal2" />
     <orderEntry type="module" module-name="Vesperr" />
     <orderEntry type="module" module-name="ethOracle" />
-    <orderEntry type="module" module-name="test-dapp" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

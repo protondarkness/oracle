@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/../Vesperr/.idea/Vesperr.iml" filepath="$PROJECT_DIR$/../Vesperr/.idea/Vesperr.iml" />
       <module fileurl="file://$PROJECT_DIR$/../ethOracle/.idea/ethOracle.iml" filepath="$PROJECT_DIR$/../ethOracle/.idea/ethOracle.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/oracle.iml" filepath="$PROJECT_DIR$/.idea/oracle.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../test-dapp/.idea/test-dapp.iml" filepath="$PROJECT_DIR$/../test-dapp/.idea/test-dapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/../uniswapLocal2/.idea/uniswapLocal2.iml" filepath="$PROJECT_DIR$/../uniswapLocal2/.idea/uniswapLocal2.iml" />
       <module fileurl="file://$PROJECT_DIR$/../weth/.idea/weth.iml" filepath="$PROJECT_DIR$/../weth/.idea/weth.iml" />
     </modules>
