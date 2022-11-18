@@ -1,0 +1,39 @@
+
+
+commands that make npmeasier
+
+--update npm
+npm install -g npm@latest
+
+--use latest nvm/npm
+nvm use <# of >
+
+--for one install require.js to make it find require files
+npm i requirejs
+
+--add nodemon
+
+--add metamsk sign utils
+ npm install @metamask/eth-sig-util
+
+--install node server
+npm install http-server --save-dev
+
+--install nodemon
+npm i --save-dev nodemon
+npx nodemon <js filenames>
+
+--install broswerify
+npm install -g browserify
+
+--install esmify
+npm i esmify
+
+--add to package.json under scripts
+ "start": "http-server "
+--open terminal and type npm start to run the server
+
+ --browserify js to load required packagres
+ --need esmify to make the connection
+ browserify meta.js -p esmify > signed_new.js
+
