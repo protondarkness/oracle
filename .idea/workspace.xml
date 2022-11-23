@@ -4,35 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="new try to merge">
-      <change afterPath="$PROJECT_DIR$/ethOracle/alert-red.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/constants.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/index1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/meta.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/metamask-fox.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/index.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.cjs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.es.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/whatwg-encoding/node_modules/iconv-lite/.idea/iconv-lite.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/oracle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/scratch_1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/signVoteMethod.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/signed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/signed_new.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/tokenomics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/twit2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/twitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/verify.py" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work">
+      <change afterPath="$PROJECT_DIR$/Vesperr/assets/css/ideas" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vesperr/assets/img/elon.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elon/125547-american-flag-free-clipart-hd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/elon/Twitter-logo-png-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vesperr/assets/img/elon.png" beforeDir="false" afterPath="$PROJECT_DIR$/Vesperr/assets/img/elon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +28,11 @@
     <option name="BRANCH" value="coinRR/cleaningUP" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -70,9 +60,15 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/destro/Desktop/coinRR"
+    "last_opened_file_path": "/home/destro/Desktop/coinRR",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Properties"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -89,7 +85,35 @@
       <option name="project" value="LOCAL" />
       <updated>1668795053935</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="hope 2 work">
+      <created>1668797582502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668797582502</updated>
+    </task>
+    <task id="LOCAL-00003" summary="hope 2 work">
+      <created>1668797605714</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668797605714</updated>
+    </task>
+    <task id="LOCAL-00004" summary="hope 2 work">
+      <created>1668797780590</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668797780590</updated>
+    </task>
+    <task id="LOCAL-00005" summary="hope 2 work">
+      <created>1668798348436</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668798348436</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,7 +127,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="trying_newBranches" />
                       </list>
                     </value>
                   </entry>
@@ -133,6 +157,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="new try to merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="new try to merge" />
+    <MESSAGE value="hope 2 work" />
+    <option name="LAST_COMMIT_MESSAGE" value="hope 2 work" />
   </component>
 </project>
