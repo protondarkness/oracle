@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work 11">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metisSamp" beforeDir="false" afterPath="$PROJECT_DIR$/metisSamp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669401416328</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="hope 2 work 11">
+      <created>1669402680828</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669402680828</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -191,6 +198,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="new try to merge" />
     <MESSAGE value="hope 2 work" />
-    <option name="LAST_COMMIT_MESSAGE" value="hope 2 work" />
+    <MESSAGE value="hope 2 work 11" />
+    <option name="LAST_COMMIT_MESSAGE" value="hope 2 work 11" />
   </component>
 </project>
