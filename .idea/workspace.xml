@@ -4,47 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="new try to merge">
-      <change afterPath="$PROJECT_DIR$/ethOracle/alert-red.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/constants.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/index1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/meta.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/metamask-fox.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/index.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.cjs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/dist/metamask-onboarding.es.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/@metamask/onboarding/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/node_modules/whatwg-encoding/node_modules/iconv-lite/.idea/iconv-lite.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/oracle.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/scratch_1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/signVoteMethod.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/signed.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/signed_new.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/tokenomics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/twit2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/twitter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/verify.py" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work 11">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="coinRR/cleaningUP" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="trying_newBranches" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
+    <option name="RESET_MODE" value="SOFT" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
   </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
@@ -65,14 +58,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/destro/Desktop/coinRR"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/destro/Desktop/coinRR&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -89,7 +88,91 @@
       <option name="project" value="LOCAL" />
       <updated>1668795053935</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="hope 2 work">
+      <created>1668797582502</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668797582502</updated>
+    </task>
+    <task id="LOCAL-00003" summary="hope 2 work">
+      <created>1668797605714</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668797605714</updated>
+    </task>
+    <task id="LOCAL-00004" summary="hope 2 work">
+      <created>1668797780590</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668797780590</updated>
+    </task>
+    <task id="LOCAL-00005" summary="hope 2 work">
+      <created>1668798348436</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668798348436</updated>
+    </task>
+    <task id="LOCAL-00006" summary="hope 2 work">
+      <created>1669242020889</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669242020889</updated>
+    </task>
+    <task id="LOCAL-00007" summary="hope 2 work">
+      <created>1669401396741</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669401396741</updated>
+    </task>
+    <task id="LOCAL-00008" summary="hope 2 work">
+      <created>1669401416328</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669401416328</updated>
+    </task>
+    <task id="LOCAL-00009" summary="hope 2 work 11">
+      <created>1669402680828</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669402680828</updated>
+    </task>
+    <task id="LOCAL-00010" summary="hope 2 work 11">
+      <created>1669402984277</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669402984277</updated>
+    </task>
+    <task id="LOCAL-00011" summary="hope 2 work 11">
+      <created>1669403646990</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669403646990</updated>
+    </task>
+    <task id="LOCAL-00012" summary="hope 2 work 11">
+      <created>1669404028327</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669404028327</updated>
+    </task>
+    <task id="LOCAL-00013" summary="hope 2 work 11">
+      <created>1669404181721</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669404181721</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -103,7 +186,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -121,7 +204,17 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="origin/master" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
                 </option>
               </RecentGroup>
             </list>
@@ -133,6 +226,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="new try to merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="new try to merge" />
+    <MESSAGE value="hope 2 work" />
+    <MESSAGE value="hope 2 work 11" />
+    <option name="LAST_COMMIT_MESSAGE" value="hope 2 work 11" />
   </component>
 </project>
