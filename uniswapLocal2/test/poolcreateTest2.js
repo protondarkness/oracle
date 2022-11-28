@@ -1,5 +1,6 @@
+const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
-const hre = require("hardhat");
+const  hre = require("hardhat");
 const {
   time,
   loadFixture,
@@ -9,12 +10,13 @@ describe("CreatePoolAttempt ICO", function () {
   async function CreatePool() {
     const  IUniswapV2Factory_address = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'; // uniswap v2 factory on ethereum mainnet
     const IUniswapV2Router02_address ='0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
+      const EFT = await hre.ethers.getContractFactory("EFT");
+    const eft = await EFT.deploy();
     const Pool_att = await hre.ethers.getContractFactory("CreateICO");
     const pool_att = await Pool_att.deploy(IUniswapV2Router02_address,IUniswapV2Factory_address);
     const [owner] = await ethers.getSigners();
+    console.log("Token owner:", owner[0]);
 
-    const EFT = await hre.ethers.getContractFactory("EFT");
-    const eft = await EFT.deploy();
 
     const transactionHash = await owner.sendTransaction({
     to: pool_att.address,

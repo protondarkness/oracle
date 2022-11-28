@@ -13,9 +13,6 @@ npm i requirejs
 
 --add nodemon
 
---add metamsk sign utils
- npm install @metamask/eth-sig-util
-
 --install node server
 npm install http-server --save-dev
 
@@ -23,21 +20,15 @@ npm install http-server --save-dev
 npm i --save-dev nodemon
 npx nodemon <js filenames>
 
---install broswerify
+--install broswerify basically bundles all dependent .js files into one
 npm install -g browserify
 or
 sudo apt install node-browserify
 
---install esmify
-npm i esmify
 
 --add to package.json under scripts
  "start": "http-server "
---open terminal and type npm start to run the server
-
- --browserify js to load required packagres
- --need esmify to make the connection
- browserify meta.js -p esmify > signed_new.js
+--open terminal and type npm start to run the server basically for testing javascript shit
 
 
  --new project

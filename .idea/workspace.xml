@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work 11 n" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work 11 n">
+      <change afterPath="$PROJECT_DIR$/betterAtt/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/betterAtt/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/betterAtt/contracts/Lock.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/betterAtt/hardhat.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/betterAtt/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/betterAtt/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/betterAtt/scripts/deploy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/betterAtt/test/Lock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/uniswapcreatePairAttempt.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/signed_new.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_17_22,_11_31_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_17_22__11_31_PM__Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ethOracle/scratch_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/scratch_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/CreateICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/CreateICO.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/poolcreateTest2.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/poolcreateTest2.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,16 +76,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/destro/Desktop/coinRR&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/home/destro/Desktop/oracle/uniswapLocal2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/uniswapLocal2" />
+      <recent name="$PROJECT_DIR$/uniswapLocal2/contracts" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -197,7 +222,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>

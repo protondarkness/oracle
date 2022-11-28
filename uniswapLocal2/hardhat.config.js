@@ -4,17 +4,31 @@ const ALCHEMY_KEY = 'PoEWVXu-9Ogwqr6iq0KWWQvcBNCRYh8p';
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.17",
-  networks: {
-    hardhat: {
+  solidity: {
+    compilers: [
+    {
+    version:"0.8.17",
     },
-    mainnet: {
-    url: 'https://eth-mainnet.g.alchemy.com/v2/PoEWVXu-9Ogwqr6iq0KWWQvcBNCRYh8p';
-    },
-   settings: {
+    {
+    version:"0.6.6",
+    }
+        ],
+    settings: {
       optimizer: {
         enabled: true,
         runs: 1000,
+            },
+        },
       },
-    },
-};
+  networks: {
+    hardhat: {
+    forking: {
+      url: 'https://eth-mainnet.g.alchemy.com/v2/PoEWVXu-9Ogwqr6iq0KWWQvcBNCRYh8p',
+    }
+        },
+    mainnet: {
+        url: 'https://eth-mainnet.g.alchemy.com/v2/PoEWVXu-9Ogwqr6iq0KWWQvcBNCRYh8p'
+        },
+
+    }
+}

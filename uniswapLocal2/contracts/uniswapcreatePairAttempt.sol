@@ -30,7 +30,7 @@ interface IUniswapV2Factory {
     function setFeeToSetter(address) external;
 }
 
-contract CreateICO {
+contract CreateICOattempt {
 
     address payable immutable owner;
     IUniswapV2Factory immutable uniswapV2Factory;
