@@ -14,7 +14,7 @@ describe("Create ICO", function () {
     const eft = await EFT.deploy();
     const Pool_att = await hre.ethers.getContractFactory("efftICO");
 
-    const [owner] = await ethers.getSigners();
+    const [owner,add1,add2] = await ethers.getSigners();
     console.log("Token owner:", owner.address);
     const pool_att = await Pool_att.deploy(eft.address,owner.address);
 
@@ -25,66 +25,21 @@ describe("Create ICO", function () {
     //await pool_att.setEFTaddress(eft.address);
     await eft.mint(pool_att.address,2222222);
     console.log("eftt balance:",await eft.balanceOf(pool_att.address));
-    return { pool_att ,eft};
-  }
-
-    it("Try and buy", async function () {
-  // ...deploy the contract as before...
-     const [owner,add1,add2] = await ethers.getSigners();
-     const {pool_att , eft} = await loadFixture(CreatePool);
-     await pool_att.connect(add1).buy({value : ethers.utils.parseEther("1.0")});
-     console.log("bought eftt amount",await eft.balanceOf(add1.address));
-
-    const blockNumBefore = await ethers.provider.getBlockNumber();
-    const blockBefore = await ethers.provider.getBlock(blockNumBefore);
-    const timestampBefore = blockBefore.timestamp;
-     console.log("time: ",timestampBefore);
-     console.log("block number", blockNumBefore);
-//    await pool_att.setTimeLock(1000);
-//
-//     await expect(pool_att.connect(add1).buy({value : ethers.utils.parseEther("1.0")})).to.be.revertedWith("ICO is over :( ");
-         });
-
- it("Test ending of ICO", async function () {
-  // ...deploy the contract as before...
-     const [owner,add1,add2] = await ethers.getSigners();
-     const {pool_att , eft} = await loadFixture(CreatePool);
-    await pool_att.connect(add1).buy({value : ethers.utils.parseEther("3.0")});
-     console.log("bought eftt amount",await eft.balanceOf(add1.address));
-     await expect(pool_att.setTimeLock(1000));
-//     const blockNumBefore = await ethers.provider.getBlockNumber();
-//    const blockBefore = await ethers.provider.getBlock(blockNumBefore);
-//    const timestampBefore = blockBefore.timestamp;
-//     await helpers.time.increaseTo(timestampBefore+100);
-    await time.increase(3600);
-   await expect(pool_att.connect(owner).endICO());
-
-
-     //console.log()
-        });
-
- it("Create LP pool", async function () {
-  // ...deploy the contract as before...
-     const [owner,add1,add2] = await ethers.getSigners();
-     const {pool_att , eft} = await loadFixture(CreatePool);
-       await pool_att.createPool();
-
-        });
-
-it("mint, buy, create LP pool and add funds to it", async function () {
-    const [owner,add1,add2] = await ethers.getSigners();
-     const {pool_att , eft} = await loadFixture(CreatePool);
-     await expect(pool_att.setTimeLock(18000000000));
+    await expect(pool_att.setTimeLock(18000000000));
         console.log("time lock currently", await pool_att.timeLock());
         await pool_att.connect(add2).buy({value : ethers.utils.parseEther("2.0")});
 
      console.log("bought eftt amount",await eft.balanceOf(add2.address));
-       // await pool_att.connect(owner).createPool();
+       await pool_att.connect(owner).createPool();
 
 
         await pool_att.connect(owner).addLPwithWETH({value: ethers.utils.parseEther("1.0")});
         await pool_att.getPoolStats();
-     });
+    return { pool_att ,eft};
+  }
+
+
+
 
 it("withdraw LP", async function () {
     const [owner,add1,add2] = await ethers.getSigners();
@@ -92,6 +47,7 @@ it("withdraw LP", async function () {
      await expect(pool_att.setTimeLock(18000000000));
 
         await pool_att.getPoolStats();
+        await pool_att.withdrawLPtokens();
      });
 
 //

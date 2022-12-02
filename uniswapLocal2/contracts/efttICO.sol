@@ -7,6 +7,9 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "./Iefft.sol";
 import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
+import "@uniswap/v2-periphery/contracts/interfaces/IWETH.sol";
+import "@uniswap/lib/contracts/libraries/TransferHelper.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
 //import "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol";
 
 import "hardhat/console.sol";
@@ -26,7 +29,7 @@ contract efftICO is AccessControl{
     address constant METISADDRESS = 0x9E32b13ce7f2E80A01932B42553652E053D6ed8e;
     address[] minters_;
     uint256 maxSupply_;
-    uint256 timeLock=18000000000;
+    uint256 public timeLock=18000000000;
     IEFTT eftt;
     uint256 maxICO = 100000 *10**18;
     uint256 SoldInMetis;
@@ -34,13 +37,13 @@ contract efftICO is AccessControl{
     uint256 ratioMetis =1;
     mapping(uint => uint) timeLocks;
     bool private BURNED = false;
-    uint constant liquidityRatio = 7;
+    uint constant liquidityRatio = 2;
     bool internal locked;
     uint256 month =2592000;
     uint256 week = 604800;
     uint256 immutable creationtTime;
     uint256 ICOtimeLock;
-
+    address LP_Pair;
 
     constructor(address _eftt, address _dev) payable {
         //below might have to obfuscate with for loop
@@ -60,8 +63,10 @@ contract efftICO is AccessControl{
     event Log(string func);
     event Sold(uint);
     event Burned(uint);
+    event LPcreated(uint256,uint256);
+    event balances(uint256,uint256);
 
-
+//modifiers
     modifier _timeCheck(){
         require(block.timestamp < timeLock,"ICO is over :( ");
         _;
@@ -90,7 +95,7 @@ contract efftICO is AccessControl{
         locked = false;
     }
 
-
+//end modifiers
     ////////////////////////////
     function setTimeLock(uint256 _t) public {
         timeLock = _t;
@@ -141,13 +146,13 @@ contract efftICO is AccessControl{
     }
 
 
-    function addLiquidity() private onlyRole(BURNER_ROLE){
-        //IERC20(WETH).approve(address(this),wethBalance);
-        //eftt.approve(address(this), amountADesired);
+    function addLiquidity() public payable onlyRole(BURNER_ROLE){
         uint256 metisLiquidity = SoldInMetis - SoldInMetis.div(liquidityRatio);
         uint256 efttLiquidity = metisLiquidity.div(ratioMetis);
-        IERC20(METISADDRESS).approve(address(this),metisLiquidity);
-        eftt.approve(address(this), efttLiquidity);
+        console.log("eftt , ", efttLiquidity);
+
+        //IERC20(METISADDRESS).approve(address(this),metisLiquidity);
+        eftt.approve(IUniswapV2Router02_address, efttLiquidity);
         //below must also burn the liquidity tokens
           (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidityETH(
              address(eftt),
@@ -157,19 +162,76 @@ contract efftICO is AccessControl{
              address(this),
              block.timestamp + 360
          );
+        emit LPcreated(efttLiquidity,msg.value);
+    }
+
+    function addLPwithWETH() public payable {
+        address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
+        uint256 metisLiquidity = SoldInMetis - SoldInMetis.div(liquidityRatio);
+        uint256 efttLiquidity = metisLiquidity.div(ratioMetis);
+        IWETH(WETH).deposit{value: msg.value}();
+        uint256 wethBalance = IERC20(WETH).balanceOf(address(this));
+        //IERC20(WETH).approve(address(this),wethBalance);
+
+        //eftt.allowance(address(this), IUniswapV2Router02_address);
+        eftt.approve(IUniswapV2Router02_address, efttLiquidity);
+        IERC20(WETH).approve(IUniswapV2Router02_address, wethBalance /2);
+        console.log("eftt ,weth ", efttLiquidity / 2, wethBalance /2);
+         (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
+            address(eftt),
+            WETH ,
+            efttLiquidity / 2,
+            wethBalance /2,
+            0, // slippage is unavoidable
+            0, // slippage is unavoidable
+            address(this),
+            block.timestamp + 360
+        );
 
     }
 
     function createPool() public onlyRole(BURNER_ROLE) returns(address){
-
-        address paris = pairFor(IUniswapV2Factory_address,address(eftt) ,METISADDRESS);
-         if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(address(eftt) ,METISADDRESS) == address(0)) {
-             IUniswapV2Factory(IUniswapV2Factory_address).createPair(address(eftt) ,METISADDRESS);
+    address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
+        LP_Pair = pairFor(IUniswapV2Factory_address,address(eftt) ,WETH);
+         if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(address(eftt) ,WETH) == address(0)) {
+             IUniswapV2Factory(IUniswapV2Factory_address).createPair(address(eftt) ,WETH);
          }
-        return paris;
+        console.log("factory address",LP_Pair);
+        return LP_Pair;
     }
 
+    function getPoolStats() public returns(uint,uint) {
+        address tokenA = address(eftt);
+        address factory = IUniswapV2Factory_address;
+        address tokenB = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
+        console.log("factory address %o my aaddree %o", factory, address(this));
+        LP_Pair = createPool();
+         (uint reserve0, uint reserve1,) = IUniswapV2Pair(LP_Pair).getReserves();
+        console.log("balance1 %o balance2 %o", reserve0,reserve1);
+        console.log("lp token amount %o",IERC20(LP_Pair).balanceOf(address(this)));
+        //(uint reserveA, uint reserveB) = UniswapV2Library.getReserves(factory, WETH, address(this));
+        emit balances(reserve0, reserve1);
+        return (reserve0, reserve1);
+    }
 
+    function withdrawLPtokens() public{
+           console.log("lp token amount %o",IERC20(LP_Pair).balanceOf(address(this)));
+        address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
+        IERC20(LP_Pair).approve(IUniswapV2Router02_address,IERC20(LP_Pair).balanceOf(address(this)));
+        (uint amountA, uint amountB) = IUniswapV2Router02(IUniswapV2Router02_address).removeLiquidity(
+            address(eftt),
+            WETH ,
+            IERC20(LP_Pair).balanceOf(address(this)),
+            0, // slippage is unavoidable
+            0, // slippage is unavoidable
+            address(this),
+            block.timestamp
+        );
+         (uint reserve0, uint reserve1,) = IUniswapV2Pair(LP_Pair).getReserves();
+        console.log("balance1 %o balance2 %o", reserve0,reserve1);
+        console.log("lp token amount %o",IERC20(LP_Pair).balanceOf(address(this)));
+        emit balances(amountA, amountB);
+    }
 //may not need to include the functions below
     function sortTokens(address tokenA, address tokenB) internal pure returns (address token0, address token1) {
         require(tokenA != tokenB, 'UniswapV2Library: IDENTICAL_ADDRESSES');
