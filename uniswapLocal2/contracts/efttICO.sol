@@ -9,6 +9,8 @@ import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 //import "@uniswap/v2-periphery/contracts/libraries/UniswapV2Library.sol";
 
+import "hardhat/console.sol";
+
 contract efftICO is AccessControl{
     using SafeMath for uint256;
     bytes32 public constant INVESTOR_ROLE = keccak256("INVESTOR_ROLE");
@@ -59,8 +61,15 @@ contract efftICO is AccessControl{
     event Sold(uint);
     event Burned(uint);
 
+
     modifier _timeCheck(){
         require(block.timestamp < timeLock,"ICO is over :( ");
+        _;
+    }
+
+
+    modifier _endICO(){
+        require(block.timestamp > timeLock,"ICO is still ongoing :( ");
         _;
     }
 
@@ -81,6 +90,13 @@ contract efftICO is AccessControl{
         locked = false;
     }
 
+
+    ////////////////////////////
+    function setTimeLock(uint256 _t) public {
+        timeLock = _t;
+    }
+
+    ///////////////////////
     receive() external payable {
         //add in if just metis sent to contract
         emit Log("fallback hit");
@@ -117,10 +133,11 @@ contract efftICO is AccessControl{
 
     }
 
-    function endICO() public _timeCheck onlyRole(BURNER_ROLE) _burnCheck{
+    function endICO() public _endICO onlyRole(BURNER_ROLE) _burnCheck{
         uint256 burnAmnt = (maxICO.sub(SoldEFTT));
         eftt.burn(burnAmnt);
         emit Burned(burnAmnt);
+        console.log("burned amount",burnAmnt);
     }
 
 
@@ -143,7 +160,7 @@ contract efftICO is AccessControl{
 
     }
 
-    function createPool() internal onlyRole(BURNER_ROLE) returns(address){
+    function createPool() public onlyRole(BURNER_ROLE) returns(address){
 
         address paris = pairFor(IUniswapV2Factory_address,address(eftt) ,METISADDRESS);
          if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(address(eftt) ,METISADDRESS) == address(0)) {

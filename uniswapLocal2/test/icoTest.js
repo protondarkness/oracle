@@ -25,16 +25,49 @@ describe("Create ICO", function () {
     //await pool_att.setEFTaddress(eft.address);
     await eft.mint(pool_att.address,2222222);
     console.log("eftt balance:",await eft.balanceOf(pool_att.address));
-    return { pool_att ,owner};
+    return { pool_att ,eft};
   }
-
-
-  describe("Pool Create", function (){
-    it("Create pool and init supply", async function () {
+    it("Try and buy", async function () {
   // ...deploy the contract as before...
-       const {pool_att } = await loadFixture(CreatePool);
-     // await expect(pool_att.buy({ value: 1 }));
+     const [owner,add1,add2] = await ethers.getSigners();
+     const {pool_att , eft} = await loadFixture(CreatePool);
+     await pool_att.connect(add1).buy({value : ethers.utils.parseEther("1.0")});
+     console.log("bought eftt amount",await eft.balanceOf(add1.address));
+
+    const blockNumBefore = await ethers.provider.getBlockNumber();
+    const blockBefore = await ethers.provider.getBlock(blockNumBefore);
+    const timestampBefore = blockBefore.timestamp;
+     console.log("time: ",timestampBefore);
+     console.log("block number", blockNumBefore);
+//    await pool_att.setTimeLock(1000);
+//
+//     await expect(pool_att.connect(add1).buy({value : ethers.utils.parseEther("1.0")})).to.be.revertedWith("ICO is over :( ");
          });
+
+ it("Test ending of ICO", async function () {
+  // ...deploy the contract as before...
+     const [owner,add1,add2] = await ethers.getSigners();
+     const {pool_att , eft} = await loadFixture(CreatePool);
+    await pool_att.connect(add1).buy({value : ethers.utils.parseEther("3.0")});
+     console.log("bought eftt amount",await eft.balanceOf(add1.address));
+     await expect(pool_att.setTimeLock(1000));
+//     const blockNumBefore = await ethers.provider.getBlockNumber();
+//    const blockBefore = await ethers.provider.getBlock(blockNumBefore);
+//    const timestampBefore = blockBefore.timestamp;
+//     await helpers.time.increaseTo(timestampBefore+100);
+    await time.increase(3600);
+   await expect(pool_att.connect(owner).endICO());
+
+
+     //console.log()
+        });
+
+ it("Create LP pool", async function () {
+  // ...deploy the contract as before...
+     const [owner,add1,add2] = await ethers.getSigners();
+     const {pool_att , eft} = await loadFixture(CreatePool);
+       await pool_att.createPool();
+
         });
 //
 //    describe("Check pool funding", function(){

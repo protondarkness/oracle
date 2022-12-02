@@ -81,4 +81,4 @@ def getCountOfHashtags(hashtag, tf,start_t=0,end_t=0):
 
 #getListOFretweetsOfKeyword(1587668890871529472)
 #getListOfTrends()
-getCountOfHashtags('trump',3)
+getCountOfHashtags('stoneocean',2)

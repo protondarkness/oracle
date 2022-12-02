@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work 11 n">
-      <change afterPath="$PROJECT_DIR$/node_setup.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/Eftt.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/Iefft.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/ethOracle/scratch_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/scratch_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metisSamp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/metisSamp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/CreateICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/CreateICO.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ethOracle/twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/twitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669405147308</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="most up2date....">
+      <created>1669940360371</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1669940360371</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,6 +276,7 @@
     <MESSAGE value="hope 2 work" />
     <MESSAGE value="hope 2 work 11" />
     <MESSAGE value="hope 2 work 11 n" />
-    <option name="LAST_COMMIT_MESSAGE" value="hope 2 work 11 n" />
+    <MESSAGE value="most up2date...." />
+    <option name="LAST_COMMIT_MESSAGE" value="most up2date...." />
   </component>
 </project>

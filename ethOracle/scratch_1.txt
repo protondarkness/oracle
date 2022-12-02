@@ -62,3 +62,6 @@ npx hardhat run --network hardhat scripts/my-script.js
 --//run stand alone node, for external connections like metamask or whatnot
 npx hardhat node
 --// add --network localhost to use the hardhat node after test or run especially when using alchemy
+-- to end node type
+lsof -i :8545
+kill -9 <pid>
