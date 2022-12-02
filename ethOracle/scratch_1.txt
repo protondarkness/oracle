@@ -11,8 +11,6 @@ nvm use <# of >
 --for one install require.js to make it find require files
 npm i requirejs
 
---add nodemon
-
 --add metamsk sign utils
  npm install @metamask/eth-sig-util
 
@@ -39,6 +37,10 @@ npm i esmify
  --need esmify to make the connection
  browserify meta.js -p esmify > signed_new.js
 
+--hardhat setup
+npm init -y
+npm install --save-dev hardhat
+--npm install    alone installs the dsependencies for that projects node files
 
  --new project
  npm init
@@ -54,10 +56,9 @@ npx hardhat node
 --this will pull the forked blockchain from alchemy and allow to use it like a local chain but
 --only if forking is defined
 
-
  npx hardhat test test/<script>
 --//runs the builtin hardhat but not stand alone node
 npx hardhat run --network hardhat scripts/my-script.js
 --//run stand alone node, for external connections like metamask or whatnot
 npx hardhat node
---// add --network localhost to use the hardhat node after test or run
+--// add --network localhost to use the hardhat node after test or run especially when using alchemy
