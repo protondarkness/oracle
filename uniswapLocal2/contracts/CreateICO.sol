@@ -97,7 +97,7 @@ contract CreateICO {
         address paris = checkPoolCreated(IUniswapV2Factory_address,tokenA,tokenB);
         console.log("new token balancer %o", paris);
 
-        IERC20(WETH).approve(IUniswapV2Router02_address, 10);
+        //IERC20(WETH).approve(IUniswapV2Router02_address, 10);
 
          (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
             address(this),

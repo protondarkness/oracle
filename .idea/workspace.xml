@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="hope 2 work 11 n">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metisSamp/test/Lock.js" beforeDir="false" afterPath="$PROJECT_DIR$/metisSamp/test/Lock.js" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +34,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
   </component>
-  <component name="GithubProjectSettings">
-    <option name="branchProtectionPatterns">
-      <list>
-        <option value="master" />
-      </list>
-    </option>
-  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -63,18 +58,45 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/destro/Desktop/oracle/uniswapLocal2",
+    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/uniswapLocal2/test",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/uniswapLocal2" />
-      <recent name="$PROJECT_DIR$/uniswapLocal2/contracts" />
+      <recent name="$PROJECT_DIR$/uniswapLocal2/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="twitter" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oracle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ethOracle" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ethOracle/twitter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.twitter" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -190,14 +212,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669405147308</updated>
     </task>
-    <task id="LOCAL-00016" summary="hope 2 work 11 n">
-      <created>1669612890920</created>
+    <task id="LOCAL-00016" summary="most up2date....">
+      <created>1669940360371</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1669612890920</updated>
+      <updated>1669940360371</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="most up2date....">
+      <created>1669997085444</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1669997085444</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,7 +240,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -254,6 +283,7 @@
     <MESSAGE value="hope 2 work" />
     <MESSAGE value="hope 2 work 11" />
     <MESSAGE value="hope 2 work 11 n" />
-    <option name="LAST_COMMIT_MESSAGE" value="hope 2 work 11 n" />
+    <MESSAGE value="most up2date...." />
+    <option name="LAST_COMMIT_MESSAGE" value="most up2date...." />
   </component>
 </project>
