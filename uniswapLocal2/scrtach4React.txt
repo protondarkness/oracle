@@ -1,0 +1,19 @@
+In production, it is recommended to minify any JavaScript code that is included with your application.
+Minification can help your website load several times faster, especially as the size of your JavaScript source code grows.
+
+Here's one way to set it up:
+
+    Install Node.js
+    Run npm init -y in your project folder (don't skip this step!)
+    Run npm install terser
+
+Now, to minify a file called like_button.js, run in the terminal:
+
+npx terser -c -m -o like_button.min.js -- like_button.js
+
+--to start react project
+npm rm -g create-react-app
+npm install -g create-react-app
+npx create-react-app my-app
+
+browserify meta.js -p esmify > signed_new.js

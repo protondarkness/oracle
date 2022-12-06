@@ -5,10 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/App.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/reportWebVitals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/setupTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/sign.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/signed.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ethOracle/sign.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_22,_1_32_PM_[Default_Changelist]1/eftf.xcf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_22,_1_32_PM_[Default_Changelist]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_25_22__1_32_PM__Default_Changelist_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ethOracle/signVoteMethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/scrtach4React.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,12 +81,14 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/uniswapLocal2/test",
+    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/ethOracle/my-app/src",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ethOracle/my-app/src" />
+      <recent name="$PROJECT_DIR$/ethOracle" />
       <recent name="$PROJECT_DIR$/uniswapLocal2/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
