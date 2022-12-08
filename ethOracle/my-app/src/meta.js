@@ -1,25 +1,24 @@
+import React from "react";
+import ReactDOM from 'react-dom/client';
+require('@metamask/onboarding');
+require('web3');
+require('eth-sig-util');
 
 
-import MetaMaskOnboarding from '@metamask/onboarding';
-// eslint-disable-next-line camelcase
-import 'eth-sig-util';
-import  'ethers';
-//import { toChecksumAddress } from 'ethereumjs-util';
-//import 'web3' ;
-
-const currentUrl = new URL(window.location.href);
 const ethereumButton = document.querySelector('.enableEthereumButton');
 const showAccount = document.querySelector('.showAccount');
 var chainId;
 var networkId;
 var accounts;
 var encryptMessageInput = document.getElementById('encryptMessageInput');
+const signTypedDataResult = document.getElementById('signTypedDataResult');
+
 //let accounts;
 window.onload = function(){
 getNetworkAndChainId();
 getAccount();
 }
-
+const { ethereum } = window;
 ethereumButton.addEventListener('click', () => {
   getAccount();
 });
