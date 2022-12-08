@@ -114,7 +114,7 @@ contract efftICO is AccessControl{
         uint256 buyAmount = conversion(msg.value);
 
         require(buyAmount + SoldEFTT < maxICO, "exceeds the total for sale");
-        eftt.approve( address(this), buyAmount);
+        //eftt.approve( address(this), buyAmount);
         eftt.transfer(msg.sender, buyAmount);
         SoldEFTT = buyAmount + SoldEFTT;
         SoldInMetis += msg.value;
