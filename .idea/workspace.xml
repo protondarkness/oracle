@@ -5,14 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ethOracle/my-app/src/meta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.flaskenv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/flaskWebsite.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/debug.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/eftt.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/reqs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/oracle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oracle.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/my-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/my-app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/my-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/my-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/my-app/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/my-app/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/my-app/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/my-app/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/my-app/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/my-app/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/signed.js" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/signed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metisSamp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/metisSamp/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metisSamp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/metisSamp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +56,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="SOFT" />
   </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="master" />
+      </list>
+    </option>
+  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -60,16 +85,16 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/ethOracle/my-app/src",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/uniswapLocal2/test",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/ethOracle/my-app/src" />
-      <recent name="$PROJECT_DIR$/ethOracle" />
       <recent name="$PROJECT_DIR$/uniswapLocal2/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -232,14 +257,7 @@
       <option name="project" value="LOCAL" />
       <updated>1669997085444</updated>
     </task>
-    <task id="LOCAL-00018" summary="most up2date....">
-      <created>1670370509243</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1670370509243</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

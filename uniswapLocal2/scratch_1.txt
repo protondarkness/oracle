@@ -52,3 +52,15 @@ npx hardhat run --network hardhat scripts/my-script.js
 --//run stand alone node, for external connections like metamask or whatnot
 npx hardhat node
 --// add --network localhost to use the hardhat node after test or run
+
+
+--web3 stuff
+--react below starts a react project and begins a node
+npx create-react-app my-react-app
+cd my-react-app
+npm start
+
+--to buncdle
+npm install webpack webpack-cli --save-dev
+--for data fetching swr
+npm install swr
