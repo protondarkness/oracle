@@ -122,6 +122,8 @@ contract CreateICO {
         require(getBocktime()> 1676181769, "time is not resady");
         _;
     }
+
+
     function buyFunc(uint256 _amnt) public payable {
         require(msg.value > 0,"need more eth!");
         uint256 tokens = _amnt;

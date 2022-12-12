@@ -175,6 +175,8 @@ contract efftICO is AccessControl{
 
         //eftt.allowance(address(this), IUniswapV2Router02_address);
         eftt.approve(IUniswapV2Router02_address, efttLiquidity);
+        uint256 sp = eftt.allowance( address(this), IUniswapV2Router02_address);
+        console.log("allowed to spend", sp);
         IERC20(WETH).approve(IUniswapV2Router02_address, wethBalance /2);
         console.log("eftt ,weth ", efttLiquidity / 2, wethBalance /2);
          (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
@@ -187,6 +189,22 @@ contract efftICO is AccessControl{
             address(this),
             block.timestamp + 360
         );
+
+    }
+
+    function allow(uint256 _amnt) public{
+        bool spend = eftt.approve(address(this), _amnt);
+        console.log("allowed to spend", spend);
+        uint256 sp = eftt.allowance(msg.sender, address(this));
+        console.log("allowed to spend", sp);
+        console.log("block noumber",block.number);
+    }
+
+    function spendie(address _allower) public{
+        console.log("block noumber", block.number);
+        uint256 sp = eftt.allowance(_allower, address(this));
+        console.log("allowed to spend", sp);
+        eftt.transferFrom(_allower,msg.sender, sp);
 
     }
 

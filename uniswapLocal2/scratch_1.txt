@@ -55,6 +55,13 @@ npx hardhat run --network hardhat scripts/my-script.js
 npx hardhat node
 --// add --network localhost to use the hardhat node after test or run
 
+ --use to query block number in terminal
+curl --location --request POST 'localhost:8545/' --header 'Content-Type: application/json' --data-raw '{
+    "jsonrpc":"2.0",
+    "method":"eth_blockNumber",
+    "params":[],
+    "id":83
+    }'
 
 --web3 stuff
 --react below starts a react project and begins a node

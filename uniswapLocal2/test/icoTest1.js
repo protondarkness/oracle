@@ -3,7 +3,7 @@ const { expect } = require("chai");
 const  hre = require("hardhat");
 const {
   time,
-  loadFixture,
+  loadFixture,mine,
 } = require("@nomicfoundation/hardhat-network-helpers");
 
 describe("Create ICO", function () {
@@ -27,14 +27,7 @@ describe("Create ICO", function () {
     console.log("eftt balance:",await eft.balanceOf(pool_att.address));
     await expect(pool_att.setTimeLock(18000000000));
         console.log("time lock currently", await pool_att.timeLock());
-        await pool_att.connect(add2).buy({value : ethers.utils.parseEther("2.0")});
 
-     console.log("bought eftt amount",await eft.balanceOf(add2.address));
-       await pool_att.connect(owner).createPool();
-
-
-        await pool_att.connect(owner).addLPwithWETH({value: ethers.utils.parseEther("1.0")});
-        await pool_att.getPoolStats();
     return { pool_att ,eft};
   }
 
@@ -44,64 +37,40 @@ describe("Create ICO", function () {
 it("withdraw LP", async function () {
     const [owner,add1,add2] = await ethers.getSigners();
      const {pool_att , eft} = await loadFixture(CreatePool);
+
      await expect(pool_att.setTimeLock(18000000000));
+         await pool_att.connect(add2).buy({value : ethers.utils.parseEther("2.0")});
+             console.log(await eft.balanceOf(add2.address));
+     console.log("bought eftt amount",await eft.balanceOf(add2.address));
+       await pool_att.connect(owner).createPool();
+
+
+        await pool_att.connect(owner).addLPwithWETH({value: ethers.utils.parseEther("1.0")});
 
         await pool_att.getPoolStats();
         await pool_att.withdrawLPtokens();
      });
 
-//
-//    describe("Check pool funding", function(){
-//        it("check on pool supply", async function () {
-//  // ...deploy the contract as before...
-//        const {pool_att } = await loadFixture(CreatePool);
-//        await expect(pool_att.getPoolStats());
-//        });
-//    });
+it("test allowance", async function(){
+     const [owner,add1,add2] = await ethers.getSigners();
+     const {pool_att , eft} = await loadFixture(CreatePool);
 
-//    describe("Check buy", function(){
-//        it("check on buy", async function () {
-//  // ...deploy the contract as before...
-//        const {pool_att } = await loadFixture(CreatePool);
-//        const [owner,add1,add2,add3] = await ethers.getSigners();
-//        await pool_att.connect(add1).buyFunc(1000 ,{value : ethers.utils.parseEther("1.0")});
-//
-//        await pool_att.connect(add2).buyFunc(1000 ,{value : ethers.utils.parseEther("12.0")});
-//
-//        await pool_att.connect(add3).buyFunc(1000 ,{value : ethers.utils.parseEther("13.0")});
-//        });
-//    });
-
-
-
-//    describe("Events", function () {
-//      it("Should emit an event on checking pool", async function () {
-//        const {pool_att ,IUniswapV2Factory_address} = await loadFixture(CreatePool);
-//    await expect(pool_att.getPoolStats(IUniswapV2Factory_address)).to.emit(pool_att, "balances"); // We accept any value as `when` arg
-//      });
-//    });
-//    describe("buy try", function () {
-//      it("Should emit an event on checking pool", async function () {
-//        const {pool_att ,IUniswapV2Factory_address} = await loadFixture(CreatePool);
-//        const [owner, add1, add2,add3] = await ethers.getSigners();
-//
-//        timer =await (pool_att.getBocktime());
-//        //dt=new Date(timer * 1000).toLocaleString();
-//        console.log(timer);
-//        await network.provider.send("evm_setNextBlockTimestamp", [1676181772])
-//         await expect(pool_att.connect(add1).buySome({ value: 1 })).to.be.revertedWith(
-//        "not time!"
-//      );
-//        await network.provider.send("evm_setNextBlockTimestamp", [1676181769+18840])
-//        await network.provider.send("evm_mine");
-//
-//        dt=new Date(timer * 1000).toLocaleString();
-//        console.log(dt);
-//        await expect(pool_att.connect(add1).buySome({ value: 0 })).to.be.revertedWith(
-//        "need more eth!"
-//      );
-//        await expect(pool_att.connect(add1).buySome({ value: 1 }));
-//
-//      });
-//    });
+      await pool_att.connect(add1).buy( {value : ethers.utils.parseEther("1000.0")});
+//      await mine(100);
+      console.log("add1 ",await eft.balanceOf(add1.address));
+      await eft.connect(add1).approve(pool_att.address,1000);
+      await mine(100);
+//      const allower = await eft._allowances;
+//      for (let [key, value] of allower) {
+//console.log(key + " = " + value);
+//}
+//     await network.provider.send("evm_increaseTime", [3600]);
+//await network.provider.send("evm_mine");
+      await pool_att.connect(add2).spendie(add1.address);
+//      await network.provider.send("evm_increaseTime", [3600]);
+//await network.provider.send("evm_mine");
+          await mine(100);
+      console.log("add1 ",await eft.balanceOf(add1.address));
+      console.log("add2 ",await eft.balanceOf(add2.address));
+    });
 });
