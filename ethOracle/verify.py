@@ -2,12 +2,12 @@ from web3 import Web3, EthereumTesterProvider
 import json
 from eth_account.messages import encode_defunct
 #w3 = Web3(EthereumTesterProvider())
-w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
+w3 = Web3(Web3.HTTPProvider('http://127.0.0.1:8545'))
 w3.isConnected()
 print(w3.isConnected())
 #address of contract
 address = '0xeAc8e8A7aDD748202A0e1b1A628449e32B6e60C1'
-abi = '/home/darkproton/Desktop/truffle/oracle/client/src/contracts/Verify.json'
+abi = './Verify.json'
 
 account_from = {
     "private_key": "cf0629f734b41dc8486325d45ff74537d4352f3fd9f0e5d0cc29e795d7ff4c0b",
@@ -29,7 +29,7 @@ ec_recover_args = (msghash, v, r, s) = ( Web3.toHex(signed_message.messageHash),
   to_32byte_hex(signed_message.r),
   to_32byte_hex(signed_message.s),
 )
-abi = '/home/darkproton/Desktop/truffle/oracle/client/src/contracts/Verify.json'
+#abi = '/home/darkproton/Desktop/truffle/oracle/client/src/contracts/Verify.json'
 
 jsonfile=open(abi)
 abi_data=json.load(jsonfile)['abi']

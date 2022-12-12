@@ -15,7 +15,7 @@ class Config(object):
     # MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     # MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     #ADMINS = os.environ.get('ADMINS')
-    DBS_DATA = os.environ.get('DB_PATH_DATA')
+    DBS_DATA = os.environ.get('DB_PATH_APP_URL')
     TESTING = os.environ.get('TESTING')
 
 

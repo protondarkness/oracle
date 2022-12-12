@@ -1,0 +1,48 @@
+
+<div class="enableWeb3">
+<button class="enableEthereumButton">Enable Ethereum</button>
+     <span id="errorConnected" style="color: red;" display="none">Not Connected</span>
+</div>
+
+
+<h6>Account: <span class="showAccount"></span></h6>
+<div>
+  <h3>Vote for the hashtag to target!</h3>
+  <button type="button" id="signTypedDataV4Button">Click to encrypt</button>
+    <input class="form-control" type="text" placeholder="Message to encrypt" id="encryptMessageInput" >
+</div>
+<div>
+<!--    <p class="info-text alert alert-warning">-->
+<!--                  Result: <span id="signTypedDataResult"></span>-->
+<!--                </p>-->
+
+</div>
+<div class="ballot" style="
+    size: 32;
+    width: fit-content;
+">
+    <form action="{{ url_for('vote.vote') }}" method="post">
+        {{form.hidden_tag()}}
+  <fieldset style="background: #f6f8ff; border: 2px solid #4238ca;">
+    <legend>Vote Ballot</legend>
+      <label>Signed Message: </label>{{form.SignedMessage(size=32)}}<br /><br />
+     {% for error in form.SignedMessage.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+   <label>Public Address: </label> {{form.Account(size=32)}}<br /><br />
+     {% for error in form.Account.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+    <label>Voting for: </label>{{form.Vote(size=32)}}<br /><br />
+     {% for error in form.Vote.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+    {{ form.submit()}}
+  </fieldset>
+
+</form>
+
+
+</div>
+
+

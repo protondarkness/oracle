@@ -1,0 +1,12 @@
+{% extends "main/base.html" %}
+
+
+{% block content %}
+
+{% include "vote/vote_module.html" %}
+
+
+{% endblock %}
+{% block script %}
+<script src="{{url_for('static', filename='bundle.js')}}"></script>
+{% endblock %}

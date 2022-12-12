@@ -3,7 +3,6 @@ from datetime import datetime
 from flask import render_template, request
 from app import db
 from app.errors import bp
-from app.models import iplogger
 
 
 @bp.app_errorhandler(404)

@@ -15,6 +15,7 @@ npm i requirejs
 
 --install node server
 npm install http-server --save-dev
+--add
 
 --install nodemon //monitors changs to file and restarts apps
 npm i --save-dev nodemon
@@ -24,11 +25,12 @@ npx nodemon <js filenames>
 npm install -g browserify
 or
 sudo apt install node-browserify
-
+browserify index.js -p esmify > bundle.js
 
 --add to package.json under scripts
- "start": "http-server "
+ "start": "http-server -c-1"
 --open terminal and type npm start to run the server basically for testing javascript shit
+npm start
 
 
  --new project
