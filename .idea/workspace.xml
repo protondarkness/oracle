@@ -5,32 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.flaskenv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/flaskWebsite.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/debug.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/eftt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/reqs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/oracle.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/oracle.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metisSamp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/metisSamp/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metisSamp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/metisSamp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ethOracle/tokenomics.py" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/tokenomics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/vote/affirm.py" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/vote/affirm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/sending.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/sending.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +18,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" show_ignored="true" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Merge.Settings">
     <option name="BRANCH" value="coinRR/cleaningUP" />
   </component>
@@ -85,23 +72,46 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/uniswapLocal2/test",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/ethOracle/my-app/src",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ethOracle/my-app/src" />
+      <recent name="$PROJECT_DIR$/ethOracle" />
       <recent name="$PROJECT_DIR$/uniswapLocal2/test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/flaskWebsite" />
+      <recent name="$PROJECT_DIR$/flaskWebsite/app" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.affirm">
+    <configuration name="affirm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oracle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flaskWebsite/app/vote" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flaskWebsite/app/vote/affirm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="twitter" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="oracle" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,8 +133,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="verify" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oracle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ethOracle" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ethOracle/verify.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.affirm" />
+        <item itemvalue="Python.verify" />
         <item itemvalue="Python.twitter" />
       </list>
     </recent_temporary>
@@ -257,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669997085444</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="most up2date....">
+      <created>1670370509243</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1670370509243</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

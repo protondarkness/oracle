@@ -1,16 +1,11 @@
 import binascii
-import os
-import re
 from datetime import datetime
 
-import hexbytes as hexbytes
 from hexbytes import HexBytes
 from web3.auto import w3
-from eth_account.messages import encode_defunct
+from eth_account.messages import encode_defunct, _hash_eip191_message
 
-import config
-from sqlConnector import sqlConnector
-from config import Config
+from flaskWebsite.sqlConnector import sqlConnector
 
 
 # msg = "I♥SF"
@@ -27,12 +22,13 @@ from config import Config
 # print(message)
 # print(w3.eth.account.recover_message(message, signature=sig))
 def getTime():
+
     now = datetime.now()
     timestamp = int(datetime.timestamp(now))
     return timestamp
 
 def validateVotes():
-    sql = sqlConnector('/home/destro/Desktop/oracle/flaskWebsite/app.db')
+    sql = sqlConnector('../../app.db')
     res = sql.sqlfetchDict("SELECT * FROM voting where valid == 0")
     res = sql.sqlfetchDict("SELECT * FROM voting")
     for r in res:
@@ -49,4 +45,27 @@ def validateVotes():
         except binascii.Error as e:
             print(e)
 
-validateVotes()
+def readyForSolidity(message,hex_signature):
+    #to be used with verify.sol
+    # - encode the message
+    hex_message = w3.toHex(text=message)
+    message = encode_defunct(hexstr=hex_message)
+
+    # - hash the message explicitly
+    message_hash = _hash_eip191_message(message)
+
+    # Remix / w3.js expect the message hash to be encoded to a hex string
+    hex_message_hash = w3.toHex(message_hash)
+
+    # ecrecover in Solidity expects the signature to be split into v as a uint8,
+    #   and r, s as a bytes32
+    # Remix / w3.js expect r and s to be encoded to hex
+    sig = w3.toBytes(hexstr=hex_signature)
+    v, hex_r, hex_s = w3.toInt(sig[-1]), w3.toHex(sig[:32]), w3.toHex(sig[32:64])
+
+    # ecrecover in Solidity takes the arguments in order = (msghash, v, r, s)
+    ec_recover_args = (hex_message_hash, v, hex_r, hex_s)
+    print(ec_recover_args)
+
+#validateVotes()
+readyForSolidity('zxc','0x5ee203e977ca49f216fd490626eca3bb4f88f5fbd6d0125460f610419f31e6d03c9e2ea655bfcd400312ef4a4dca6c70f05d0ddefe60c94db0b34348213220571c')

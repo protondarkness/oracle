@@ -17,4 +17,5 @@ def phaseONE(_t,_ei,_d,_s,_b,_p):
     total -= burned
 
 def phaseTWO(_br,_target):
+    pass
 

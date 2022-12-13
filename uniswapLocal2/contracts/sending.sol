@@ -14,10 +14,11 @@ contract socialTransactor{
     mapping(address => mapping(bytes32 => uint256)) txAddrToHandle;
     mapping(bytes32 => mapping(bytes32 => uint256)) txHandleToHAndle;
     struct user{
-        bytes32 _handle;
+        address _address;
         bool _verified;
+        uint256 _balance;
     }
-    mapping(address => user) socialEngage;
+    mapping(bytes32 => user) socialEngage;
 
     constructor(address _eftt){
         eftt = IEFTT(_eftt);
@@ -29,16 +30,21 @@ contract socialTransactor{
 
     }
 
-    function sender(address _from, address _to, uint256 _amnt) public {
+    function sender(bytes32 _from, bytes32 _to, uint256 _amnt) public {
         require(socialEngage[_from]._verified,"please verify account");
         require(eftt.allowance(_from, address(this))<=_amnt, "must allow more for trade");
         if(!socialEngage[_to]._verified){
-            eftt.transferFrom(_from, address(this), _amnt);
-
+            eftt.transferFrom(socialEngage[_from]._address, address(this), _amnt);
+            socialEngage[_to]._balance = _amnt;
+        }else{
+            eftt.transferFrom(socialEngage[_from]._address, socialEngage[_to]._address, _amnt);
         }
-        if
 
     }
 
+    function claim(bytes32 _hndl) public{
+        require(socialEngage[_hndl]._verified,"not verified");
+
+    }
 
 }

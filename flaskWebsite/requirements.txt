@@ -1,8 +1,0 @@
-Flask==2.2.2
-
-hexbytes~=0.3.0
-web3~=5.31.3
-WTForms~=3.0.1
-PyJWT~=2.6.0
-SQLAlchemy~=1.4.44
-python-dotenv~=0.21.0
