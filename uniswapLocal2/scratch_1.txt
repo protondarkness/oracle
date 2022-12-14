@@ -30,7 +30,9 @@ browserify index.js -p esmify > bundle.js
 --add to package.json under scripts
  "start": "http-server -c-1"
 --open terminal and type npm start to run the server basically for testing javascript shit
-npm start
+npm start OR
+HOST=localhost npm start
+
 
 
  --new project

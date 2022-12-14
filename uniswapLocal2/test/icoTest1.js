@@ -37,40 +37,26 @@ describe("Create ICO", function () {
 it("withdraw LP", async function () {
     const [owner,add1,add2] = await ethers.getSigners();
      const {pool_att , eft} = await loadFixture(CreatePool);
-
+    const decs = 10^18;
      await expect(pool_att.setTimeLock(18000000000));
-         await pool_att.connect(add2).buy({value : ethers.utils.parseEther("2.0")});
-             console.log(await eft.balanceOf(add2.address));
-     console.log("bought eftt amount",await eft.balanceOf(add2.address));
+         await pool_att.connect(add2).buy({value : ethers.utils.parseEther("10.0")});
+     console.log("bought eftt amount",(await eft.balanceOf(add2.address))/decs);
        await pool_att.connect(owner).createPool();
 
 
-        await pool_att.connect(owner).addLPwithWETH({value: ethers.utils.parseEther("1.0")});
+        await pool_att.connect(owner).addLPwithWETH({value: ethers.utils.parseEther("10.0")});
 
         await pool_att.getPoolStats();
-        await pool_att.withdrawLPtokens();
+        var bal = await pool_att.getTokenPrice();
+        console.log("getting price",(bal))
+        //await pool_att.removeLP();
+        await pool_att.connect(owner).swap({value: ethers.utils.parseEther("1.0")})
+        await pool_att.getPoolStats();
+        await pool_att.getReserves('0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc');
      });
 
 it("test allowance", async function(){
-     const [owner,add1,add2] = await ethers.getSigners();
-     const {pool_att , eft} = await loadFixture(CreatePool);
 
-      await pool_att.connect(add1).buy( {value : ethers.utils.parseEther("1000.0")});
-//      await mine(100);
-      console.log("add1 ",await eft.balanceOf(add1.address));
-      await eft.connect(add1).approve(pool_att.address,1000);
-      await mine(100);
-//      const allower = await eft._allowances;
-//      for (let [key, value] of allower) {
-//console.log(key + " = " + value);
-//}
-//     await network.provider.send("evm_increaseTime", [3600]);
-//await network.provider.send("evm_mine");
-      await pool_att.connect(add2).spendie(add1.address);
-//      await network.provider.send("evm_increaseTime", [3600]);
-//await network.provider.send("evm_mine");
-          await mine(100);
-      console.log("add1 ",await eft.balanceOf(add1.address));
-      console.log("add2 ",await eft.balanceOf(add2.address));
+
     });
 });

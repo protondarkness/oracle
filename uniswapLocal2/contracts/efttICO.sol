@@ -25,7 +25,7 @@ contract efftICO is AccessControl{
     IUniswapV2Router02  uniswapV2Router;
     address payable owner;
     address constant METISADDRESS = 0x9E32b13ce7f2E80A01932B42553652E053D6ed8e;
-    address constant BurnAddress =  0x000000000000000000000000000000000000DeaD;
+    address constant BurnAddress =  address(0xdeaDDeADDEaDdeaDdEAddEADDEAdDeadDEADDEaD);
     uint public constant decimals = 18;
     uint256 public constant maxSupply_ =10000000 * (10 ** decimals);
     uint256 public timeLock=18000000000;
@@ -33,7 +33,7 @@ contract efftICO is AccessControl{
     uint256 public constant maxICO = 2500000 * (10 ** decimals);
     uint256 SoldInMetis;
     uint256 public SoldEFTT;
-    uint256 ratioMetis = 9900990099009900;
+    uint256 ratioMetis = 128;
     mapping(uint => uint) timeLocks;
     bool private BURNED = false;
     uint constant liquidityRatio = 2;
@@ -87,7 +87,8 @@ contract efftICO is AccessControl{
         _;
     }
     modifier _lpCreated(){
-        require(LP_Pair,"create liquidity pool first");
+        require(LP_Pair!=address(0),"create liquidity pool first");
+        _;
     }
     modifier _noReentry() {
         require(!locked, "No re-entrancy");
@@ -98,7 +99,7 @@ contract efftICO is AccessControl{
 
 //end modifiers
     ////////////////////////////
-    function setTimeLock(uint256 _t) private {
+    function setTimeLock(uint256 _t) public {
         timeLock = _t;
     }
 
@@ -113,9 +114,10 @@ contract efftICO is AccessControl{
     function buy() public payable _timeCheck _noReentry returns(bool){
         require(msg.value > 0," please send metis");
         uint256 buyAmount = conversion(msg.value);
+        console.log("buy amount %o", buyAmount.div(10**18));
         require(buyAmount + SoldEFTT <= maxICO, "exceeds the total for sale");
         eftt.transfer(msg.sender, buyAmount);
-        SoldEFTT+= buyAmount;
+        SoldEFTT += buyAmount;
         SoldInMetis += msg.value;
         emit Sold(buyAmount);
         return true;
@@ -166,8 +168,9 @@ contract efftICO is AccessControl{
     function addLPwithWETH() public payable {
         address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
         uint256 metisLiquidity = SoldInMetis.div(liquidityRatio);
-        uint256 efttLiquidity = conversion(metisLiquidity);
-        IWETH(WETH).deposit{value: msg.value}();
+        uint256 efttLiquidity = metisLiquidity.mul(ratioMetis);
+        console.log("liq1 %o, liq2 %o", metisLiquidity, efttLiquidity);
+        IWETH(WETH).deposit{value: metisLiquidity}();
         uint256 wethBalance = IERC20(WETH).balanceOf(address(this));
         //IERC20(WETH).approve(address(this),wethBalance);
 
@@ -175,13 +178,13 @@ contract efftICO is AccessControl{
         eftt.approve(IUniswapV2Router02_address, efttLiquidity);
         uint256 sp = eftt.allowance( address(this), IUniswapV2Router02_address);
         console.log("allowed to spend", sp);
-        IERC20(WETH).approve(IUniswapV2Router02_address, wethBalance /2);
-        console.log("eftt ,weth ", efttLiquidity / 2, wethBalance /2);
+        IERC20(WETH).approve(IUniswapV2Router02_address, wethBalance);
+        console.log("eftt ,weth ", efttLiquidity , wethBalance );
          (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
             address(eftt),
             WETH ,
-            efttLiquidity / 2,
-            wethBalance /2,
+            efttLiquidity ,
+            wethBalance ,
             0, // slippage is unavoidable
             0, // slippage is unavoidable
             address(this),
@@ -190,7 +193,33 @@ contract efftICO is AccessControl{
 
 
     }
+    function swap() payable public{
+        address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
+        address[] memory path = new address[](2);
+        path[1] = address(eftt);
+        path[0] = WETH;
+        IWETH(WETH).deposit{value: msg.value}();
+        uint256 amountIn= IERC20(WETH).balanceOf(address(this));
+        uint256 amountOut = amountIn*ratioMetis;
+        IERC20(WETH).approve(IUniswapV2Router02_address, amountIn);
+        console.log("amountIn %o  amountOut %o", amountIn, amountOut);
+        uint256[] memory amounts = IUniswapV2Router02(IUniswapV2Router02_address).getAmountsOut(amountIn, path);
+         //console.log("amounts %o",amounts);
+        for(uint8 j =0;j < amounts.length; j+=1){
+            console.log("amounts %o",amounts[j]);
+        }
+        IUniswapV2Router02(IUniswapV2Router02_address).swapTokensForExactTokens(amountIn, amountOut, path, msg.sender, block.timestamp);
+        console.log("eftt balancer %o", eftt.balanceOf(msg.sender));
 
+    }
+
+    function getReserves(address pair) public{
+        address factPair = address(pair);
+        (uint reserve0, uint reserve1,) = IUniswapV2Pair(pair).getReserves();
+        console.log("balance1 %o balance2 %o", reserve0,reserve1);
+        console.log("blocktime %o",block.timestamp );
+        emit balances(reserve0, reserve1);
+    }
     function createPool() public onlyRole(BURNER_ROLE) returns(address){
         address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
         LP_Pair = pairFor(IUniswapV2Factory_address,address(eftt) ,WETH);
@@ -232,6 +261,7 @@ contract efftICO is AccessControl{
         console.log("balance1 %o balance2 %o", reserve0,reserve1);
         console.log("lp token amount %o",IERC20(LP_Pair).balanceOf(address(this)));
         emit balances(amountA, amountB);
+        console.log("balance1 internal %o balance2 internal %o", amountA,amountB);
     }
 //may not need to include the functions below
     function sortTokens(address tokenA, address tokenB) internal pure returns (address token0, address token1) {
@@ -249,10 +279,16 @@ contract efftICO is AccessControl{
                 hex'96e8ac4277198ff8b6f785478aa9a39f403cb768dd02cbee326c3e7da348845f' // init code hash
             )))));
     }
+    function getTokenPrice() public view returns(uint){
+        IUniswapV2Pair pair = IUniswapV2Pair(LP_Pair);
+        (uint Res0, uint Res1,) = pair.getReserves();
+        uint res0 = Res0*(10**18);
+        console.log("res1 %o res2 %o",Res0,Res1);
+        return(Res1.div(Res0)); //
+   }
 
     function conversion(uint256 _amnt) private view returns(uint256){
-        uint256 multiplier = (10 ** decimals);
-        return(_amnt.mul(multiplier).div(ratioMetis));
+        return(_amnt.mul(ratioMetis));
     }
 
     function percentFromICO(uint256 _amnt) private returns(uint256){

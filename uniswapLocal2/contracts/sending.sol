@@ -25,14 +25,9 @@ contract socialTransactor is Verify{
 
     }
 
-    function register(bytes32 _hndl) public{
-        socialEngage[msg.sender]._handle = _hndl;
-
-    }
-
     function sender(bytes32 _from, bytes32 _to, uint256 _amnt) public {
         require(socialEngage[_from]._verified,"please verify account");
-        require(eftt.allowance(_from, address(this))>=_amnt, "must allow more for trade");
+        require(eftt.allowance(socialEngage[_from]._address, address(this))>=_amnt, "must allow more for trade");
         if(!socialEngage[_to]._verified){
             eftt.transferFrom(socialEngage[_from]._address, address(this), _amnt);
             socialEngage[_to]._balance = _amnt;
