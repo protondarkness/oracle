@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
     <head>
+      <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
       {% if title %}
       <title>{{ title }} - Microblog</title>
       {% else %}
@@ -10,15 +11,7 @@
     <body>
 
 
-         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
+
         {% block content %}{% endblock %}
     </body>
     {% block script %}{% endblock %}

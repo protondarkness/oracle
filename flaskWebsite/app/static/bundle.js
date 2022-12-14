@@ -49107,11 +49107,26 @@ var encryptMessageInput = document.getElementById('encryptMessageInput');
 window.onload = function () {
   getNetworkAndChainId();
   getAccount();
+
+  signTypedDataResult.disabled= true;
+      signAccount.disabled= true;
+      vote.disabled= true;
+
+
+
 };
 ethereumButton.addEventListener('click', () => {
   getAccount();
 });
+function copyText(copyID){
+ var cText = copyID;
 
+ cText.select();
+  cText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(cText.value);
+}
 //ethereum.on('accountsChanged', function (accounts) {
 //  // Time to reload your interface with accounts[0]!
 //});

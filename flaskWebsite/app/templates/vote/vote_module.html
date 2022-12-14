@@ -1,4 +1,23 @@
 
+<script>
+
+    function copyField(_id) {
+  // Get the text field
+  var copyText = document.getElementById(_id);
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+  }
+
+
+
+}
+</script>
+
 <div class="enableWeb3">
 <button class="enableEthereumButton">Enable Ethereum</button>
      <span id="errorConnected" style="color: red;" display="none">Not Connected</span>
@@ -13,7 +32,7 @@
 </div>
 <div>
 <!--    <p class="info-text alert alert-warning">-->
-<!--                  Result: <spa n id="signTypedDataResult"></span>-->
+<!--                  Result: <span id="signTypedDataResult"></span>-->
 <!--                </p>-->
 
 </div>
@@ -25,15 +44,16 @@
         {{form.hidden_tag()}}
   <fieldset style="background: #f6f8ff; border: 2px solid #4238ca;">
     <legend>Vote Ballot</legend>
-      <label>Signed Message: </label>{{form.SignedMessage(size=32)}}<br /><br />
+      <label>Signed Message: </label>{{form.SignedMessage(size=32,class_="form-control")}}<button type="button" onclick="copyField('signTypedDataResult')"><i class="fa fa-files-o"
+          aria-hidden="true"></i></button><br /><br />
      {% for error in form.SignedMessage.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-   <label>Public Address: </label> {{form.Account(size=32)}}<br /><br />
+   <label>Public Address: </label> {{form.Account(size=32,class_="form-control")}}<br /><br /> <p id="tooltip-text">The tooltip text.</p>
      {% for error in form.Account.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-    <label>Voting for: </label>{{form.Vote(size=32)}}<br /><br />
+    <label>Voting for: </label>{{form.Vote(size=32,class_="form-control")}}<br /><br />
      {% for error in form.Vote.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
