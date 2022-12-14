@@ -21,20 +21,19 @@ contract efftICO is AccessControl{
     bytes32 public constant EXTEND_ICO_ROLE = keccak256("EXTEND_ICO_ROLE");
     address immutable IUniswapV2Factory_address = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f; // uniswap v2 factory on ethereum mainnet
     address immutable IUniswapV2Router02_address =0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;// uniswap v2 router on ethereum mainnet
-   IUniswapV2Factory  uniswapV2Factory;
-   IUniswapV2Router02  uniswapV2Router;
+    IUniswapV2Factory  uniswapV2Factory;
+    IUniswapV2Router02  uniswapV2Router;
     address payable owner;
-    //address payable private devAddress;
-    //address constant burnAddres =0x000000000000000000000000000000000000dEaD;
     address constant METISADDRESS = 0x9E32b13ce7f2E80A01932B42553652E053D6ed8e;
-    address[] minters_;
-    uint256 maxSupply_;
+    address constant BurnAddress =  0x000000000000000000000000000000000000DeaD;
+    uint public constant decimals = 18;
+    uint256 public constant maxSupply_ =10000000 * (10 ** decimals);
     uint256 public timeLock=18000000000;
     IEFTT eftt;
-    uint256 maxICO = 100000 *10**18;
+    uint256 public constant maxICO = 2500000 * (10 ** decimals);
     uint256 SoldInMetis;
-    uint256 SoldEFTT;
-    uint256 ratioMetis =1;
+    uint256 public SoldEFTT;
+    uint256 ratioMetis = 9900990099009900;
     mapping(uint => uint) timeLocks;
     bool private BURNED = false;
     uint constant liquidityRatio = 2;
@@ -87,7 +86,9 @@ contract efftICO is AccessControl{
         require(owner == msg.sender,"You're not the owner");
         _;
     }
-
+    modifier _lpCreated(){
+        require(LP_Pair,"create liquidity pool first");
+    }
     modifier _noReentry() {
         require(!locked, "No re-entrancy");
         locked = true;
@@ -97,7 +98,7 @@ contract efftICO is AccessControl{
 
 //end modifiers
     ////////////////////////////
-    function setTimeLock(uint256 _t) public {
+    function setTimeLock(uint256 _t) private {
         timeLock = _t;
     }
 
@@ -109,14 +110,12 @@ contract efftICO is AccessControl{
     }
 
 
-    function buy() public payable _timeCheck returns(bool){
+    function buy() public payable _timeCheck _noReentry returns(bool){
         require(msg.value > 0," please send metis");
         uint256 buyAmount = conversion(msg.value);
-
-        require(buyAmount + SoldEFTT < maxICO, "exceeds the total for sale");
-        //eftt.approve( address(this), buyAmount);
+        require(buyAmount + SoldEFTT <= maxICO, "exceeds the total for sale");
         eftt.transfer(msg.sender, buyAmount);
-        SoldEFTT = buyAmount + SoldEFTT;
+        SoldEFTT+= buyAmount;
         SoldInMetis += msg.value;
         emit Sold(buyAmount);
         return true;
@@ -138,22 +137,21 @@ contract efftICO is AccessControl{
 
     }
 
-    function endICO() public _endICO onlyRole(BURNER_ROLE) _burnCheck{
-        uint256 burnAmnt = (maxICO.sub(SoldEFTT));
-        eftt.burn(burnAmnt);
+    function endICO() public onlyRole(BURNER_ROLE) _endICO _lpCreated _burnCheck{
+        uint256 burnAmnt = eftt.balanceOf(address(this));
+        eftt.transfer(BurnAddress,burnAmnt);
         emit Burned(burnAmnt);
         console.log("burned amount",burnAmnt);
     }
 
 
-    function addLiquidity() public payable onlyRole(BURNER_ROLE){
-        uint256 metisLiquidity = SoldInMetis - SoldInMetis.div(liquidityRatio);
-        uint256 efttLiquidity = metisLiquidity.div(ratioMetis);
+    function addLiquidity() external payable onlyRole(BURNER_ROLE){
+        uint256 metisLiquidity = SoldInMetis.div(liquidityRatio);
+        uint256 efttLiquidity = conversion(metisLiquidity);
         console.log("eftt , ", efttLiquidity);
-
         //IERC20(METISADDRESS).approve(address(this),metisLiquidity);
         eftt.approve(IUniswapV2Router02_address, efttLiquidity);
-        //below must also burn the liquidity tokens
+
           (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidityETH(
              address(eftt),
              efttLiquidity,
@@ -167,8 +165,8 @@ contract efftICO is AccessControl{
 
     function addLPwithWETH() public payable {
         address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
-        uint256 metisLiquidity = SoldInMetis - SoldInMetis.div(liquidityRatio);
-        uint256 efttLiquidity = metisLiquidity.div(ratioMetis);
+        uint256 metisLiquidity = SoldInMetis.div(liquidityRatio);
+        uint256 efttLiquidity = conversion(metisLiquidity);
         IWETH(WETH).deposit{value: msg.value}();
         uint256 wethBalance = IERC20(WETH).balanceOf(address(this));
         //IERC20(WETH).approve(address(this),wethBalance);
@@ -190,26 +188,11 @@ contract efftICO is AccessControl{
             block.timestamp + 360
         );
 
-    }
-
-    function allow(uint256 _amnt) public{
-        bool spend = eftt.approve(address(this), _amnt);
-        console.log("allowed to spend", spend);
-        uint256 sp = eftt.allowance(msg.sender, address(this));
-        console.log("allowed to spend", sp);
-        console.log("block noumber",block.number);
-    }
-
-    function spendie(address _allower) public{
-        console.log("block noumber", block.number);
-        uint256 sp = eftt.allowance(_allower, address(this));
-        console.log("allowed to spend", sp);
-        eftt.transferFrom(_allower,msg.sender, sp);
 
     }
 
     function createPool() public onlyRole(BURNER_ROLE) returns(address){
-    address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
+        address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
         LP_Pair = pairFor(IUniswapV2Factory_address,address(eftt) ,WETH);
          if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(address(eftt) ,WETH) == address(0)) {
              IUniswapV2Factory(IUniswapV2Factory_address).createPair(address(eftt) ,WETH);
@@ -232,8 +215,8 @@ contract efftICO is AccessControl{
         return (reserve0, reserve1);
     }
 
-    function withdrawLPtokens() public{
-           console.log("lp token amount %o",IERC20(LP_Pair).balanceOf(address(this)));
+    function removeLP() public{
+        console.log("lp token amount %o",IERC20(LP_Pair).balanceOf(address(this)));
         address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
         IERC20(LP_Pair).approve(IUniswapV2Router02_address,IERC20(LP_Pair).balanceOf(address(this)));
         (uint amountA, uint amountB) = IUniswapV2Router02(IUniswapV2Router02_address).removeLiquidity(
@@ -268,17 +251,16 @@ contract efftICO is AccessControl{
     }
 
     function conversion(uint256 _amnt) private view returns(uint256){
-        return(_amnt.mul(ratioMetis));
+        uint256 multiplier = (10 ** decimals);
+        return(_amnt.mul(multiplier).div(ratioMetis));
     }
 
-    function percentFromICO(uint256 _amnt) private view returns(uint256){
+    function percentFromICO(uint256 _amnt) private returns(uint256){
         return _amnt.mul(soldPercent());
     }
 
-    function soldPercent() private view returns(uint256){
+    function soldPercent() public view returns(uint256){
         return SoldEFTT.div(maxICO);
     }
-    function burned() public view returns(bool){
-        return BURNED;
-    }
+
 }
