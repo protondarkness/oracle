@@ -21,8 +21,11 @@
         </div>
       </div>
     </div>
-
+    <p id="countDownClock"></p>
   </section><!-- End Hero -->
 
 
 {% endblock %}
+{% block script %}
+<script src="{{url_for('static', filename='assets/js/countdown.js')}}"></script>
+{%endblock%}
