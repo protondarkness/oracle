@@ -20,11 +20,18 @@
           <img src="{{url_for('static', filename='assets/img/elon.png')}}" class="img-fluid animated" alt="">
         </div>
       </div>
+
     </div>
-    <p id="countDownClock"></p>
+
   </section><!-- End Hero -->
 
+  <main id="main">
 
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients clients">
+         <h1 style="background-color:red" id="countDownClock"></h1>
+    </section>
+  </main>
 {% endblock %}
 {% block script %}
 <script src="{{url_for('static', filename='assets/js/countdown.js')}}"></script>
