@@ -15,7 +15,8 @@ contract EFTT is ERC20, Ownable, AccessControl {
     uint256 public constant decimal = 18;
     uint256 public constant maxSupply = 10000000 * 10** decimal;
     address public act1 =0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
-    uint256 public currentSupply;
+    uint256 public totalSupply;
+    uint256 public totalMinted;
     bool internal locked;
 
     modifier _noReentry() {
@@ -32,6 +33,7 @@ contract EFTT is ERC20, Ownable, AccessControl {
 
 
     function mint(address _to, uint256 _amnt) public onlyRole(DEFAULT_ADMIN_ROLE) {
+
         require(totalSupply() + _amnt <= maxSupply, "tried to mint more than total supply");
         _mint(_to, _amnt* 10**decimal);
     }

@@ -2,8 +2,53 @@
 
 
 {% block content %}
+  <section id="hero1" class="pricing">
+      <div class="container">
 
-{% include "vote/vote_module.html" %}
+        <div class="section-title">
+          <h1>Voting</h1>
+          <p>Sit sint consectetur velit nemo qui impedit suscipit alias ea</p>
+        </div>
+
+        <div class="row">
+
+
+
+          <div class="col-lg-6 col-md-6 mt-4 mt-md-0">
+            <div class="box recommended" data-aos="zoom-in" data-aos-delay="100">
+
+              {% include "vote/vote_module.html" %}
+
+            </div>
+          </div>
+
+        <div class="col-lg-6 col-md-6 mt-4 mt-md-0">
+            <div class="box recommended" data-aos="zoom-in" data-aos-delay="100">
+              <h3>LeaderBoard</h3>
+          <table class="table table-striped table-hover">
+            <thead>
+          <tr>
+              <th scope="col">Position</th>
+              <th scope="col">HashTag</th>
+              <th scope="col">Number of votes</th>
+
+          </tr>
+          </thead>
+          <tbody>
+              <th scope="row">1</th>
+      <td>doodd</td>
+      <td>2300</td>
+
+        </tbody>
+        </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
 
 
 {% endblock %}

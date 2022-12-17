@@ -49094,7 +49094,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //import 'web3' ;
 
 const currentUrl = new URL(window.location.href);
-const ethereumButton = document.querySelector('.enableEthereumButton');
+const ethereumButton = document.querySelector('.enableWeb3Button');
 const showAccount = document.querySelector('.showAccount');
 const errorConnected = document.getElementById('errorConnected');
 const signAccount = document.getElementById('signAccount');
@@ -49108,9 +49108,7 @@ window.onload = function () {
   getNetworkAndChainId();
   getAccount();
 
-  signTypedDataResult.disabled= true;
-      signAccount.disabled= true;
-      vote.disabled= true;
+
 
 
 
