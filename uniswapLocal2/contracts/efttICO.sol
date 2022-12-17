@@ -27,7 +27,6 @@ contract efftICO is AccessControl{
     address constant METISADDRESS = 0x9E32b13ce7f2E80A01932B42553652E053D6ed8e;
     address constant BurnAddress =  address(0xdeaDDeADDEaDdeaDdEAddEADDEAdDeadDEADDEaD);
     uint public constant decimals = 18;
-    uint256 public constant maxSupply_ =10000000 * (10 ** decimals);
     uint256 public timeLock=18000000000;
     IEFTT eftt;
     uint256 public constant maxICO = 2500000 * (10 ** decimals);
