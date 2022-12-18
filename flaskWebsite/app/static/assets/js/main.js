@@ -219,7 +219,7 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate portfolio lightbox
    */
   const portfolioLightbox = GLightbox({
     selector: '.portfolio-lightbox'
@@ -257,6 +257,6 @@
   /**
    * Initiate Pure Counter 
    */
-  new PureCounter();
+
 
 })()

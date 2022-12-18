@@ -32,6 +32,8 @@ def create_app(config_class=Config):
         from app.vote import bp as vote_bp
         app.register_blueprint(vote_bp)
 
+        from app.metis import bp as metis_bp
+        app.register_blueprint(metis_bp)
 
     return app
 

@@ -15,16 +15,25 @@
   <link href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
    <link href="{{url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
- <!-- <link href="{{url_for('static', filename='assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">-->
+          <link href="{{url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static', filename='assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+
     </head>
     <body >
 {% include "main/menu.html" %}
 
 
 {% block content %}{% endblock %}
+  </main>
+{% block icobanner %} {% endblock%}
+{% block services%} {% endblock %}
+    {% block vote %} {% endblock %}
 
+      </main>
     </body>
+    {% block script %}{% endblock %}
     <script src="{{url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{url_for('static', filename='assets/vendor/aos/aos.js')}}"></script>
     <script src="{{url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
@@ -35,5 +44,5 @@
   <!-- Template Main JS File -->
   <script src="{{url_for('static', filename='assets/js/main.js')}}"></script>
 
-    {% block script %}{% endblock %}
+
 </html>
