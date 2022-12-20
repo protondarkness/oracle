@@ -75,3 +75,4 @@ npm start
 npm install webpack webpack-cli --save-dev
 --for data fetching swr
 npm install swr
+
