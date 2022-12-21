@@ -788,7 +788,7 @@ section {
 # More Services
 --------------------------------------------------------------*/
 #more_services {
-  background-color: #dfd6d6;
+
 }
 
 .more-services .card {
@@ -1264,6 +1264,10 @@ section {
 /*--------------------------------------------------------------
 # Pricing
 --------------------------------------------------------------*/
+
+.pricing {
+  background:#eee4e4;
+}
 .pricing .box {
   padding: 20px;
   background: #f9f9f9;

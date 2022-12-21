@@ -35,6 +35,11 @@ def create_app(config_class=Config):
         from app.metis import bp as metis_bp
         app.register_blueprint(metis_bp)
 
+        from app.tokenomics import bp as tokenomics_bp
+        app.register_blueprint(tokenomics_bp)
+
+        from app.roadmap import bp as roadmap_bp
+        app.register_blueprint(roadmap_bp)
     return app
 
 

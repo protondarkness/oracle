@@ -1,6 +1,7 @@
 {
   "name": "hardhat-project",
   "dependencies": {
-    "bootstrap-icons": "^1.10.2"
+    "bootstrap-icons": "^1.10.2",
+    "chart.js": "^4.1.1"
   }
 }

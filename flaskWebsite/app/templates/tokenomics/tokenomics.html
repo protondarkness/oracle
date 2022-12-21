@@ -1,0 +1,208 @@
+
+
+{% extends "main/base.html" %}
+
+{% block tokenomics %}
+
+<style>
+    body{margin-top:20px;}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+.sub-info{
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #004975;
+}
+
+.display-30 {
+    font-size: 0.9rem;
+}
+.badge {
+  height: 80px;
+  width: 80px;
+      padding-top: 30px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  color:black;
+
+}
+.y{
+background:yellow;
+}
+.pur{
+background:purple;
+}
+.gre{
+background:green;
+}
+.blu{
+background:blue;
+}
+.borderover {
+
+    border-style: dashed;
+    border-color: ghostwhite;
+    border-width: thick;
+}
+</style>
+
+
+     <section id="tokenomics" class="pricing">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Tokenomics</h2>
+        </div>
+          <div class="row mb-3">
+             <div class="container">
+                 <div class="text-center mb-2-8 mb-lg-6">
+                <h2 class="display-18 display-md-16 display-lg-14 font-weight-700">Why choose <strong class="text-primary font-weight-700">Us</strong></h2>
+                    <span>The trusted source for why choose us</span>
+                </div>
+                <div class="row align-items-center">
+                <div class="col-sm-3 col-lg-4 mb-2-9 mb-sm-0">
+                    <div class="pr-md-3">
+                        <div class="text-center text-sm-right mb-2-9">
+                        <div class="mb-4 d-flex justify-content-center">
+                            <div class=" badge y"> place</div>
+                        </div>
+                        <h4 class="sub-info">Residential Cleaning</h4>
+                        <p class="display-30 mb-0">Roin gravida nibh vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                        </div>
+                        <div class="text-center text-sm-right">
+                         <div class="mb-4 d-flex justify-content-center">
+                            <div class=" badge blu"> place</div>
+                        </div>
+                        <h4 class="sub-info">Commercial Cleaning</h4>
+                        <p class="display-30 mb-0">Gravida roin nibh vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                        </div>
+                        <div class="text-center text-sm-right">
+                       <div class="mb-4 d-flex justify-content-center">
+                            <div class=" badge blu"> place</div>
+                        </div>
+                        <h4 class="sub-info">Commercial Cleaning</h4>
+                        <p class="display-30 mb-0">Gravida roin nibh vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block">
+                <div class="why-choose-center-image">
+
+                    <canvas id="myChart"></canvas>
+
+                </div>
+                </div>
+                    <div class="col-sm-3 col-lg-4">
+                <div class="pl-md-3">
+                    <div class="text-center text-sm-left mb-2-9">
+                        <div class="mb-4 d-flex justify-content-center">
+                            <div class=" badge pur"> place</div>
+                        </div>
+                        <h4 class="sub-info">Washing services</h4>
+                        <p class="display-30 mb-0">Nibh roin gravida vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                    </div>
+
+                <div class="text-center text-sm-left">
+                     <div class="mb-4 d-flex justify-content-center">
+                            <div class=" badge gre"> place</div>
+                        </div>
+                    <h4 class="sub-info">Carpet cleaning</h4>
+                    <p class="display-30 mb-0">Vel proin gravida nibh velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                </div>
+                    <div class="text-center text-sm-left">
+                     <div class="mb-4 d-flex justify-content-center">
+                            <div class=" badge blu"> place</div>
+                        </div>
+                    <h4 class="sub-info">Carpet cleaning</h4>
+                    <p class="display-30 mb-0">Vel proin gravida nibh velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+             </div>
+
+
+
+          </div>
+      </div>
+    </section>
+
+
+
+{% endblock %}
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var yValues = [55, 49, 44, 24, 15];
+var barColors = ["red", "green","blue","orange","brown"];
+const colorArr=['pur','gre','y','blu'];
+   new Chart("myChart", {
+        type: "pie",
+        data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+            }]
+},
+    options: { hoverOffset: 10,
+             onHover: (event, activeElements) => {
+
+                if (activeElements.length > 0) {
+
+            // get active chart element
+            let elt = activeElements[0];
+            //console.log(elt);
+            // retrieve element label
+            let lbl = elt.index;
+
+
+
+                        if(document.getElementsByClassName(colorArr[lbl] + " borderover").length ==0){
+                            if(document.getElementsByClassName("borderover").length !=0){
+                                document.getElementsByClassName("borderover")[0].classList.remove("borderover");
+                                }
+                            var element = document.getElementsByClassName(colorArr[lbl]);
+                            element[0].classList.add("borderover");
+                            }
+
+       }
+       else {
+           // No active elements
+       }},
+        plugins: {
+
+         legend: {
+              position: 'right',
+              display: false,
+          }
+
+        }
+
+      },
+      plugins: [{
+    id: 'myEventCatcher',
+    beforeEvent(chart, args, pluginOptions) {
+      const event = args.event;
+
+      if (event.type === 'mouseout') {
+        var element = document.getElementsByClassName("borderover");
+        element[0].classList.remove("borderover");
+      }
+    }
+  }]
+
+});
+
+</script>
+{%endblock%}
