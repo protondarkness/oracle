@@ -1,7 +1,10 @@
+alembic==1.9.0
+apturl==0.5.2
 bcrypt==3.2.0
 blinker==1.4
 Brlapi==0.8.3
 certifi==2022.12.7
+cffi==1.15.1
 chardet==4.0.0
 charset-normalizer==2.1.1
 chrome-gnome-shell==0.0.0
@@ -20,6 +23,8 @@ duplicity==0.8.21
 evdev==1.4.0
 fasteners==0.14.1
 Flask==2.2.2
+Flask-Migrate==4.0.0
+Flask-SQLAlchemy==3.0.2
 Flask-WTF==1.0.1
 future==0.18.2
 gpg===1.16.0-unknown
@@ -56,6 +61,7 @@ pipreqs==0.4.11
 protobuf==3.12.4
 ptyprocess==0.7.0
 pycairo==1.20.1
+pycparser==2.21
 pycups==2.0.1
 Pygments==2.11.2
 PyGObject==3.42.1
