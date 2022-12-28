@@ -18,10 +18,10 @@ var networkId;
 var accounts;
 var encryptMessageInput = document.getElementById('encryptMessageInput');
 //let accounts;
-window.onload = function(){
-getNetworkAndChainId();
-getAccount();
-}
+//window.onload = function(){
+//getNetworkAndChainId();
+//
+//}
 
 ethereumButton.addEventListener('click', () => {
   getAccount();

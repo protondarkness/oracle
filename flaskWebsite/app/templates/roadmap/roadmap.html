@@ -7,37 +7,81 @@
 {% block roadmap %}
 
 <link href="{{url_for('static', filename='assets/css/rm.css')}}" rel="stylesheet"  type='text/css'>
+<section id="roadmap" class="pricing">
 <div class="container">
-    <header class="ScriptHeader">
-    <div class="rt-container">
-    	<div class="col-rt-12 pt-5">
-        	<div class="rt-heading">
-            	<h1>CSS Horizontal Timeline Example</h1>
-                <p>A pure CSS horizontal timeline with simple &amp; clean design.</p>
-            </div>
-        </div>
+<h2>A clean timeline design, with animated links</h2>
+<div class="timeline">
+  <div class="timeline__event  animated fadeInUp delay-3s timeline__event--type1">
+    <div class="timeline__event__icon ">
+      <i class="lni-cake"></i>
+
     </div>
-</header>
-
-<section>
-    <div class="rt-container">
-          <div class="col-rt-12">
-              <div class="Scriptcontent">
-
-     <!-- partial:index.partial.html -->
-<ul class="timeline">
-	<li data-year="2017" data-text="Lorem ipsum dolor sit amet, consectetur."></li>
-	<li data-year="2018" data-text="Lorem ipsum dolor sit amet, consectetur."></li>
-	<li data-year="2019" data-text="Lorem ipsum dolor sit amet, consectetur."></li>
-	<li data-year="2020" data-text="Lorem ipsum dolor sit amet, consectetur."></li>
-	<li data-year="2021" data-text="Lorem ipsum dolor sit amet, consectetur."></li>
-</ul>
-<!-- partial -->
-
-    		</div>
-		</div>
+    <div class="timeline__event__date">
+      20-08-2019
     </div>
-</section>
+    <div class="timeline__event__content ">
+      <div class="timeline__event__title">
+        Birthday
+      </div>
+      <div class="timeline__event__description">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+      </div>
+    </div>
+  </div>
+  <div class="timeline__event animated fadeInUp delay-2s timeline__event--type2">
+    <div class="timeline__event__icon">
+      <i class="lni-burger"></i>
+
+    </div>
+    <div class="timeline__event__date">
+      20-08-2019
+    </div>
+    <div class="timeline__event__content">
+      <div class="timeline__event__title">
+        Lunch
+      </div>
+      <div class="timeline__event__description">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+      </div>
+    </div>
+  </div>
+  <div class="timeline__event animated fadeInUp delay-1s timeline__event--type3">
+    <div class="timeline__event__icon">
+      <i class="lni-slim"></i>
+
+    </div>
+    <div class="timeline__event__date">
+      20-08-2019
+    </div>
+    <div class="timeline__event__content">
+      <div class="timeline__event__title">
+        Exercise
+      </div>
+      <div class="timeline__event__description">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+      </div>
+
+    </div>
+  </div>
+  <div class="timeline__event animated fadeInUp timeline__event--type1">
+    <div class="timeline__event__icon">
+      <i class="lni-cake"></i>
+
+    </div>
+    <div class="timeline__event__date">
+      20-08-2019
+    </div>
+    <div class="timeline__event__content">
+      <div class="timeline__event__title">
+        Birthday
+      </div>
+      <div class="timeline__event__description">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel, nam! Nam eveniet ut aliquam ab asperiores, accusamus iure veniam corporis incidunt reprehenderit accusantium id aut architecto harum quidem dolorem in!</p>
+      </div>
+    </div>
+  </div>
+
 </div>
-
+</div>
+</section>
 {% endblock %}

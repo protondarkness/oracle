@@ -40,6 +40,9 @@ def create_app(config_class=Config):
 
         from app.roadmap import bp as roadmap_bp
         app.register_blueprint(roadmap_bp)
+
+        from app.register import bp as register_bp
+        app.register_blueprint(register_bp)
     return app
 
 
