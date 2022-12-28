@@ -1,4 +1,9 @@
-section {
+#vote {
+background: #ecf5ff;
+  padding-top:120px
+}
+
+#vote section {
   margin: 20px 0 20px 0;
 }
 
@@ -16,11 +21,11 @@ section {
 
 /* Logo & Header */
 
-header {
+/*header {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+}*/
 
 #logo-container {
   display: inline-flex;

@@ -1,21 +1,6 @@
 
 
-<style>
-    .inp {
-    border:none;
-    border-bottom: 2px solid #941D2D;
-    padding: 5px 10px;
-    outline: none;
 
- }
-
-[placeholder]:focus::-webkit-input-placeholder {
-    transition: text-indent 0.4s 0.4s ease;
-    text-indent: -100%;
-    opacity: 1;
- }
-
-</style>
 
 
 
@@ -71,21 +56,5 @@
 
 
 </div>
-<script>
 
-   var onHover = () =>{
-        var idClikd = event.srcElement.id;
-        var objjy = document.getElementById(idClikd);
-        objjy.toggle="tooltip";
-         objjy.placement="top";
-        var tipMessage = "The content of the tooltip...";
-        objjy.title = tipMessage;
-        console.log(event.srcElement.id);
-
-   }
-
-const signed = document.getElementById('signAccount');
-signed.addEventListener('mouseover',onHover);
-
-</script>
 

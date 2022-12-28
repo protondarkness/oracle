@@ -5,13 +5,107 @@
 * License: https://bootstrapmade.com/license/
 */
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
-#hero1 {
+
+
+
+/*
+vote module below
+
+*/
+#vote {
 background: #ecf5ff;
   padding-top:120px
 }
+
+#vote section {
+  margin: 20px 0 20px 0;
+}
+#vote fieldset{
+    padding-right:3%;
+    padding-top:5%;
+     padding-left: 10%;
+}
+.info-text {
+  font-size: 1.1em;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+
+#logo-container {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+#logo-text {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+#mm-logo {
+  width: 100%;
+}
+
+/* Encrypt/Decrypt */
+
+#encryptMessageInput {
+  margin-bottom: 1rem;
+}
+
+.error-div {
+  margin-bottom: 12px;
+}
+
+.error-message {
+  min-height: 32px;
+  border: 1px solid #e88f97;
+  color: #24292e;
+  background: #fcf2f3;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 10px;
+}
+.error-message-icon {
+  margin-right: 8px;
+  flex: 0 0 auto;
+}
+.error-message-text {
+  overflow: auto;
+}
+
+.warning-invisible {
+  display: none;
+}
+
+    .inp {
+    border:none !important;
+    border-bottom: 2px solid #941D2D !important;
+    /* padding: 5% 1%; */
+    background-color: transparent !important;
+    outline: none !important;
+    margin-left: 7% !important;
+    width: 100%;
+    margin-top: 3% !important;
+ }
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease;
+    text-indent: -100%;
+    opacity: 1;
+ }
+/* end vote moduel*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 
 body {
   font-family: "Open Sans", sans-serif;
