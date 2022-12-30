@@ -4,6 +4,7 @@ pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@nettswap/NettswapRouter.sol";
 
 contract EFTT is ERC20, AccessControl {
     using SafeMath for uint256;
@@ -148,9 +149,8 @@ contract EFTT is ERC20, AccessControl {
         uint256 metisLiquidity = SoldInMetis.div(2);
         uint256 efttLiquidity = conversion(metisLiquidity);
         console.log("eftt , ", efttLiquidity);
-        //IERC20(METISADDRESS).approve(address(this),metisLiquidity);
         approve(IUniswapV2Router02_address, efttLiquidity);
-        (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidityETH(
+        (,,uint initialLiquidityTokens) = INetswapRouter(NetswappRouter).addLiquidityMetis{value: metisLiquidity}(
              address(this),
              efttLiquidity,
              0,
@@ -161,39 +161,9 @@ contract EFTT is ERC20, AccessControl {
         emit LPcreated(efttLiquidity,msg.value);
     }
 
-    //make private
-    function addLPwithWETH() public payable onlyRole(BURNER_ROLE){
-        address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
-        uint256 metisLiquidity = SoldInMetis.div(liquidityRatio);
-        uint256 efttLiquidity = metisLiquidity.mul(ratioMetis);
-        console.log("liq1 %o, liq2 %o", metisLiquidity, efttLiquidity);
-        IWETH(WETH).deposit{value: metisLiquidity}();
-        uint256 wethBalance = IERC20(WETH).balanceOf(address(this));
-        //IERC20(WETH).approve(address(this),wethBalance);
-
-        //eftt.allowance(address(this), IUniswapV2Router02_address);
-        eftt.approve(IUniswapV2Router02_address, efttLiquidity);
-        uint256 sp = eftt.allowance( address(this), IUniswapV2Router02_address);
-        console.log("allowed to spend", sp);
-        IERC20(WETH).approve(IUniswapV2Router02_address, wethBalance);
-        console.log("eftt ,weth ", efttLiquidity , wethBalance );
-         (,,uint initialLiquidityTokens) = IUniswapV2Router02(IUniswapV2Router02_address).addLiquidity(
-            address(eftt),
-            WETH ,
-            efttLiquidity ,
-            wethBalance ,
-            0, // slippage is unavoidable
-            0, // slippage is unavoidable
-            address(this),
-            block.timestamp + 360
-        );
-
-
-    }
 
     //make private
     function createPool() public onlyRole(BURNER_ROLE) returns(address){
-        address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
         LP_Pair = pairFor(IUniswapV2Factory_address,address(this) ,WETH);
          if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(address(this) ,WETH) == address(0)) {
              IUniswapV2Factory(IUniswapV2Factory_address).createPair(address(this) ,WETH);

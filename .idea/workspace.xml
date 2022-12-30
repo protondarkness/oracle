@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, started cranking the webpage almost done">
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/BaseOracle.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/INetswapRouter.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/LPOracle.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/Multicall.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/NetSwapRouter.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/NetswapFactory.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/NetswapMath.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/SafeMath.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/TestERC20.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/tokenomics/tokenomics.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/tokenomics/tokenomics.html" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,11 +76,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/uniswapLocal2" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app/templates" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app/static" />
-      <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets/vendor" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/flaskWebsite/app/static" />
@@ -389,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672204098637</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="most up-to-date, started cranking the webpage almost done">
+      <created>1672363376186</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1672363376186</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -449,6 +445,7 @@
     <MESSAGE value="most up2date...." />
     <MESSAGE value="most up2date, started cranking the webpage" />
     <MESSAGE value="most up2date, started cranking the webpage almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="most up2date, started cranking the webpage almost done" />
+    <MESSAGE value="most up-to-date, started cranking the webpage almost done" />
+    <option name="LAST_COMMIT_MESSAGE" value="most up-to-date, started cranking the webpage almost done" />
   </component>
 </project>
