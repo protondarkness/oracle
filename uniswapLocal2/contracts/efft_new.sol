@@ -2,15 +2,19 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
-import "@nettswap/NettswapRouter.sol";
+import "@nettswap/INetswapRouter.sol";
+import "@nettswap/NetswapFactory.sol";
 
 contract EFTT is ERC20, AccessControl {
     using SafeMath for uint256;
     //below are the testnet addresses!!!!!
-    address constant NetswappFactory=  0xA327674305d490199B76b186Ed360fCad3296949;
-    address constant NetswappRouter = 0x19BCFEe83ee0D77158b0c151150aFb0f389E4721;
+    address constant NettswapFactory_address=  0xA327674305d490199B76b186Ed360fCad3296949;
+    address constant NettswapRouter_address = 0x19BCFEe83ee0D77158b0c151150aFb0f389E4721;
+    address constant Metis_address = 0xDeadDeAddeAddEAddeadDEaDDEAdDeaDDeAD0000;
+    address payable immutable dev_address;
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant BURN_ROLE = keccak256("BURN_ROLE");
     bytes32 public constant VALIDATOR_ROLE = keccak256("VALIDATOR_ROLE");
@@ -24,7 +28,8 @@ contract EFTT is ERC20, AccessControl {
     uint256 constant public timeLock=18000000000;
 
     uint256 constant ratioMetis = 128;
-    uint constant liquidityRatio = 2;
+    uint8 constant liquidityRatio = 2;
+    uint256 constant liquidityLock = 180000000;
     uint256 public constant maxICO = 2500000 * (10 ** decimals);
     uint256 private burnRatio;
     uint256 public SoldInMetis;
@@ -34,6 +39,7 @@ contract EFTT is ERC20, AccessControl {
     uint8 constant burnPeriodOne =10;
     uint8 constant burnPeriodTwo = 14;
     uint8 constant stakePeriod = 14;
+    uint256 initialLiquidityTokens;
     address LP_Pair;
     bool private BURNED = false;
     struct period {
@@ -49,10 +55,10 @@ contract EFTT is ERC20, AccessControl {
         _grantRole(DEFAULT_ADMIN_ROLE,msg.sender);
         mint(address(this),earlyAllot);
         Periods[1].Active=true;
-        Periods[1].MaxBurn = 10;
+        Periods[1].MaxBurn = 1000000 * 10** decimal;
         Periods[1].timeValid = 1000;
         Periods[2].Active = false;
-        Periods[2].MaxBurn = 14;
+        Periods[2].MaxBurn = 1400000 * 10** decimal;
         Periods[2].timeValid = 2000;
     }
 //modifiers
@@ -85,12 +91,17 @@ contract EFTT is ERC20, AccessControl {
         _;
     }
 
+    modifier _lpLock(){
+        require(block.timestamp > liquidityLock,"must wait to remove lp");
+        _;
+    }
+
 //emit functions
     event Log(string);
     event Sold(uint256,address);
     event Burned(uint256);
     event LPcreated(uint256,uint256);
-    event balances(uint256,uint256);
+    event Balances(uint256,uint256);
 
 /////////////////////
 
@@ -109,22 +120,28 @@ contract EFTT is ERC20, AccessControl {
          _grantRole(_role,_address);
     }
 
-    function earlyWithdraw(uint256 _amnt) public payable onlyRole(DEV_INVESTOR_ROLE){
+    function invDevSocialWithdraw(uint256 _amnt) public onlyRole(DEV_INVESTOR_ROLE){
         require(_amnt < balanceOf(address(this)),"not enough to withdraw");
         transfer(msg.sender,_amnt);
     }
 
     receive() external payable {
+        emit Log("receive hit");
+        buy();
+    }
+    fallback() external payable{
         emit Log("fallback hit");
         buy();
     }
 
-
     function buy() public payable _timeCheck _noReentry returns(bool){
         require(msg.value > 0," please send metis");
-        uint256 buyAmount = conversion(msg.value);
-        console.log("buy amount %o", buyAmount.div(10**18));
+        uint256 buyAmount = msg.value.mul(ratioMetis);
+        console.log("buy amount %o", buyAmount);
         require(buyAmount + SoldEFTT <= maxICO, "exceeds the total for sale during ICO");
+        uint256 devcut = msg.value.div(2);
+        (bool sent, bytes memory data) = devaddress.call{value: devcut}("");
+        require(sent, "Failed to send Ether");
         mint(msg.sender,buyAmount);
         SoldEFTT += buyAmount;
         SoldInMetis += msg.value;
@@ -132,25 +149,28 @@ contract EFTT is ERC20, AccessControl {
         return true;
     }
 
-     function endICO() public onlyRole(BURNER_ROLE) _endICO _lpCreated _burnCheck{
-         burnRatio = transform(maxICO,soldEFFT);
+    function endICO() public onlyRole(BURNER_ROLE) _endICO _lpCreated _burnCheck{
+         burnRatio = maxICO.div(soldEFFT);
          uint256 burnAmnt = maxICO - soldEFFt;
          //burning unsold and what would be used for Liquidity Pool
-         mint(address(this),burnAmnt.mul(3).div(2));
-         burn(address(this),burnAmnt.mul(3).div(2));
+         internalBurn(burnAmnt.mul(3).div(2));
+         //mint(address(this),burnAmnt.mul(3).div(2));
+         //burn(address(this),burnAmnt.mul(3).div(2));
+
          //createPool
          createPool();
          //add Liquidity
-         emit Burned(burnAmnt);
+         addLiquidity();
          console.log("burned amount",burnAmnt);
     }
 
-    function addLiquidity() external payable onlyRole(BURNER_ROLE){
-        uint256 metisLiquidity = SoldInMetis.div(2);
+    function addLiquidity() private payable onlyRole(BURNER_ROLE){
+        //keep 1 metis in contract for gas fees
+        uint256 metisLiquidity = address(this).balance - (1*10**decimal);
         uint256 efttLiquidity = conversion(metisLiquidity);
         console.log("eftt , ", efttLiquidity);
-        approve(IUniswapV2Router02_address, efttLiquidity);
-        (,,uint initialLiquidityTokens) = INetswapRouter(NetswappRouter).addLiquidityMetis{value: metisLiquidity}(
+        approve(NettswapRouter_address, efttLiquidity);
+        (,,initialLiquidityTokens) = INetswapRouter(NettswapRouter_address).addLiquidityMetis{value: metisLiquidity}(
              address(this),
              efttLiquidity,
              0,
@@ -161,49 +181,53 @@ contract EFTT is ERC20, AccessControl {
         emit LPcreated(efttLiquidity,msg.value);
     }
 
+    function transferLiquidity() public _lpLock onlyRole(DEFAULT_ADMIN_ROLE){
+        IERC20(LP_Pair).approve(msg.sender,IERC20(LP_Pair).balanceOf(address(this)));
+        IERC20(LP_Pair).transferFrom(address(this),msg.sender,IERC20(LP_Pair).balanceOf(address(this)));
 
+    }
     //make private
-    function createPool() public onlyRole(BURNER_ROLE) returns(address){
-        LP_Pair = pairFor(IUniswapV2Factory_address,address(this) ,WETH);
-         if (IUniswapV2Factory(IUniswapV2Factory_address).getPair(address(this) ,WETH) == address(0)) {
-             IUniswapV2Factory(IUniswapV2Factory_address).createPair(address(this) ,WETH);
+    function createPool() private onlyRole(BURNER_ROLE) returns(address){
+        LP_Pair = pairFor(NettswapFactory_address,address(this) ,WETH);
+         if (INetswapFactory(NettswapFactory_address).getPair(address(this) ,Metis_address) == address(0)) {
+             INetswapFactory(NettswapFactory_address).createPair(address(this) ,Metis_address);
          }
         console.log("factory address",LP_Pair);
         return LP_Pair;
     }
 
-    function burnPeriod(uint256 _amnt) public onlyRole(BURNER_ROLE){
-        if(Periods[1].timeValid > block.timestamp){
+    function burnPeriod(uint256 _amnt) public onlyRole(BURNER_ROLE) returns(bool){
+        if(Periods[1].timeValid > block.timestamp && Periods[2].Active == false){
             Periods[1].Active = false;
             Periods[2].Active = true;
+        }else if(Periods[2].timeValid > block.timestamp && Periods[2].Active == true){
+            Periods[2].Active=false;
         }
+
         if(Periods[2].Active){
+            uint256 toBurn = Periods[2].MaxBurn.div(burnRatio);
             require(_amnt +Periods[2].Burnt < Periods[2].MaxBurn,"trying to burn too much");
             internalBurn(_amnt);
             Periods[2].Burnt += _amnt;
+            return(true);
         }
         if(Periods[1].Active){
             require(_amnt +Periods[1].Burnt < Periods[1].MaxBurn,"trying to burn too much");
             internalBurn(_amnt);
             Periods[1].Burnt += _amnt;
-
+            return(true);
         }
-
+        return(false);
     }
 
 
-
-    function conversion(uint256 _amnt) private returns(uint256){
-        return(_amnt.mul(ratioMetis));
-    }
-
-    function transform(uint256 _a,uint256 _b) private returns(uint256){
-        return _a.div(_b);
-    }
     function internalBurn(uint256 _amnt)private onlyRole(BURNER_ROLE) returns(bool){
         mint(address(this),_amnt);
         burn(address(this),_amnt);
-        BURNED(_amnt);
+        emit Burned(_amnt);
         return true;
+    }
+    function getPercentage(uint256 _a,uint256 _b) private pure returns(uint256){
+        return(_a.mul(_b).div(100));
     }
 }

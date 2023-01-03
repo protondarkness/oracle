@@ -102,7 +102,115 @@ background: #ecf5ff;
     opacity: 1;
  }
 /* end vote moduel*/
+/* start box adjustment*/
+#tokenomics h2 {
+    margin-top: 8%;
+    /* text-align: center; */
+    /* font-size: 2rem; */
+    /* font-weight: 100; */
+}
 
+ .box {
+  padding: 20px;
+  background: #f9f9f9;
+  text-align: center;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #f9f9f9;
+}
+
+ .box h3 {
+  font-weight: 400;
+  padding: 15px;
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222222;
+}
+
+ .box h4 {
+  font-size: 42px;
+  color: #3498db;
+  font-weight: 500;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 20px;
+}
+
+ .box h4 sup {
+  font-size: 20px;
+  top: -15px;
+  left: -3px;
+}
+
+ .box h4 span {
+  color: #bababa;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+ .box ul {
+  padding: 0;
+  list-style: none;
+  color: #222222;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+ .box ul li {
+  padding-bottom: 16px;
+}
+
+ .box ul i {
+  color: #3498db;
+  font-size: 18px;
+  padding-right: 4px;
+}
+
+ .box ul .na {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+ .box .btn-wrap {
+  padding: 15px;
+  text-align: center;
+}
+
+ .box .btn-buy {
+  display: inline-block;
+  padding: 10px 40px 13px 40px;
+  border-radius: 50px;
+  border: 2px solid #3498db;
+  color: #3498db;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+ .box .btn-buy:hover {
+  background: #3498db;
+  color: #fff;
+}
+
+ .recommended {
+  border-color: #3498db;
+}
+
+ .recommended .btn-buy {
+  background: #3498db;
+  color: #fff;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+ .recommended .btn-buy:hover {
+  background: #2383c4;
+  border-color: #2383c4;
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -654,6 +762,11 @@ section {
 /*--------------------------------------------------------------
 # About Us
 --------------------------------------------------------------*/
+#about{
+
+    padding-top: 140px;
+  background-color: #ecf5ff;
+}
 .about .content h3 {
   font-weight: 600;
   font-size: 26px;

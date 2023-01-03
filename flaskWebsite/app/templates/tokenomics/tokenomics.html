@@ -25,13 +25,7 @@ img {
     font-size: 0.9rem;
 }
 .badge {
-  height: 60px;
-  width: 110px;
-      padding-top: 30px;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 50%;
+  font-size:23px;
   color:black;
 
 }
@@ -40,18 +34,28 @@ background:yellow;
 }
 .pur{
 background:purple;
+color:white;
 }
 .gre{
 background:green;
 }
 .blu{
 background:blue;
+color:white;
+}
+.re{
+background:red;
+}
+.gr{
+background:orange;
 }
 .borderover {
 
-    border-style: dashed;
-    border-color: ghostwhite;
-    border-width: thick;
+<!--    opacity:50%;-->
+}
+.selectBack{
+
+     background-color:rgba(286, 181, 181, 0.5) !important;
 }
 </style>
 
@@ -64,66 +68,93 @@ background:blue;
         </div>
           <div class="row mb-3">
              <div class="container">
-                 <div class="text-center mb-2-8 mb-lg-6">
-                <h2 class="display-18 display-md-16 display-lg-14 font-weight-700">Why choose <strong class="text-primary font-weight-700">Us</strong></h2>
-                    <span>The trusted source for why choose us</span>
+                 <div class=" mb-2 mb-lg-6" data-aos="fade-in">
+                     <div class="box recommended">
+
+                         <div class=" clearfix">
+                             <h1 class="float-md-start mb-3 ms-md-3">Phase Ⅰ:</h1>
+                     <p> During
+                     the 1st phase, the ICO will be active as well as an active burn campaign. Tweet the hashtag 05980134 and it will count towards
+                     burning up to 10% of the total supply. More tweets, more tokens burned. </p>
+                         </div>
+                          <hr/>
+                          <div class=" clearfix">
+                             <h1 class="float-md-start mb-3 ms-md-3">Phase Ⅱ:</h1>
+                     <p>Immediatly after the ICO, another burn will begin and last 6 months. The community will get to vote on hashtags of their choosing
+                     to count towards burning. As they tweet the hashtag, that will count towards burning more tokens</p>
+                         </div>
+                          <hr/>
+                          <div class=" clearfix">
+                             <h1 class="float-md-start mb-3 ms-md-3">Phase Ⅲ:</h1>
+                     <p>After Phase II, a staking period will begin and work similarly as the burn worked. However, instead of burning tokens,
+                         the community will instead use the same voting process to earn a percent for the tokens they have staked.</p>
+                         </div>
+                     </div>
                 </div>
                 <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-auto col-sm-auto  mb-2 mb-sm-0">
+                <div class="col-lg-4 col-md-auto col-sm-auto  mb-2 mb-sm-0" data-aos="fade-right">
                     <div class="pr-md-3">
                         <div class="box recommended text-center text-sm-right mb-2">
                         <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge y"> place</div>
+                            <div class=" badge y"> 14%</div>
                         </div>
-                        <h6 class="sub-info">Residential Cleaning</h6>
-                        <p class="display-30 mb-0">Roin gravida nibh vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                        <h6 class="sub-info">Second Burn Period</h6>
+                        <p class="display-30 mb-0">After the ICO, a second burn period will emerge and last 6 months. Voting will take place at scheduled times
+                        to select a community hashtag. It is then up to the community to tweet the hashtag to burn tokens</p>
                         </div>
                         <div class="box recommended text-center text-sm-right mb-2">
                          <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge blu"> place</div>
+                            <div class=" badge re"> 25%</div>
                         </div>
-                        <h6 class="sub-info">Commercial Cleaning</h6>
-                        <p class="display-30 mb-0">Gravida roin nibh vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                        <h6 class="sub-info">Early Investors, Devs and Social team </h6>
+                        <p class="display-30 mb-0">%25 is allocated with 10% minted at creation. The remaining 15% will be subject to the ICO burn.
+                            The remainder will be split into tranches that
+                        will be allocated every 4 months for 6 months.</p>
                         </div>
                         <div class="box recommended text-center text-sm-right mb-2">
                        <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge blu"> place</div>
+                            <div class=" badge blu"> 12.5%</div>
                         </div>
-                        <h6 class="sub-info">Commercial Cleaning</h6>
-                        <p class="display-30 mb-0">Gravida roin nibh vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                        <h6 class="sub-info">Automatic Liquidity Pool</h6>
+                        <p class="display-30 mb-0">Half of the Metis used in the ICO will be sent along with the corresponding amount of EFTT to create
+                        a Liquidity Pool on Netswap. The liquidity will remain locked for 6 months after ICO end. What EFTT isn't used to create liquidity will
+                        be burned.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 d-none d-lg-block">
+                <div class="col-lg-4 d-none d-lg-block align-self-center" >
                 <div class="why-choose-center-image">
 
                     <canvas id="myChart"></canvas>
 
                 </div>
                 </div>
-                    <div class="col-lg-4 col-md-auto col-sm-auto">
+                    <div class="col-lg-4 col-md-auto col-sm-auto" data-aos="fade-left">
                 <div class="pl-md-3">
                     <div class="box recommended text-center text-sm-left mb-2">
                         <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge pur"> place</div>
+                            <div class=" badge pur"> 14%</div>
                         </div>
-                        <h6 class="sub-info">Washing services</h6>
-                        <p class="display-30 mb-0">Nibh roin gravida vel velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                        <h6 class="sub-info">Staking</h6>
+                        <p class="display-30 mb-0">At least 14% will be used for staking, though this is variable and could be more. It depends on how much is burned in the
+                        2 burn periods. </p>
                     </div>
 
                 <div class="box recommended text-center text-sm-left mb-2">
                      <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge gre"> place</div>
+                            <div class=" badge gre"> 25%</div>
                         </div>
-                    <h6 class="sub-info">Carpet cleaning</h6>
-                    <p class="display-30 mb-0">Vel proin gravida nibh velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                    <h6 class="sub-info">Total ICO amount </h6>
+                    <p class="display-30 mb-0">25% or 2,500,000 will be up for sale. What isn't sold will be burned. Furthermore, that percentage
+                    will be burnt from the rest of the supply, affecting: Burn 2, Stake, Dev/Invs</p>
                 </div>
                     <div class="box recommended text-center text-sm-left mb-2">
                      <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge blu"> place</div>
+                            <div class=" badge gr"> 10%</div>
                         </div>
-                    <h6 class="sub-info">Carpet cleaning</h6>
-                    <p class="display-30 mb-0">Vel proin gravida nibh velit auctor aliquetenean sollicitudin, lorem qui bibendum auctor.</p>
+                    <h6 class="sub-info">First Burn during ICO</h6>
+                    <p class="display-30 mb-0">The more tweets of the hashtag, the more tokens burnt.
+                    Up to 10% of initial supply or 1,000,000 tokens. What is burned will trickle into stake pool.</p>
                 </div>
             </div>
         </div>
@@ -142,10 +173,10 @@ background:blue;
 {% block script %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var yValues = [55, 49, 44, 24, 15];
-var barColors = ["red", "green","blue","orange","brown"];
-const colorArr=['pur','gre','y','blu'];
+var xValues = ["Dev/Early Investors", "ICO", "Liquidity", "First Burn", "Second Burn", "Stake"];
+var yValues = [25, 25, 12.5, 10, 14, 14];
+var barColors = ["red", "green","blue","orange","yellow","purple"];
+const colorArr=['re','gre','blu','gr','y','pur'];
    new Chart("myChart", {
         type: "pie",
         data: {
@@ -171,9 +202,11 @@ const colorArr=['pur','gre','y','blu'];
                         if(document.getElementsByClassName(colorArr[lbl] + " borderover").length ==0){
                             if(document.getElementsByClassName("borderover").length !=0){
                                 document.getElementsByClassName("borderover")[0].classList.remove("borderover");
+                                document.getElementsByClassName("selectBack")[0].classList.remove("selectBack");
                                 }
                             var element = document.getElementsByClassName(colorArr[lbl]);
                             element[0].classList.add("borderover");
+                            element[0].parentNode.parentNode.classList.add("selectBack");
                             }
 
        }
@@ -198,6 +231,8 @@ const colorArr=['pur','gre','y','blu'];
       if (event.type === 'mouseout') {
         var element = document.getElementsByClassName("borderover");
         element[0].classList.remove("borderover");
+        var element = document.getElementsByClassName("selectBack");
+        element[0].classList.remove("selectBack");
       }
     }
   }]
