@@ -42,6 +42,8 @@ contract EFTT is ERC20, AccessControl {
     uint256 initialLiquidityTokens;
     address LP_Pair;
     bool private BURNED = false;
+    bool public VOTE_ACTIVE = false;
+    uint256 public Vote_length;
     struct period {
         uint256 MaxBurn;
         uint256 Burnt;
@@ -93,6 +95,12 @@ contract EFTT is ERC20, AccessControl {
 
     modifier _lpLock(){
         require(block.timestamp > liquidityLock,"must wait to remove lp");
+        _;
+    }
+
+    modifier _vote(){
+        require(VOTE_ACTIVE, "Voting is not active");
+        require(Vote_length < block.timestamp, "time to vote is over");
         _;
     }
 
@@ -166,7 +174,7 @@ contract EFTT is ERC20, AccessControl {
 
     function addLiquidity() private payable onlyRole(BURNER_ROLE){
         //keep 1 metis in contract for gas fees
-        uint256 metisLiquidity = address(this).balance - (1*10**decimal);
+        uint256 metisLiquidity = address(this).balance;
         uint256 efttLiquidity = conversion(metisLiquidity);
         console.log("eftt , ", efttLiquidity);
         approve(NettswapRouter_address, efttLiquidity);
@@ -230,4 +238,14 @@ contract EFTT is ERC20, AccessControl {
     function getPercentage(uint256 _a,uint256 _b) private pure returns(uint256){
         return(_a.mul(_b).div(100));
     }
+
+    function setUpVote(bool _allowVote, uint256 _time)public onlyRole(DEFAULT_ADMIN_ROLE){
+        VOTE_ACTIVE = _allowVote;
+        Vote_length = _time;
+    }
+
+    function vote() public _vote {
+
+    }
+
 }
