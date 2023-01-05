@@ -42,8 +42,19 @@ contract EFTT is ERC20, AccessControl {
     uint256 initialLiquidityTokens;
     address LP_Pair;
     bool private BURNED = false;
+
     bool public VOTE_ACTIVE = false;
     uint256 public Vote_length;
+    uint256 public voteFor;
+    uint256 public voteAgainst;
+    mapping(address=>uint256) public Snapshot;
+    struct Vote_ballot {
+        bool hasVoted;
+        uint256 weight;
+        bool inFavorOf;
+    }
+    mapping(address=>Vote_ballot) Ballot;
+
     struct period {
         uint256 MaxBurn;
         uint256 Burnt;
@@ -100,16 +111,20 @@ contract EFTT is ERC20, AccessControl {
 
     modifier _vote(){
         require(VOTE_ACTIVE, "Voting is not active");
+        if(Vote_length > block.timestamp){
+            VOTE_ACTIVE = false;
+        }
         require(Vote_length < block.timestamp, "time to vote is over");
         _;
     }
 
 //emit functions
-    event Log(string);
-    event Sold(uint256,address);
-    event Burned(uint256);
-    event LPcreated(uint256,uint256);
-    event Balances(uint256,uint256);
+    event LOG(string);
+    event SOLD(uint256,address);
+    event BURNEDSUPPLY(uint256);
+    event LPCREATED(uint256,uint256);
+    event BALANCES(uint256,uint256);
+    event VOTED(address,bool,uint256);
 
 /////////////////////
 
@@ -134,11 +149,11 @@ contract EFTT is ERC20, AccessControl {
     }
 
     receive() external payable {
-        emit Log("receive hit");
+        emit LOG("receive hit");
         buy();
     }
     fallback() external payable{
-        emit Log("fallback hit");
+        emit LOG("fallback hit");
         buy();
     }
 
@@ -153,7 +168,7 @@ contract EFTT is ERC20, AccessControl {
         mint(msg.sender,buyAmount);
         SoldEFTT += buyAmount;
         SoldInMetis += msg.value;
-        emit Sold(buyAmount,msg.sender);
+        emit SOLD(buyAmount,msg.sender);
         return true;
     }
 
@@ -186,7 +201,7 @@ contract EFTT is ERC20, AccessControl {
              address(this),
              block.timestamp + 360
          );
-        emit LPcreated(efttLiquidity,msg.value);
+        emit LPCREATED(efttLiquidity,msg.value);
     }
 
     function transferLiquidity() public _lpLock onlyRole(DEFAULT_ADMIN_ROLE){
@@ -232,20 +247,43 @@ contract EFTT is ERC20, AccessControl {
     function internalBurn(uint256 _amnt)private onlyRole(BURNER_ROLE) returns(bool){
         mint(address(this),_amnt);
         burn(address(this),_amnt);
-        emit Burned(_amnt);
+        emit BURNEDSUPPLY(_amnt);
         return true;
     }
     function getPercentage(uint256 _a,uint256 _b) private pure returns(uint256){
         return(_a.mul(_b).div(100));
     }
 
-    function setUpVote(bool _allowVote, uint256 _time)public onlyRole(DEFAULT_ADMIN_ROLE){
+    function setUpVote(bool _allowVote, uint256 _time, address[] _snapshot_addresses, uint256[] _snapshot_balances)public onlyRole(DEFAULT_ADMIN_ROLE){
         VOTE_ACTIVE = _allowVote;
         Vote_length = _time;
+        for(uint256 i = 0 ; i < _snapshot_balances.len ; i++) {
+            Snapshot[_snapshot_addresses] = _snapshot_balances;
+        }
     }
 
-    function vote() public _vote {
+    function vote(bool _forOrAgainst) public _vote {
+        require(!Ballot[msg.sender].hasVoted,"you already voted once");
+        require(balanceOf(msg.sender)>0,"you must own token to vote");
+        Ballot[msg.sender].weight = balanceOf(msg.sender);
+        Ballot[msg.sender].inFavorOf = _forOrAgainst;
+        Ballot[msg.sender].hasVoted = true;
+        if(_forOrAgainst == true){
+            voteFor +=balanceOf(msg.sender);
+        }else{
+            voteAgainst +=balanceOf(msg.sender);
+        }
+        emit VOTED(msg.sender,_forOrAgainst,balanceOf(msg.sender));
+    }
 
+    function checkVoteResults() public returns(bool){
+        require(Vote_length > block.timestamp, "time to vote is still going on");
+        VOTE_ACTIVE = false;
+        if(voteFor > voteAgainst){
+            uint256 totalToBurn = totalSupply - totalMinted;
+            internalBurn(totalToBurn);
+        }
+        return true;
     }
 
 }
