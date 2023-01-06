@@ -13,6 +13,8 @@ const showAccount = document.querySelector('.showAccount');
 const errorConnected = document.getElementById('errorConnected');
 const signAccount = document.getElementById('signAccount');
 const vote  = document.getElementById('Vote');
+const network  = document.getElementById('network');
+const MetisChainID = '0x440';
 var chainId;
 var networkId;
 var accounts;
@@ -34,6 +36,7 @@ ethereumButton.addEventListener('click', () => {
 async function getAccount() {
 if(window.ethereum){
         try {
+        getNetworkAndChainId();
   accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
   showAccount.innerHTML = account;
@@ -52,21 +55,18 @@ if(window.ethereum){
  async function getNetworkAndChainId() {
  if (window.ethereum) {
     try {
-       chainId = await window.ethereum.request({
+      switchToMetis();
+      //handleNewChain(chainId);
+      let current_chainId = await window.ethereum.request({
         method: 'eth_chainId',
       });
-      //handleNewChain(chainId);
-
+        network.value = current_chainId;
        networkId = await window.ethereum.request({
         method: 'net_version',
       });
       //handleNewNetwork(networkId);
 
-      const block = await window.ethereum.request({
-        method: 'eth_getBlockByNumber',
-        params: ['latest', false],
-      });
-    console.log( chainId);
+    //console.log( chainId);
 //      handleEIP1559Support(block.baseFeePerGas !== undefined);
     } catch (err) {
       console.error(err);
@@ -99,3 +99,25 @@ if(window.ethereum){
     console.error('err3');
     }
   }
+
+  async function  switchToMetis(){
+
+        let ethereum = window.ethereum;
+        const data = [{
+            chainId: MetisChainID,
+            chainName: 'Metis Andromeda Mainnet',
+            nativeCurrency:
+                {
+                    name: 'Metis',
+                    symbol: 'Metis',
+                    decimals: 18
+                },
+           blockExplorerUrls: ['https://andromeda-explorer.metis.io/'],
+            rpcUrls: ['https://andromeda.metis.io/?owner=1088'],
+        }]
+        /* eslint-disable */
+        const tx = await ethereum.request({method: 'wallet_addEthereumChain', params:data}).catch()
+        if (tx) {
+            console.log(tx)
+        }
+    }
