@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, started cranking the webpage almost done">
-      <change afterPath="$PROJECT_DIR$/ethOracle/.babelrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/30.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/30.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/337.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/369.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/563.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/690.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/690.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/764.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/764.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/811.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/811.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/854.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/857.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/883.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/942.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/dist/main.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/index_main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/walletconnect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ethOracle/wc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ethOracle/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ethOracle/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/poolcreateTest2.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/poolcreateTest2.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -424,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673037054294</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="most up2date, started cranking the webpage almost done">
+      <created>1673112455724</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1673112455724</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -30,7 +30,7 @@ describe("CreatePoolAttempt ICO", function () {
 
   describe("Pool Create", function (){
     it("Create pool and init supply", async function () {
-  // ...deploy the contract as before...
+  // ...deploy the contract as before...CreatePool
        const {pool_att } = await loadFixture(CreatePool);
       await expect(pool_att.poolCreate());
          });
