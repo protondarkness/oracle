@@ -57,6 +57,23 @@ npx hardhat run --network hardhat scripts/my-script.js
 npx hardhat node
 --// add --network localhost to use the hardhat node after test or run
 
+--//download npm install hardhat-gas-reporter --save-dev
+//for gas profiler,then add to config.hardhat
+ gasReporter: {
+enabled: true,
+currency: "USD", // currency to show
+outputFile: "gas-report.txt", // optional
+noColors: true, //optional
+coinmarketcap: coinmarketcap
+},
+//then to use it
+ REPORT_GAS=true npx hardhat test test/eftt_test.js
+
+
+//to run tests individually, can grep the it() part of test
+npx hardhat test test/eftt_test.js --grep "Check Buy from ICO"
+
+
  --use to query block number in terminal
 curl --location --request POST 'localhost:8545/' --header 'Content-Type: application/json' --data-raw '{
     "jsonrpc":"2.0",

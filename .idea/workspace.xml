@@ -5,8 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, started cranking the webpage almost done">
-      <change afterPath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/poolcreateTest2.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/poolcreateTest2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/INetswapFactory.sol" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/gas-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/INetswapRouter.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/@nettswap/INetswapRouter.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/Eftt.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/Eftt.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/Iefft.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/otherNecessaryFuncto/Iefft.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/efttICO.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/oldcontracts/CreateICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/CreateICO.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/oldcontracts/CreatePoolAttempt.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/CreatePoolAttempt.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/oldcontracts/eft.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/eft.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/oldcontracts/traderEx.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/traderEx.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/oldcontracts/uniswapcreatePairAttempt.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/uniswapcreatePairAttempt.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/sending.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/otherNecessaryFuncto/sending.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/stake.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/otherNecessaryFuncto/stake.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/verify.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/otherNecessaryFuncto/verify.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/hardhat.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,24 +90,24 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "editorconfig.notification": "lf;",
-    "last_opened_file_path": "/home/destro/Desktop/oracle/ethOracle/src",
-    "settings.editor.selected.configurable": "preferences.editor.code.editing"
+    "last_opened_file_path": "/home/destro/Desktop/oracle/uniswapLocal2/node_modules",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/uniswapLocal2/node_modules" />
       <recent name="$PROJECT_DIR$/ethOracle/src" />
       <recent name="$PROJECT_DIR$/uniswapLocal2" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app/templates" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app" />
-      <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/uniswapLocal2" />
+      <recent name="$PROJECT_DIR$/uniswapLocal2/contracts/oldcontracts" />
+      <recent name="$PROJECT_DIR$/uniswapLocal2/contracts/otherNecessaryFuncto" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app/static" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets/css" />
-      <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets/img" />
-      <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets" />
-      <recent name="$PROJECT_DIR$/flaskWebsite" />
     </key>
   </component>
   <component name="RunManager" selected="Python.affirm">
@@ -407,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673112455724</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="most up2date, started cranking the webpage almost done">
+      <created>1673117544834</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1673117544834</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
