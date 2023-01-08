@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "netswap/INetswapRouter.sol";
 import "netswap/INetswapFactory.sol";
+
 import "hardhat/console.sol";
 
 contract EFTT is ERC20, AccessControl {
@@ -187,13 +188,13 @@ contract EFTT is ERC20, AccessControl {
          addLiquidity();
          console.log("burned amount",burnAmnt);
     }
-
+//changeEthTOMEtis in function to add liquidity
     function addLiquidity() public payable onlyRole(BURN_ROLE){
         uint256 metisLiquidity = address(this).balance;
         uint256 efttLiquidity = metisLiquidity.mul(ratioMetis);
         console.log("eftt , ", efttLiquidity);
-        approve(NettswapRouter_address, efttLiquidity);
-        (,,initialLiquidityTokens) = INetswapRouter(NettswapRouter_address).addLiquidityMetis{value: metisLiquidity}(
+        IERC20(address(this)).approve(NettswapRouter_address, efttLiquidity);
+        (,,initialLiquidityTokens) = INetswapRouter(NettswapRouter_address).addLiquidityETH{value: metisLiquidity}(
              address(this),
              efttLiquidity,
              0,
@@ -211,9 +212,9 @@ contract EFTT is ERC20, AccessControl {
     }
     //make private
     function createPool() private onlyRole(BURN_ROLE) returns(address){
-        LP_Pair = INetswapFactory(NettswapFactory_address).pairFor(address(this) ,Metis_address);
+        //LP_Pair = INetswapFactory(NettswapFactory_address).pairFor(address(this) ,Metis_address);
          if (INetswapFactory(NettswapFactory_address).getPair(address(this) ,Metis_address) == address(0)) {
-             INetswapFactory(NettswapFactory_address).createPair(address(this) ,Metis_address);
+             LP_Pair = INetswapFactory(NettswapFactory_address).createPair(address(this) ,Metis_address);
          }
         console.log("factory address",LP_Pair);
         return LP_Pair;
