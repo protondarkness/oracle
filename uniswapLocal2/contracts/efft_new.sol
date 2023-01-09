@@ -26,20 +26,24 @@ contract EFTT is ERC20, AccessControl {
     bytes32 public constant DEV_INVESTOR_ROLE = keccak256("DEV_INVESTOR_ROLE");
 
     uint256 public constant decimal = 18;
-    uint256 public constant maxSupply = 10000000 * 10** decimal;
+    uint256 public constant decimal_ending = 10**18;
+    uint256 public constant maxSupply = 10000000 * decimal_ending;
     uint256 public totalMinted;
     bool internal locked;
+    uint256 public immutable timedeployed;
     uint256 constant public timeLock=18000000000;
-
+    uint256 constant unix_month = 2419200;
+    uint256 constant unix_six_month = 2419200 *6;
     uint256 constant ratioMetis = 128;
     uint8 constant liquidityRatio = 2;
     uint256 constant liquidityLock = 180000000;
     uint256 public constant maxICO = 2500000 * (10 ** decimal);
-    uint256 private burnRatio;
+    ////todo: change this
+    uint256 private burnRatio=1;
     uint256 public SoldInMetis;
     uint256 public SoldEFTT;
     uint256 constant earlyAllot = 9;
-    uint256 constant unix_month = 2419200;
+
     uint256 constant remainingPercentage = 43;
     uint8 constant burnPeriodOne =10;
     uint8 constant burnPeriodTwo = 14;
@@ -74,10 +78,12 @@ contract EFTT is ERC20, AccessControl {
         //need to do more role creation in here
         NettswapFactory_address= _n1;
         NettswapRouter_address = _n2;
+        timedeployed = block.timestamp;
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
-        mint(address(this),earlyAllot);
+//        mint(address(this),earlyAllot);
+        //todo keep eye on above
         dev_address = payable(msg.sender);
         establishMintPeriods();
         establishBurnPeriods();
@@ -129,23 +135,24 @@ contract EFTT is ERC20, AccessControl {
 //contract functions
     function establishMintPeriods() private {
         WithdrawPeriods[0].Active=true;
-        WithdrawPeriods[0].MaxAmount = 900000 * 10**decimal;
-        WithdrawPeriods[0].timeValid = 1000;
+        WithdrawPeriods[0].MaxAmount = 900000 * decimal_ending;
+        WithdrawPeriods[0].timeValid = timedeployed + unix_month;
         WithdrawPeriods[0].burn_Ratio = false;
         for(uint i=1;i<6;i++){
             WithdrawPeriods[i].Active = false;
-            WithdrawPeriods[i].MaxAmount = 250000 * 10** decimal;
-            WithdrawPeriods[i].timeValid = 2000;
+            WithdrawPeriods[i].MaxAmount = 250000 * decimal_ending;
+            WithdrawPeriods[i].timeValid = timedeployed + unix_six_month.mul(i);
             WithdrawPeriods[i].burn_Ratio = true;
         }
     }
+    ////todo: look at this closer the times and such
     function establishBurnPeriods() private {
-        BurnPeriods[1].Active=true;
-        BurnPeriods[1].MaxAmount = 1000000 * 10** decimal;
-        BurnPeriods[1].timeValid = 1000;
-        BurnPeriods[2].Active = false;
-        BurnPeriods[2].MaxAmount = 1400000 * 10** decimal;
-        BurnPeriods[2].timeValid = 2000;
+        BurnPeriods[0].Active=true;
+        BurnPeriods[0].MaxAmount = 1000000 * decimal_ending;
+        BurnPeriods[0].timeValid = timedeployed + unix_month;
+        BurnPeriods[1].Active = false;
+        BurnPeriods[1].MaxAmount = 1400000 * decimal_ending;
+        BurnPeriods[1].timeValid = timedeployed + unix_six_month;
     }
     function mint(address _to, uint256 _amnt) public onlyRole(MINTER_ROLE) {
         require(totalMinted + _amnt  <= maxSupply, "tried to mint more than total supply");
@@ -161,7 +168,7 @@ contract EFTT is ERC20, AccessControl {
     function invDevSocialWithdraw(uint256 _amnt) public onlyRole(DEV_INVESTOR_ROLE){
         for(uint i =0; i<6;i++){
             if(WithdrawPeriods[i].Active){
-                if(WithdrawPeriods[i].timeValid < block.timestamp){
+                if(WithdrawPeriods[i].timeValid > block.timestamp){
                     if(WithdrawPeriods[i].burn_Ratio){
                         WithdrawPeriods[i].MaxAmount = WithdrawPeriods[i].MaxAmount.div(burnRatio);
                         WithdrawPeriods[i].burn_Ratio = false;
@@ -169,6 +176,7 @@ contract EFTT is ERC20, AccessControl {
                     require(_amnt + WithdrawPeriods[i].CurrentAmount < WithdrawPeriods[i].MaxAmount,"trying to withdraw too much");
                     _mint(msg.sender, _amnt);
                     WithdrawPeriods[i].CurrentAmount = _amnt;
+                    console.log("withdraw period",i);
                     break;
                 }else{
                     WithdrawPeriods[i].Active = false;
@@ -255,20 +263,20 @@ contract EFTT is ERC20, AccessControl {
     }
 
     function burnPeriodV2(uint256 _amnt) public onlyRole(BURN_ROLE){
-        for(uint i =1; i<3;i++){
+        for(uint i =0; i<2 ;i++){
             if(BurnPeriods[i].Active){
-                if(BurnPeriods[i].timeValid < block.timestamp){
+                if(BurnPeriods[i].timeValid > block.timestamp){
                     if(BurnPeriods[i].burn_Ratio){
                         BurnPeriods[i].MaxAmount = BurnPeriods[i].MaxAmount.div(burnRatio);
                         BurnPeriods[i].burn_Ratio = false;
                     }
-                    require(_amnt + BurnPeriods[i].CurrentAmount < BurnPeriods[i].MaxAmount,"trying to withdraw too much");
+                    require(_amnt + BurnPeriods[i].CurrentAmount < BurnPeriods[i].MaxAmount,"trying to burn too much");
                     internalBurn(_amnt);
                     BurnPeriods[i].CurrentAmount += _amnt;
                     break;
                 }else{
                     WithdrawPeriods[i].Active = false;
-                    if(i+1<3){
+                    if(i+1<2){
                         WithdrawPeriods[i+1].Active = true;
                     }
                 }
