@@ -113,6 +113,15 @@ describe("Contract Deployment ICO", function () {
 
     });//end it
 
+    it("Test withdraw", function (){
+    const unix_month = 2419200;
+     const {ico_deployed,adrs } = await loadFixture(DeployFixture);
+     await (ico_deployed.connect(adrs[0]).grantRole(inv, adrs[0].address));
+     await ico_deployed.invDevSocialWithdraw(950000);
+     let bal = await ico_deployed.balanceOf(adrs[0].address);
+     console.log('balance ',bal;
+
+    });//end it withdraw
 //  describe("Pool Create", function (){
 //    it("Create pool and init supply", async function () {
 //  // ...deploy the contract as before...
