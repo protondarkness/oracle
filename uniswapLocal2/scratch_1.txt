@@ -26,6 +26,9 @@ npm install -g browserify
 or
 sudo apt install node-browserify
 browserify index.js -p esmify > bundle.js
+//if getting weird errors like new isnt callable try webpack
+npx webpack
+//webpack needs a src folder with index.html and index,js
 
 --add to package.json under scripts
  "start": "http-server -c-1"
@@ -57,7 +60,8 @@ npx hardhat run --network hardhat scripts/my-script.js
 npx hardhat node
 --// add --network localhost to use the hardhat node after test or run
 
---//download npm install hardhat-gas-reporter --save-dev
+--//download gas reporter
+install hardhat-gas-reporter --save-dev
 //for gas profiler,then add to config.hardhat
  gasReporter: {
 enabled: true,
@@ -68,6 +72,9 @@ coinmarketcap: coinmarketcap
 },
 //then to use it
  REPORT_GAS=true npx hardhat test test/eftt_test.js
+
+//install chai matchers
+npm install --save-dev @nomicfoundation/hardhat-chai-matchers
 
 
 //to run tests individually, can grep the it() part of test

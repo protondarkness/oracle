@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, started cranking the webpage almost done">
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/gas-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/gas-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, debugging">
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/scratch_1.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -436,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673215750281</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="most up2date, debugging">
+      <created>1673286127405</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1673286127405</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -497,6 +502,7 @@
     <MESSAGE value="most up2date, started cranking the webpage" />
     <MESSAGE value="most up-to-date, started cranking the webpage almost done" />
     <MESSAGE value="most up2date, started cranking the webpage almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="most up2date, started cranking the webpage almost done" />
+    <MESSAGE value="most up2date, debugging" />
+    <option name="LAST_COMMIT_MESSAGE" value="most up2date, debugging" />
   </component>
 </project>
