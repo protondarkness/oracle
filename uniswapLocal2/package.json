@@ -15,7 +15,7 @@
     "dotenv": "^16.0.3",
     "esmify": "^2.1.1",
     "jsonstream": "^1.0.3",
-    "netswap": "file:@nettswap",
+    "netswap": "file:netswap",
     "requirejs": "^2.3.6"
   }
 }

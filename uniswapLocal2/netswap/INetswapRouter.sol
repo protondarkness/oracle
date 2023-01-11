@@ -24,6 +24,15 @@ interface INetswapRouter {
         address to,
         uint deadline
     ) external payable returns (uint amountToken, uint amountMetis, uint liquidity);
+    //todo unwrite this below
+    function addLiquidityETH(
+        address token,
+        uint amountTokenDesired,
+        uint amountTokenMin,
+        uint amountMetisMin,
+        address to,
+        uint deadline
+    ) external payable returns (uint amountToken, uint amountMetis, uint liquidity);
     function removeLiquidity(
         address tokenA,
         address tokenB,

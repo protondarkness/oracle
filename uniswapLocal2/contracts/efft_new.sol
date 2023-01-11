@@ -31,23 +31,24 @@ contract EFTT is ERC20, AccessControl {
     uint256 public totalMinted;
     bool internal locked;
     uint256 public immutable timedeployed;
+    //todo: maybe delete below timelock
     uint256 constant public timeLock=18000000000;
     uint256 constant unix_month = 2419200;
     uint256 constant unix_six_month = 2419200 *6;
     uint256 constant ratioMetis = 128;
     uint8 constant liquidityRatio = 2;
+    ////todo: change this
     uint256 constant liquidityLock = 180000000;
     uint256 public constant maxICO = 2500000 * (10 ** decimal);
     ////todo: change this
     uint256 private burnRatio=1;
     uint256 public SoldInMetis;
     uint256 public SoldEFTT;
-    uint256 constant earlyAllot = 9;
-
-    uint256 constant remainingPercentage = 43;
-    uint8 constant burnPeriodOne =10;
-    uint8 constant burnPeriodTwo = 14;
-    uint8 constant stakePeriod = 14;
+//todo cleanup below
+//    uint256 constant remainingPercentage = 43;
+//    uint8 constant burnPeriodOne =10;
+//    uint8 constant burnPeriodTwo = 14;
+//    uint8 constant stakePeriod = 14;
     uint256 initialLiquidityTokens;
     address LP_Pair;
     bool private BURNED = false;
@@ -56,13 +57,13 @@ contract EFTT is ERC20, AccessControl {
     uint256 public Vote_length;
     uint256 public voteFor;
     uint256 public voteAgainst;
-    mapping(address=>uint256) public Snapshot;
+
     struct Vote_ballot {
         bool hasVoted;
         uint256 weight;
         bool inFavorOf;
     }
-    mapping(address=>Vote_ballot) Ballot;
+    mapping(address=>Vote_ballot) Snapshot;
 
     struct period{
         uint256 MaxAmount;
@@ -80,7 +81,6 @@ contract EFTT is ERC20, AccessControl {
         NettswapRouter_address = _n2;
         timedeployed = block.timestamp;
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
-        _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
 //        mint(address(this),earlyAllot);
         //todo keep eye on above
@@ -133,14 +133,19 @@ contract EFTT is ERC20, AccessControl {
 /////////////////////
 
 //contract functions
+    function grantRolesArray(bytes32[] calldata _roles, address[] calldata _assignees) public onlyRole(DEFAULT_ADMIN_ROLE){
+        for(uint i=0; i < _roles.length;i++){
+            grantRole(_roles[i],_assignees[i]);
+        }
+    }
     function establishMintPeriods() private {
         WithdrawPeriods[0].Active=true;
-        WithdrawPeriods[0].MaxAmount = 900000 * decimal_ending;
+        WithdrawPeriods[0].MaxAmount = 950000 * decimal_ending;
         WithdrawPeriods[0].timeValid = timedeployed + unix_month;
         WithdrawPeriods[0].burn_Ratio = false;
         for(uint i=1;i<6;i++){
             WithdrawPeriods[i].Active = false;
-            WithdrawPeriods[i].MaxAmount = 250000 * decimal_ending;
+            WithdrawPeriods[i].MaxAmount = 300000 * decimal_ending;
             WithdrawPeriods[i].timeValid = timedeployed + unix_six_month.mul(i);
             WithdrawPeriods[i].burn_Ratio = true;
         }
@@ -154,6 +159,7 @@ contract EFTT is ERC20, AccessControl {
         BurnPeriods[1].MaxAmount = 1400000 * decimal_ending;
         BurnPeriods[1].timeValid = timedeployed + unix_six_month;
     }
+
     function mint(address _to, uint256 _amnt) public onlyRole(MINTER_ROLE) {
         require(totalMinted + _amnt  <= maxSupply, "tried to mint more than total supply");
         _mint(_to, _amnt);
@@ -173,9 +179,9 @@ contract EFTT is ERC20, AccessControl {
                         WithdrawPeriods[i].MaxAmount = WithdrawPeriods[i].MaxAmount.div(burnRatio);
                         WithdrawPeriods[i].burn_Ratio = false;
                     }
-                    require(_amnt + WithdrawPeriods[i].CurrentAmount < WithdrawPeriods[i].MaxAmount,"trying to withdraw too much");
+                    require(_amnt + WithdrawPeriods[i].CurrentAmount <= WithdrawPeriods[i].MaxAmount,"trying to withdraw too much");
                     _mint(msg.sender, _amnt);
-                    WithdrawPeriods[i].CurrentAmount = _amnt;
+                    WithdrawPeriods[i].CurrentAmount += _amnt;
                     console.log("withdraw period",i);
                     break;
                 }else{
@@ -270,7 +276,7 @@ contract EFTT is ERC20, AccessControl {
                         BurnPeriods[i].MaxAmount = BurnPeriods[i].MaxAmount.div(burnRatio);
                         BurnPeriods[i].burn_Ratio = false;
                     }
-                    require(_amnt + BurnPeriods[i].CurrentAmount < BurnPeriods[i].MaxAmount,"trying to burn too much");
+                    require(_amnt + BurnPeriods[i].CurrentAmount <= BurnPeriods[i].MaxAmount,"trying to burn too much");
                     internalBurn(_amnt);
                     BurnPeriods[i].CurrentAmount += _amnt;
                     break;
@@ -285,29 +291,6 @@ contract EFTT is ERC20, AccessControl {
 
     }
 
-//    function burnPeriod(uint256 _amnt) public onlyRole(BURN_ROLE) returns(bool){
-//        if(BurnPeriods[1].timeValid > block.timestamp && BurnPeriods[2].Active == false){
-//            BurnPeriods[1].Active = false;
-//            BurnPeriods[2].Active = true;
-//        }else if(BurnPeriods[2].timeValid > block.timestamp && BurnPeriods[2].Active == true){
-//            BurnPeriods[2].Active=false;
-//        }
-//
-//        if(BurnPeriods[2].Active){
-//            uint256 toBurn = BurnPeriods[2].MaxBurn.div(burnRatio);
-//            require(_amnt +BurnPeriods[2].Burnt < BurnPeriods[2].MaxBurn,"trying to burn too much");
-//            internalBurn(_amnt);
-//            BurnPeriods[2].Burnt += _amnt;
-//            return(true);
-//        }
-//        if(BurnPeriods[1].Active){
-//            require(_amnt +BurnPeriods[1].Burnt < BurnPeriods[1].MaxBurn,"trying to burn too much");
-//            internalBurn(_amnt);
-//            BurnPeriods[1].Burnt += _amnt;
-//            return(true);
-//        }
-//        return(false);
-//    }
 
     function internalBurn(uint256 _amnt)private onlyRole(BURN_ROLE) returns(bool){
         mint(address(this),_amnt);
@@ -315,6 +298,7 @@ contract EFTT is ERC20, AccessControl {
         emit BURNEDSUPPLY(_amnt);
         return true;
     }
+
     function getPercentage(uint256 _a,uint256 _b) private pure returns(uint256){
         return(_a.mul(_b).div(100));
     }
@@ -323,16 +307,16 @@ contract EFTT is ERC20, AccessControl {
         VOTE_ACTIVE = _allowVote;
         Vote_length = _time;
         for(uint256 i = 0 ; i < _snapshot_balances.length ; i++) {
-            Snapshot[_snapshot_addresses[i]] = _snapshot_balances[i];
+            Snapshot[_snapshot_addresses[i]].weight = _snapshot_balances[i];
         }
     }
 
     function vote(bool _forOrAgainst) public _vote {
-        require(!Ballot[msg.sender].hasVoted,"you already voted once");
+        require(!Snapshot[msg.sender].hasVoted,"you already voted once");
         require(balanceOf(msg.sender)>0,"you must own token to vote");
-        Ballot[msg.sender].weight = balanceOf(msg.sender);
-        Ballot[msg.sender].inFavorOf = _forOrAgainst;
-        Ballot[msg.sender].hasVoted = true;
+        Snapshot[msg.sender].weight = balanceOf(msg.sender);
+        Snapshot[msg.sender].inFavorOf = _forOrAgainst;
+        Snapshot[msg.sender].hasVoted = true;
         if(_forOrAgainst == true){
             voteFor +=balanceOf(msg.sender);
         }else{
@@ -342,8 +326,12 @@ contract EFTT is ERC20, AccessControl {
     }
 
     function checkVoteResults() public returns(bool){
-        require(Vote_length > block.timestamp, "time to vote is still going on");
+        //todo: uncomment below to time restrict, also
+        //todo: need to restrict access to some sort of validator while also
+        //todo: allowing burn_role
+        //require(Vote_length > block.timestamp, "time to vote is still going on");
         VOTE_ACTIVE = false;
+        console.log("vote for %o, vote against %o",voteFor,voteAgainst);
         if(voteFor > voteAgainst){
             uint256 totalToBurn = totalSupply() - totalMinted;
             internalBurn(totalToBurn);

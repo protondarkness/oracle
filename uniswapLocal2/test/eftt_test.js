@@ -117,21 +117,104 @@ describe("Contract Deployment ICO", function () {
     const unix_month = 2419200;
      const {ico_deployed,adrs } = await loadFixture(DeployFixture);
      await (ico_deployed.connect(adrs[0]).grantRole(inv, adrs[0].address));
-
+    //6 periods, firts is 950k
+    //after is 300k
     let blockNumBefore = await ethers.provider.getBlockNumber();
         let blockBefore = await ethers.provider.getBlock(blockNumBefore);
         let timestampBefore = blockBefore.timestamp;
         console.log("block eth", blockNumBefore);
         console.log("time eth", timestampBefore);
-        let wd = 95000*10**18;
+        let wda = 100000*10**18;
+        let wdb = 50000*10**18;
+
+        let bal=0;
         for(let i=1;i<=24;i++){
+          let wd =wda;
+          if(ethers.utils.formatEther(bal)==900000){
+          wd=wdb;
+          }
+          if(ethers.utils.formatEther(bal)>900000){
+            console.log("made here");
+             await expect(ico_deployed.invDevSocialWithdraw(wd.toLocaleString('fullwide', {useGrouping:false}))).to.be.revertedWith("trying to withdraw too much");
+          }else{
+             await ico_deployed.invDevSocialWithdraw(wd.toLocaleString('fullwide', {useGrouping:false}));
+            }
+            console.log(i);
+            bal = await ico_deployed.balanceOf(adrs[0].address);
+          console.log('balance ',ethers.utils.formatEther(bal));
+          }
+        for(let i=4;i<=24;i++){
+        let wd =wda;
+
              let timeForward = timestampBefore + unix_month*i;
              await ethers.provider.send("evm_mine", [timeForward]);
           await ico_deployed.invDevSocialWithdraw(wd.toLocaleString('fullwide', {useGrouping:false}));
           let bal = await ico_deployed.balanceOf(adrs[0].address);
-          console.log('balance ',bal);
+          console.log(i);
+          console.log(timeForward);
+          console.log('balance ',ethers.utils.formatEther(bal));
           }
-
     });//end it withdraw
 
+    it("Test vote", async function () {
+        const {ico_deployed,adrs } = await loadFixture(DeployFixture);
+        await (ico_deployed.connect(adrs[0]).grantRole(mint, adrs[0].address));
+        const accounts = await hre.ethers.getSigners();
+        let acts = [];
+        let bal = [];
+        for(i of accounts){
+        console.log(i.address);
+        await ico_deployed.connect(adrs[0]).mint(i.address,100);
+        acts.push(i.address);
+        bal.push(100);
+        }
+        console.log(bal);
+        await ico_deployed.connect(adrs[0]).setUpVote(true,100,acts,bal);
+        for(i of accounts){
+        await ico_deployed.connect(i).vote(true);
+        }
+        await ico_deployed.connect(i).checkVoteResults();
+       });//endtest vote
+
+    it("Check whole buy", async function () {
+        const {ico_deployed,adrs,eft } = await loadFixture(DeployFixture);
+        const signs= await ethers.getSigners();
+        let rs = [mint, inv, burn];
+        let adds = [adrs[0].address,adrs[0].address,adrs[0].address];
+        console.log(rs);
+
+        await ico_deployed.connect(adrs[0]).grantRolesArray(rs,adds);
+
+        let totalBuy = [1000];
+        let buyers = 18;
+        let buyInMetis = "10";
+        for(i of totalBuy){
+            for(let y = 1;y<buyers;y++){
+                await (ico_deployed.connect(signs[y]).buy({value : ethers.utils.parseEther(buyInMetis)}));
+            }
+            for(let y = 1;y<buyers;y++){
+                console.log("balance", ethers.utils.formatEther(await ico_deployed.balanceOf(signs[y].address)));
+            }
+//             console.log("balance dev", await ico_deployed.balanceOf(adrs[0].address));
+             console.log("Sold tracked in contract EFTT", ethers.utils.formatEther(await ico_deployed.SoldEFTT()));
+             console.log("ETH in contract EFTT", ethers.utils.formatEther(await ethers.provider.getBalance(ico_deployed.address)));
+
+            let blockNumBefore = await ethers.provider.getBlockNumber();
+            let blockBefore = await ethers.provider.getBlock(blockNumBefore);
+            let timestampBefore = blockBefore.timestamp;
+            console.log("block eth", blockNumBefore);
+            console.log("time eth", timestampBefore);
+            const unix_month = 2419200;
+             await ethers.provider.send("evm_mine", [timestampBefore + unix_month]);
+        //ending ico
+            await expect(ico_deployed.connect(adrs[0]).buy()).to.be.revertedWith("ICO is over :( ");
+            }
+
+//        console.log("balance eth", ethers.utils.formatEther(await ethers.provider.getBalance(adrs[0].address)));
+//        await (ico_deployed.connect(adrs[1]).buy({value : ethers.utils.parseEther("1.0")}));
+//        console.log("balance", ethers.utils.formatEther(await ico_deployed.balanceOf(adrs[1].address)));
+//        console.log("balance dev", await ico_deployed.balanceOf(adrs[0].address));
+//        console.log("balance eth", ethers.utils.formatEther(await ethers.provider.getBalance(adrs[0].address)));
+//        console.log("SOld trtacked in contract EFTT", ethers.utils.formatEther(await ico_deployed.SoldEFTT()));
+    });//end check whole buy function
 });
