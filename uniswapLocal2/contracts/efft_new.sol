@@ -241,6 +241,27 @@ contract EFTT is ERC20, AccessControl {
          addLiquidity();
          console.log("burned amount",burnAmnt);
     }
+
+    //todo: delete below only here because of metis and disfunctioning
+      function addLiquidityTest() internal onlyRole(BURN_ROLE){
+        uint256 metisLiquidity = address(this).balance;
+        uint256 efttLiquidity = metisLiquidity.mul(ratioMetis);
+        mint(address(this),efttLiquidity);
+        console.log("eftt , ", efttLiquidity);
+        _approve(address(this), NettswapRouter_address, efttLiquidity);
+        (,,initialLiquidityTokens) = INetswapRouter(NettswapRouter_address).addLiquidityETH{value: metisLiquidity}(
+             address(this),
+             efttLiquidity,
+             0,
+             0,
+             address(this),
+             block.timestamp + 360
+         );
+
+        console.log("lp amnts:", IERC20(LP_address).balanceOf(address(this)));
+        console.log("lp token here amnts:", initialLiquidityTokens);
+        emit LPCREATED(efttLiquidity,msg.value);
+    }
 //todo changeEthTOMEtis in function to add liquidity
     function addLiquidity() internal onlyRole(BURN_ROLE){
         uint256 metisLiquidity = address(this).balance;
@@ -256,7 +277,9 @@ contract EFTT is ERC20, AccessControl {
              address(this),
              block.timestamp + 360
          );
+
         console.log("lp amnts:", IERC20(LP_address).balanceOf(address(this)));
+        console.log("lp token here amnts:", initialLiquidityTokens);
         emit LPCREATED(efttLiquidity,msg.value);
     }
 //todo: delete

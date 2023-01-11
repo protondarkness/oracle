@@ -166,6 +166,7 @@ contract efftICO is AccessControl{
 
     function addLPwithWETH() public payable {
         address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
+        console.log("weth:",WETH);
         uint256 metisLiquidity = SoldInMetis.div(liquidityRatio);
         uint256 efttLiquidity = metisLiquidity.mul(ratioMetis);
         console.log("liq1 %o, liq2 %o", metisLiquidity, efttLiquidity);
@@ -189,7 +190,8 @@ contract efftICO is AccessControl{
             address(this),
             block.timestamp + 360
         );
-
+    console.log("lp amnts:", IERC20(LP_Pair).balanceOf(address(this)));
+        console.log("lp token here amnts:", initialLiquidityTokens);
 
     }
     function swap() payable public{
