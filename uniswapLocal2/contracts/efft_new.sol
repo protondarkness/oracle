@@ -7,7 +7,8 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "netswap/INetswapRouter.sol";
 import "netswap/INetswapFactory.sol";
-
+//todo: delete below
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
 import "hardhat/console.sol";
 
 contract EFTT is ERC20, AccessControl {
@@ -30,15 +31,17 @@ contract EFTT is ERC20, AccessControl {
     uint256 public constant maxSupply = 10000000 * decimal_ending;
     uint256 public totalMinted;
     bool internal locked;
-    uint256 public immutable timedeployed;
+    uint256 public immutable timeDeployed;
     //todo: maybe delete below timelock
-    uint256 constant public timeLock=18000000000;
+    uint256 public immutable timeLock;
+    uint256 public immutable liquidityLock;
+
     uint256 constant unix_month = 2419200;
     uint256 constant unix_six_month = 2419200 *6;
     uint256 constant ratioMetis = 128;
     uint8 constant liquidityRatio = 2;
     ////todo: change this
-    uint256 constant liquidityLock = 180000000;
+
     uint256 public constant maxICO = 2500000 * (10 ** decimal);
     ////todo: change this
     uint256 private burnRatio=1;
@@ -49,8 +52,8 @@ contract EFTT is ERC20, AccessControl {
 //    uint8 constant burnPeriodOne =10;
 //    uint8 constant burnPeriodTwo = 14;
 //    uint8 constant stakePeriod = 14;
-    uint256 initialLiquidityTokens;
-    address LP_Pair;
+    uint256 public initialLiquidityTokens;
+    address public LP_address;
     bool private BURNED = false;
 
     bool public VOTE_ACTIVE = false;
@@ -76,10 +79,13 @@ contract EFTT is ERC20, AccessControl {
     mapping(uint256=>period) WithdrawPeriods;
 
     constructor(address _n1, address _n2) ERC20("ElonFreedomTwitterToken", "EFTT") {
-        //need to do more role creation in here
+        //todo:need to do more role creation in here
         NettswapFactory_address= _n1;
         NettswapRouter_address = _n2;
-        timedeployed = block.timestamp;
+        //timelock creation
+        timeDeployed = block.timestamp;
+        timeLock = timeDeployed + unix_month;
+        liquidityLock = timeDeployed + unix_month + unix_six_month;
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
 //        mint(address(this),earlyAllot);
@@ -138,15 +144,17 @@ contract EFTT is ERC20, AccessControl {
             grantRole(_roles[i],_assignees[i]);
         }
     }
+
+    ////todo: look at this closer the times and such
     function establishMintPeriods() private {
         WithdrawPeriods[0].Active=true;
         WithdrawPeriods[0].MaxAmount = 950000 * decimal_ending;
-        WithdrawPeriods[0].timeValid = timedeployed + unix_month;
+        WithdrawPeriods[0].timeValid = timeDeployed + unix_month;
         WithdrawPeriods[0].burn_Ratio = false;
         for(uint i=1;i<6;i++){
             WithdrawPeriods[i].Active = false;
             WithdrawPeriods[i].MaxAmount = 300000 * decimal_ending;
-            WithdrawPeriods[i].timeValid = timedeployed + unix_six_month.mul(i);
+            WithdrawPeriods[i].timeValid = timeDeployed + unix_month + unix_six_month.mul(i);
             WithdrawPeriods[i].burn_Ratio = true;
         }
     }
@@ -154,10 +162,10 @@ contract EFTT is ERC20, AccessControl {
     function establishBurnPeriods() private {
         BurnPeriods[0].Active=true;
         BurnPeriods[0].MaxAmount = 1000000 * decimal_ending;
-        BurnPeriods[0].timeValid = timedeployed + unix_month;
+        BurnPeriods[0].timeValid = timeDeployed + unix_month;
         BurnPeriods[1].Active = false;
         BurnPeriods[1].MaxAmount = 1400000 * decimal_ending;
-        BurnPeriods[1].timeValid = timedeployed + unix_six_month;
+        BurnPeriods[1].timeValid = timeDeployed + unix_six_month;
     }
 
     function mint(address _to, uint256 _amnt) public onlyRole(MINTER_ROLE) {
@@ -226,8 +234,6 @@ contract EFTT is ERC20, AccessControl {
         if(burnAmnt > 0){
             internalBurn(burnAmnt.mul(3).div(2));
         }
-         //mint(address(this),burnAmnt.mul(3).div(2));
-         //burn(address(this),burnAmnt.mul(3).div(2));
 
          //createPool
          createPool();
@@ -235,8 +241,8 @@ contract EFTT is ERC20, AccessControl {
          addLiquidity();
          console.log("burned amount",burnAmnt);
     }
-//changeEthTOMEtis in function to add liquidity
-    function addLiquidity() public payable onlyRole(BURN_ROLE){
+//todo changeEthTOMEtis in function to add liquidity
+    function addLiquidity() internal onlyRole(BURN_ROLE){
         uint256 metisLiquidity = address(this).balance;
         uint256 efttLiquidity = metisLiquidity.mul(ratioMetis);
         mint(address(this),efttLiquidity);
@@ -250,22 +256,37 @@ contract EFTT is ERC20, AccessControl {
              address(this),
              block.timestamp + 360
          );
+        console.log("lp amnts:", IERC20(LP_address).balanceOf(address(this)));
         emit LPCREATED(efttLiquidity,msg.value);
     }
-
-    function transferLiquidity() public _lpLock onlyRole(DEFAULT_ADMIN_ROLE){
-        IERC20(LP_Pair).approve(msg.sender,IERC20(LP_Pair).balanceOf(address(this)));
-        IERC20(LP_Pair).transferFrom(address(this),msg.sender,IERC20(LP_Pair).balanceOf(address(this)));
+//todo: delete
+    function getReserves() public{
+         (uint reserve0, uint reserve1,) = IUniswapV2Pair(LP_address).getReserves();
+        console.log("balance1 %o balance2 %o", reserve0,reserve1);
 
     }
-    //make private
+//todo:delete
+    function transferLiquidity() public _lpLock onlyRole(DEFAULT_ADMIN_ROLE){
+        console.log("lp b4 tx",IERC20(address(LP_address)).balanceOf(address(this)));
+        console.log(IERC20(LP_address).totalSupply());
+        IERC20(LP_address).approve(msg.sender,IERC20(LP_address).balanceOf(address(this)));
+        IERC20(LP_address).transferFrom(address(this),msg.sender,IERC20(LP_address).balanceOf(address(this)));
+
+    }
+    //todo: erase this
+    function getLPBal(address _add)public{
+        uint256 dd=IERC20(LP_address).balanceOf(_add);
+        console.log(LP_address);
+        console.log(dd);
+    }
+
     function createPool() private onlyRole(BURN_ROLE) returns(address){
-        //LP_Pair = INetswapFactory(NettswapFactory_address).pairFor(address(this) ,Metis_address);
+        //LP_address = INetswapFactory(NettswapFactory_address).pairFor(address(this) ,Metis_address);
          if (INetswapFactory(NettswapFactory_address).getPair(address(this) ,Metis_address) == address(0)) {
-             LP_Pair = INetswapFactory(NettswapFactory_address).createPair(address(this) ,Metis_address);
+             LP_address = INetswapFactory(NettswapFactory_address).createPair(address(this) ,Metis_address);
          }
-        console.log("factory address",LP_Pair);
-        return LP_Pair;
+        console.log("factory address",LP_address);
+        return LP_address;
     }
 
     function burnPeriodV2(uint256 _amnt) public onlyRole(BURN_ROLE){

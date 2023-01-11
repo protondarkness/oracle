@@ -10,7 +10,7 @@ describe("Create ICO", function () {
   async function CreatePool() {
     //const  IUniswapV2Factory_address = '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f'; // uniswap v2 factory on ethereum mainnet
     //const IUniswapV2Router02_address ='0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D';
-    const EFT = await hre.ethers.getContractFactory("EFTT");
+    const EFT = await hre.ethers.getContractFactory("EFTT_old");
     const eft = await EFT.deploy();
     const Pool_att = await hre.ethers.getContractFactory("efftICO");
 

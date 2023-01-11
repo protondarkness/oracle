@@ -5,23 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, debugging">
+      <change afterPath="$PROJECT_DIR$/ethOracle/paymentchannels.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uniswapLocal2/test/IERC20.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/BaseOracle.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/BaseOracle.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/INetswapFactory.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/INetswapFactory.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/INetswapRouter.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/INetswapRouter.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/LPOracle.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/LPOracle.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/Multicall.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/Multicall.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/NetSwapRouter.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/NetSwapRouter.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/NetswapFactory.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/NetswapFactory.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/NetswapMath.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/NetswapMath.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/SafeMath.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/SafeMath.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/TestERC20.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/TestERC20.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/@nettswap/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/netswap/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efft_new.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uniswapLocal2/gas-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/gas-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uniswapLocal2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/Eftt.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/Eftt.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/efttICO.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/efttICO.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/oldcontracts/otherNecessaryFuncto/Iefft.sol" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/contracts/Iefft.sol" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/eftt_test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uniswapLocal2/test/icoTest1.js" beforeDir="false" afterPath="$PROJECT_DIR$/uniswapLocal2/test/icoTest1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,17 +74,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "editorconfig.notification": "lf;",
-    "last_opened_file_path": "/home/destro/Desktop/oracle/uniswapLocal2/node_modules",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;editorconfig.notification&quot;: &quot;lf;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/destro/Desktop/oracle/uniswapLocal2/node_modules&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/uniswapLocal2/node_modules" />
@@ -100,14 +94,35 @@
       <recent name="$PROJECT_DIR$/flaskWebsite/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/uniswapLocal2/contracts" />
+      <recent name="$PROJECT_DIR$/uniswapLocal2/test" />
       <recent name="$PROJECT_DIR$/uniswapLocal2" />
       <recent name="$PROJECT_DIR$/uniswapLocal2/contracts/oldcontracts" />
       <recent name="$PROJECT_DIR$/uniswapLocal2/contracts/otherNecessaryFuncto" />
-      <recent name="$PROJECT_DIR$/flaskWebsite/app/static" />
-      <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets/css" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.affirm">
+  <component name="RunManager" selected="Python.paymentchannels">
+    <configuration name="affirm (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oracle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ethOracle" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ethOracle/affirm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="affirm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="oracle" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,6 +136,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flaskWebsite/app/vote/affirm.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="paymentchannels" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="oracle" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ethOracle" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ethOracle/paymentchannels.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -205,6 +241,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.paymentchannels" />
+        <item itemvalue="Python.affirm (1)" />
         <item itemvalue="Python.affirm" />
         <item itemvalue="Python.verify" />
         <item itemvalue="Python.twitter" />
@@ -528,5 +566,21 @@
     <MESSAGE value="most up2date, started cranking the webpage almost done" />
     <MESSAGE value="most up2date, debugging" />
     <option name="LAST_COMMIT_MESSAGE" value="most up2date, debugging" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ethOracle/paymentchannels.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ethOracle/paymentchannels.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 
-contract EFTT is ERC20, Ownable, AccessControl {
+contract EFTT_old is ERC20, Ownable, AccessControl {
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant BURN_ROLE = keccak256("BURN_ROLE");
     bytes32 public constant BURN_ADMIN = keccak256("BURN_ADMIN");
@@ -15,7 +15,7 @@ contract EFTT is ERC20, Ownable, AccessControl {
     uint256 public constant decimal = 18;
     uint256 public constant maxSupply = 10000000 * 10** decimal;
     address public act1 =0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2;
-    uint256 public totalSupply;
+
     uint256 public totalMinted;
     bool internal locked;
 

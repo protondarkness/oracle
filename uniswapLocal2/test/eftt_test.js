@@ -8,7 +8,8 @@ const {
   loadFixture,
 } = require("@nomicfoundation/hardhat-network-helpers");
 require("@nomicfoundation/hardhat-chai-matchers");
-
+const IERC20ABI = require('../test/IERC20.json');
+const ERC20ABI = require('../scripts/erc20.abi.json');
 const roles = ["BURN_ROLE",
        "MINTER_ROLE",
        "DEV_INVESTOR_ROLE"];
@@ -198,7 +199,7 @@ describe("Contract Deployment ICO", function () {
 //             console.log("balance dev", await ico_deployed.balanceOf(adrs[0].address));
              console.log("Sold tracked in contract EFTT", ethers.utils.formatEther(await ico_deployed.SoldEFTT()));
              console.log("ETH in contract EFTT", ethers.utils.formatEther(await ethers.provider.getBalance(ico_deployed.address)));
-
+            console.log("ETH total to dev", ethers.utils.formatEther(await ethers.provider.getBalance(adrs[0].address)));
             let blockNumBefore = await ethers.provider.getBlockNumber();
             let blockBefore = await ethers.provider.getBlock(blockNumBefore);
             let timestampBefore = blockBefore.timestamp;
@@ -207,7 +208,25 @@ describe("Contract Deployment ICO", function () {
             const unix_month = 2419200;
              await ethers.provider.send("evm_mine", [timestampBefore + unix_month]);
         //ending ico
-            await expect(ico_deployed.connect(adrs[0]).buy()).to.be.revertedWith("ICO is over :( ");
+            await expect(ico_deployed.connect(adrs[0]).buy({value : ethers.utils.parseEther(buyInMetis)})).to.be.revertedWith("ICO is over :( ");
+             await (ico_deployed.connect(adrs[0]).endICO());
+            console.log("balance contract EFTT", await ico_deployed.balanceOf(ico_deployed.address));
+            console.log("SOld trtacked in contract EFTT", ethers.utils.formatEther(await ico_deployed.SoldEFTT()));
+            console.log("Total minted in contract EFTT", ethers.utils.formatEther(await ico_deployed.totalMinted()));
+            console.log("balance LP tokens", ethers.utils.formatEther(await ico_deployed.initialLiquidityTokens()));
+            const lpnum = await ico_deployed.connect(adrs[0]).getLPBal(adrs[0].address);
+            await ico_deployed.getReserves();
+            await ethers.provider.send("evm_mine", [timestampBefore + unix_month*8]);
+            await ico_deployed.connect(adrs[0]).transferLiquidity();
+            const lp_pair = await ico_deployed.LP_address();
+            console.log("lp add", lp_pair);
+//            const provider = ethers.provider;
+//            const DAI = new ethers.Contract(lp_pair, ERC20ABI, adrs[0]);
+//            const DAI = await ethers.getContractFactory(lp_pair, ERC20ABI, provider);
+//            let factory = await ethers.getContractFactory('EFTT');
+//            let ierc20 = await factory.attach(lp_pair);
+
+
             }
 
 //        console.log("balance eth", ethers.utils.formatEther(await ethers.provider.getBalance(adrs[0].address)));
