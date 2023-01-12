@@ -56,6 +56,13 @@ it("withdraw LP", async function () {
      });
 
 it("test allowance", async function(){
+     const [owner,add1,add2] = await ethers.getSigners();
+     const {pool_att , eft} = await loadFixture(CreatePool);
+     let a1 = '0x259ef6776648500d7f1a8aba3651e38b1121e65e';
+     let a2 = '0xdeaddeaddeaddeaddeaddeaddeaddeaddead0000';
+     let f1 ='0x70f51d68D16e8f9e418441280342BD43AC9Dff9f';
+     let a3 = '0x60312d4ebbf3617d3d33841906b5868a86931cbd';
+     const lp = await pool_att.createPoolv2(a2,a1,f1);
 
 
     });

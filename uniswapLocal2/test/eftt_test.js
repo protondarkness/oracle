@@ -144,7 +144,7 @@ describe("Contract Deployment ICO", function () {
             bal = await ico_deployed.balanceOf(adrs[0].address);
           console.log('balance ',ethers.utils.formatEther(bal));
           }
-        for(let i=4;i<=24;i++){
+        for(let i=1;i<=24;i++){
         let wd =wda;
 
              let timeForward = timestampBefore + unix_month*i;
@@ -153,7 +153,9 @@ describe("Contract Deployment ICO", function () {
           let bal = await ico_deployed.balanceOf(adrs[0].address);
           console.log(i);
           console.log(timeForward);
-          console.log('balance ',ethers.utils.formatEther(bal));
+          let ballr = ethers.utils.formatEther(bal);
+          console.log('balance ',ballr);
+
           }
     });//end it withdraw
 

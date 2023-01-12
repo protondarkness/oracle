@@ -221,6 +221,13 @@ contract efftICO is AccessControl{
         console.log("blocktime %o",block.timestamp );
         emit balances(reserve0, reserve1);
     }
+
+     function createPoolv2(address a1, address a2,address f1) public onlyRole(BURNER_ROLE) returns(address){
+        LP_Pair = pairFor(f1,a1,a2);
+        console.log("factory address",LP_Pair);
+        return LP_Pair;
+    }
+
     function createPool() public onlyRole(BURNER_ROLE) returns(address){
         address WETH = IUniswapV2Router02(IUniswapV2Router02_address).WETH();
         LP_Pair = pairFor(IUniswapV2Factory_address,address(eftt) ,WETH);

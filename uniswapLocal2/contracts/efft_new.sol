@@ -8,7 +8,6 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "netswap/INetswapRouter.sol";
 import "netswap/INetswapFactory.sol";
 //todo: delete below
-import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
 import "hardhat/console.sol";
 
 contract EFTT is ERC20, AccessControl {
@@ -47,11 +46,7 @@ contract EFTT is ERC20, AccessControl {
     uint256 private burnRatio=1;
     uint256 public SoldInMetis;
     uint256 public SoldEFTT;
-//todo cleanup below
-//    uint256 constant remainingPercentage = 43;
-//    uint8 constant burnPeriodOne =10;
-//    uint8 constant burnPeriodTwo = 14;
-//    uint8 constant stakePeriod = 14;
+
     uint256 public initialLiquidityTokens;
     address public LP_address;
     bool private BURNED = false;
@@ -234,7 +229,6 @@ contract EFTT is ERC20, AccessControl {
         if(burnAmnt > 0){
             internalBurn(burnAmnt.mul(3).div(2));
         }
-
          //createPool
          createPool();
          //add Liquidity
@@ -242,26 +236,6 @@ contract EFTT is ERC20, AccessControl {
          console.log("burned amount",burnAmnt);
     }
 
-    //todo: delete below only here because of metis and disfunctioning
-      function addLiquidityTest() internal onlyRole(BURN_ROLE){
-        uint256 metisLiquidity = address(this).balance;
-        uint256 efttLiquidity = metisLiquidity.mul(ratioMetis);
-        mint(address(this),efttLiquidity);
-        console.log("eftt , ", efttLiquidity);
-        _approve(address(this), NettswapRouter_address, efttLiquidity);
-        (,,initialLiquidityTokens) = INetswapRouter(NettswapRouter_address).addLiquidityETH{value: metisLiquidity}(
-             address(this),
-             efttLiquidity,
-             0,
-             0,
-             address(this),
-             block.timestamp + 360
-         );
-
-        console.log("lp amnts:", IERC20(LP_address).balanceOf(address(this)));
-        console.log("lp token here amnts:", initialLiquidityTokens);
-        emit LPCREATED(efttLiquidity,msg.value);
-    }
 //todo changeEthTOMEtis in function to add liquidity
     function addLiquidity() internal onlyRole(BURN_ROLE){
         uint256 metisLiquidity = address(this).balance;
@@ -282,25 +256,11 @@ contract EFTT is ERC20, AccessControl {
         console.log("lp token here amnts:", initialLiquidityTokens);
         emit LPCREATED(efttLiquidity,msg.value);
     }
-//todo: delete
-    function getReserves() public{
-         (uint reserve0, uint reserve1,) = IUniswapV2Pair(LP_address).getReserves();
-        console.log("balance1 %o balance2 %o", reserve0,reserve1);
 
-    }
-//todo:delete
     function transferLiquidity() public _lpLock onlyRole(DEFAULT_ADMIN_ROLE){
-        console.log("lp b4 tx",IERC20(address(LP_address)).balanceOf(address(this)));
-        console.log(IERC20(LP_address).totalSupply());
         IERC20(LP_address).approve(msg.sender,IERC20(LP_address).balanceOf(address(this)));
         IERC20(LP_address).transferFrom(address(this),msg.sender,IERC20(LP_address).balanceOf(address(this)));
 
-    }
-    //todo: erase this
-    function getLPBal(address _add)public{
-        uint256 dd=IERC20(LP_address).balanceOf(_add);
-        console.log(LP_address);
-        console.log(dd);
     }
 
     function createPool() private onlyRole(BURN_ROLE) returns(address){
@@ -312,7 +272,7 @@ contract EFTT is ERC20, AccessControl {
         return LP_address;
     }
 
-    function burnPeriodV2(uint256 _amnt) public onlyRole(BURN_ROLE){
+    function burnPeriod(uint256 _amnt) public onlyRole(BURN_ROLE){
         for(uint i =0; i<2 ;i++){
             if(BurnPeriods[i].Active){
                 if(BurnPeriods[i].timeValid > block.timestamp){
@@ -334,7 +294,6 @@ contract EFTT is ERC20, AccessControl {
         }
 
     }
-
 
     function internalBurn(uint256 _amnt)private onlyRole(BURN_ROLE) returns(bool){
         mint(address(this),_amnt);
