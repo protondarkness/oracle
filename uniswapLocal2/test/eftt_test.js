@@ -12,10 +12,11 @@ const IERC20ABI = require('../test/IERC20.json');
 const ERC20ABI = require('../scripts/erc20.abi.json');
 const roles = ["BURN_ROLE",
        "MINTER_ROLE",
-       "DEV_INVESTOR_ROLE"];
+       "DEV_INVESTOR_ROLE","LIQUIDITY_ROLE"];
 const mint = keccak256(toUtf8Bytes(roles[1]));
 const burn = keccak256(toUtf8Bytes(roles[0]));
 const inv = keccak256(toUtf8Bytes(roles[2]));
+const liq = keccak256(toUtf8Bytes(roles[3]));
 const admin = '0x0000000000000000000000000000000000000000000000000000000000000000';
 
 describe("Contract Deployment ICO", function () {
@@ -32,19 +33,7 @@ describe("Contract Deployment ICO", function () {
 
     return { ico_deployed ,adrs};
   }
-  //mint
-  //burn
-  //invDevSocialWithdraw
-  //
-  //buy
-  //recieve
-  //fallback
-  //endico
-    //addliquidity
-    //transferliquidity
-    //createpool
-    //burnperiod
-    //vote stuff
+
   describe("ICO period", function (){
     it("Check set Roles", async function () {
   // ...deploy the contract as before...
@@ -190,7 +179,7 @@ describe("Contract Deployment ICO", function () {
 
         let totalBuy = [1000];
         let buyers = 18;
-        let buyInMetis = "10";
+        let buyInMetis = "9";
         for(i of totalBuy){
             for(let y = 1;y<buyers;y++){
                 await (ico_deployed.connect(signs[y]).buy({value : ethers.utils.parseEther(buyInMetis)}));
@@ -212,16 +201,25 @@ describe("Contract Deployment ICO", function () {
         //ending ico
             await expect(ico_deployed.connect(adrs[0]).buy({value : ethers.utils.parseEther(buyInMetis)})).to.be.revertedWith("ICO is over :( ");
              await (ico_deployed.connect(adrs[0]).endICO());
+             console.log("----------ico ended----------")
             console.log("balance contract EFTT", await ico_deployed.balanceOf(ico_deployed.address));
             console.log("SOld trtacked in contract EFTT", ethers.utils.formatEther(await ico_deployed.SoldEFTT()));
+            console.log("MEtis ratio", await ico_deployed.burnRatio());
             console.log("Total minted in contract EFTT", ethers.utils.formatEther(await ico_deployed.totalMinted()));
             console.log("balance LP tokens", ethers.utils.formatEther(await ico_deployed.initialLiquidityTokens()));
-            const lpnum = await ico_deployed.connect(adrs[0]).getLPBal(adrs[0].address);
-            await ico_deployed.getReserves();
+            console.log("tyr", await ico_deployed.LP_address());
+            let lp_pair = await ico_deployed.LP_address();
+            const provider = ethers.provider;
+            const LP = await ethers.getContractAt( ERC20ABI, lp_pair);
+             console.log("toks", ethers.utils.formatEther(await LP.balanceOf(ico_deployed.address)));
+
             await ethers.provider.send("evm_mine", [timestampBefore + unix_month*8]);
-            await ico_deployed.connect(adrs[0]).transferLiquidity();
-            const lp_pair = await ico_deployed.LP_address();
-            console.log("lp add", lp_pair);
+            await (ico_deployed.connect(adrs[0]).grantRole(liq, adrs[0].address));
+            await ico_deployed.transferLiquidity();
+
+            console.log("toks 1:", ethers.utils.formatEther(await LP.balanceOf(ico_deployed.address)));
+            console.log("toks 2:", ethers.utils.formatEther(await LP.balanceOf(adrs[0].address)));
+
 //            const provider = ethers.provider;
 //            const DAI = new ethers.Contract(lp_pair, ERC20ABI, adrs[0]);
 //            const DAI = await ethers.getContractFactory(lp_pair, ERC20ABI, provider);
