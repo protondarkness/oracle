@@ -12,11 +12,12 @@ const IERC20ABI = require('../test/IERC20.json');
 const ERC20ABI = require('../scripts/erc20.abi.json');
 const roles = ["BURN_ROLE",
        "MINTER_ROLE",
-       "DEV_INVESTOR_ROLE","LIQUIDITY_ROLE"];
+       "DEV_INVESTOR_ROLE","LIQUIDITY_ROLE","VOTE_ROLE"];
 const mint = keccak256(toUtf8Bytes(roles[1]));
 const burn = keccak256(toUtf8Bytes(roles[0]));
 const inv = keccak256(toUtf8Bytes(roles[2]));
 const liq = keccak256(toUtf8Bytes(roles[3]));
+const vot = keccak256(toUtf8Bytes(roles[4]));
 const admin = '0x0000000000000000000000000000000000000000000000000000000000000000';
 
 describe("Contract Deployment ICO", function () {
@@ -62,6 +63,13 @@ describe("Contract Deployment ICO", function () {
 
         });//describe("ICO period") end
 
+    it("check staking" , async function () {
+         const {ico_deployed,adrs } = await loadFixture(DeployFixture);
+        const rolemsg = await (ico_deployed.grantRole(mint,adrs[2].address));
+        const newRole = await (ico_deployed.connect(adrs[2]).grantRole(mint,adrs[3].address));
+
+
+    });
 
     it("Check Buy from ICO", async function () {
         const {ico_deployed,adrs } = await loadFixture(DeployFixture);
@@ -207,21 +215,49 @@ describe("Contract Deployment ICO", function () {
     it("Test vote", async function () {
         const {ico_deployed,adrs } = await loadFixture(DeployFixture);
         await (ico_deployed.connect(adrs[0]).grantRole(mint, adrs[0].address));
+        await (ico_deployed.connect(adrs[0]).grantRole(vot, adrs[0].address));
+        await (ico_deployed.connect(adrs[0]).grantRole(inv, adrs[0].address));
         const accounts = await hre.ethers.getSigners();
         let acts = [];
         let bal = [];
         for(i of accounts){
-        console.log(i.address);
-        await ico_deployed.connect(adrs[0]).mint(i.address,100);
-        acts.push(i.address);
-        bal.push(100);
+            await expect(ico_deployed.connect(i).vote(true)).to.be.revertedWith("Voting is not active");
+        }
+         await ico_deployed.connect(adrs[0]).setUpVote(true,100,acts,bal);
+
+
+
+
+         for(i of accounts){
+         await expect(ico_deployed.connect(i).vote(true)).to.be.revertedWith("you must own token to vote");
+        }
+
+        for(i of accounts){
+            console.log(i.address);
+            await ico_deployed.connect(adrs[0]).mintshares(i.address,100);
+            acts.push(i.address);
+            bal.push(100);
+        }
+
+        for(i of accounts){
+            await ico_deployed.connect(i).vote(true);
         }
         console.log(bal);
-        await ico_deployed.connect(adrs[0]).setUpVote(true,100,acts,bal);
         for(i of accounts){
-        await ico_deployed.connect(i).vote(true);
+            await expect(ico_deployed.connect(i).vote(true)).to.be.revertedWith("you already voted once");
         }
-        await ico_deployed.connect(i).checkVoteResults();
+         let blockNumBefore = await ethers.provider.getBlockNumber();
+            let blockBefore = await ethers.provider.getBlock(blockNumBefore);
+            let timestampBefore = blockBefore.timestamp;
+            await ethers.provider.send("evm_mine", [timestampBefore + 120]);
+
+         for(i of accounts){
+            await expect(ico_deployed.connect(i).vote(true)).to.be.revertedWith("time to vote is over");
+        }
+
+        await ico_deployed.connect(adrs[0]).checkVoteResults();
+        console.log("Burned", await ico_deployed.totalBurned());
+        console.log("Minted", await ico_deployed.totalMinted());
        });//endtest vote
 
     it("Check whole buy", async function () {

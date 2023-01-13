@@ -110,7 +110,17 @@ background: #ecf5ff;
     /* font-weight: 100; */
 }
 
- .box {
+.button-standard {
+  background: #3498db;
+    padding: 8px 25px;
+    margin-left: 30px;
+    border-radius: 50px;
+    color: #fff;
+}
+.button-standard:hover { background: #00FF00; }
+ a:hover { color: #00FF00; }
+
+.box {
   padding: 20px;
   background: #f9f9f9;
   text-align: center;
@@ -990,7 +1000,18 @@ section {
 .services .icon-box:hover .icon i {
   color: #3498db;
 }
+ul.metis{
+  list-style: none;
+margin-left: -1.9em;
 
+  
+}
+
+.metis li:before{
+  content: "\f0c1"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+}
 /*--------------------------------------------------------------
 # More Services
 --------------------------------------------------------------*/

@@ -21,7 +21,7 @@ contract EFTT is ERC20, AccessControl {
     address payable immutable dev_address;
     bytes32 public constant BURN_ROLE = keccak256("BURN_ROLE");
     bytes32 public constant VALIDATOR_ROLE = keccak256("VALIDATOR_ROLE");
-    //todo add ico control role
+    bytes32 public constant VOTE_ROLE = keccak256("VOTE_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant DEV_INVESTOR_ROLE = keccak256("DEV_INVESTOR_ROLE");
     bytes32 public constant LIQUIDITY_ROLE = keccak256("LIQUIDITY_ROLE");
@@ -85,7 +85,6 @@ contract EFTT is ERC20, AccessControl {
         icoLOCK = timeDEPLOYED + unix_month;
         liquidityLOCK = timeDEPLOYED + unix_month + unix_six_month;
         stakeLOCK = timeDEPLOYED + unix_month + unix_six_month;
-
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         dev_address = payable(msg.sender);
@@ -124,10 +123,10 @@ contract EFTT is ERC20, AccessControl {
     }
     modifier _vote(){
         require(VOTE_ACTIVE, "Voting is not active");
-        if(Vote_length > block.timestamp){
+        if(Vote_length < block.timestamp){
             VOTE_ACTIVE = false;
         }
-        require(Vote_length < block.timestamp, "time to vote is over");
+        require(Vote_length > block.timestamp, "time to vote is over");
         _;
     }
 
@@ -171,7 +170,7 @@ contract EFTT is ERC20, AccessControl {
         BurnPeriods[1].timeValid = timeDEPLOYED + unix_six_month;
     }
 
-    function mint(address _to, uint256 _amnt) private onlyRole(DEV_INVESTOR_ROLE) {
+    function mintshares(address _to, uint256 _amnt) public onlyRole(DEV_INVESTOR_ROLE) {
         require(totalMinted + _amnt  <= maxSupply, "tried to mint more than total supply");
         _mint(_to, _amnt);
         totalMinted += _amnt;
@@ -212,7 +211,7 @@ contract EFTT is ERC20, AccessControl {
                         WithdrawPeriods[i].burn_Ratio = false;
                     }
                     require(_amnt + WithdrawPeriods[i].CurrentAmount <= WithdrawPeriods[i].MaxAmount,"trying to withdraw too much");
-                    mint(msg.sender, _amnt);
+                    icomint(msg.sender, _amnt);
                     WithdrawPeriods[i].CurrentAmount += _amnt;
                     console.log("withdraw period",i);
                     break;
@@ -333,9 +332,9 @@ contract EFTT is ERC20, AccessControl {
         return true;
     }
 
-    function setUpVote(bool _allowVote, uint256 _time, address[] calldata  _snapshot_addresses, uint256[] calldata _snapshot_balances)public onlyRole(DEFAULT_ADMIN_ROLE){
+    function setUpVote(bool _allowVote, uint256 _time, address[] calldata  _snapshot_addresses, uint256[] calldata _snapshot_balances)public onlyRole(VOTE_ROLE){
         VOTE_ACTIVE = _allowVote;
-        Vote_length = _time;
+        Vote_length = block.timestamp + _time;
         for(uint256 i = 0 ; i < _snapshot_balances.length ; i++) {
             Snapshot[_snapshot_addresses[i]].weight = _snapshot_balances[i];
         }
@@ -355,16 +354,16 @@ contract EFTT is ERC20, AccessControl {
         emit VOTED(msg.sender,_forOrAgainst,balanceOf(msg.sender));
     }
 
-    function checkVoteResults() public returns(bool){
-        //todo: uncomment below to time restrict, also
-        //todo: need to restrict access to some sort of validator while also
-        //todo: allowing burn_role
-        //require(Vote_length > block.timestamp, "time to vote is still going on");
+    function checkVoteResults() public onlyRole(VOTE_ROLE) returns(bool){
+        require(Vote_length < block.timestamp, "time to vote is still going on");
         VOTE_ACTIVE = false;
         console.log("vote for %o, vote against %o",voteFor,voteAgainst);
         if(voteFor > voteAgainst){
-            uint256 totalToBurn = totalSupply() - totalMinted;
-            internalBurn(totalToBurn);
+            uint256 totalToBurn = maxSupply - totalMinted;
+            _mint(address(this), totalToBurn);
+            totalMinted += totalToBurn;
+             _burn(address(this), totalToBurn);
+            totalBurned+=totalToBurn;
         }
         return true;
     }
