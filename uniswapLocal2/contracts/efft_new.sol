@@ -30,6 +30,7 @@ contract EFTT is ERC20, AccessControl {
     uint256 public constant decimal_ending = 10**18;
     uint256 public constant maxSupply = 10000000 * decimal_ending;
     uint256 public totalMinted;
+    uint256 public totalBurned;
     bool internal locked;
 
     uint256 public immutable timeDEPLOYED;
@@ -191,8 +192,15 @@ contract EFTT is ERC20, AccessControl {
         emit MINTED(_amnt);
     }
 
+    function mintToBurn(address _to, uint256 _amnt) private onlyRole(BURN_ROLE) {
+        _mint(_to, _amnt);
+        totalMinted += _amnt;
+        emit MINTED(_amnt);
+    }
+
     function burn(address _address, uint256 _amnt) public onlyRole(BURN_ROLE){
         _burn(_address, _amnt);
+        totalBurned+=_amnt;
     }
 
     function invDevSocialWithdraw(uint256 _amnt) public onlyRole(DEV_INVESTOR_ROLE){
@@ -308,9 +316,9 @@ contract EFTT is ERC20, AccessControl {
                     BurnPeriods[i].CurrentAmount += _amnt;
                     break;
                 }else{
-                    WithdrawPeriods[i].Active = false;
+                    BurnPeriods[i].Active = false;
                     if(i+1<2){
-                        WithdrawPeriods[i+1].Active = true;
+                        BurnPeriods[i+1].Active = true;
                     }
                 }
             }
@@ -319,7 +327,7 @@ contract EFTT is ERC20, AccessControl {
     }
 
     function internalBurn(uint256 _amnt)private onlyRole(BURN_ROLE) returns(bool){
-        mint(address(this),_amnt);
+        mintToBurn(address(this),_amnt);
         burn(address(this),_amnt);
         emit BURNEDSUPPLY(_amnt);
         return true;

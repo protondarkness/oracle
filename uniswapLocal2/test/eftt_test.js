@@ -118,35 +118,91 @@ describe("Contract Deployment ICO", function () {
         let wdb = 50000*10**18;
 
         let bal=0;
-        for(let i=1;i<=24;i++){
-          let wd =wda;
-          if(ethers.utils.formatEther(bal)==900000){
-          wd=wdb;
-          }
-          if(ethers.utils.formatEther(bal)>900000){
-            console.log("made here");
-             await expect(ico_deployed.invDevSocialWithdraw(wd.toLocaleString('fullwide', {useGrouping:false}))).to.be.revertedWith("trying to withdraw too much");
-          }else{
-             await ico_deployed.invDevSocialWithdraw(wd.toLocaleString('fullwide', {useGrouping:false}));
-            }
-            console.log(i);
-            bal = await ico_deployed.balanceOf(adrs[0].address);
-          console.log('balance ',ethers.utils.formatEther(bal));
-          }
-        for(let i=1;i<=24;i++){
-        let wd =wda;
+        let periods = [0,1,7,13,19,25,26];
+        let wds = [wda*9 +wdb ,3*wda,3*wda,3*wda,3*wda,wda*3];
+        const timeDeployed = (await ico_deployed.timeDEPLOYED()).toNumber();
+        console.log("deployed ",timeDeployed);
+        let timeForward = timeDeployed;
+        for(let i=0;i<6;i++){
+          for(let j = 0; j<3; j++){
+                if(j == 0){
+                    await ico_deployed.invDevSocialWithdraw(wds[i].toLocaleString('fullwide', {useGrouping:false}));
+                    console.log("period ",i);
+                     console.log("section ",j);
+                }
+                if(j == 1){
+                    await expect(ico_deployed.invDevSocialWithdraw(wds[i].toLocaleString('fullwide', {useGrouping:false}))).to.be.revertedWith("trying to withdraw too much");
+                    console.log("period ",i);
+                     console.log("section ",j);
+                }
+                if(j==2){
+                    timeForward = timeDeployed + periods[i+1]*unix_month;
+                    console.log(timeForward);
+                    await ethers.provider.send("evm_mine", [timeForward]);
+                    console.log("period ",i);
+                     console.log("section ",j);
+                     bal = await ico_deployed.balanceOf(adrs[0].address);
+                console.log('balance ',ethers.utils.formatEther(bal));
+                }
 
-             let timeForward = timestampBefore + unix_month*i;
-             await ethers.provider.send("evm_mine", [timeForward]);
-          await ico_deployed.invDevSocialWithdraw(wd.toLocaleString('fullwide', {useGrouping:false}));
-          let bal = await ico_deployed.balanceOf(adrs[0].address);
-          console.log(i);
-          console.log(timeForward);
-          let ballr = ethers.utils.formatEther(bal);
-          console.log('balance ',ballr);
-
           }
+          }
+
+
+
     });//end it withdraw
+
+     it("Test Burn periods", async function (){
+    const unix_month = 2419200;
+     const {ico_deployed,adrs } = await loadFixture(DeployFixture);
+     await (ico_deployed.connect(adrs[0]).grantRole(burn, adrs[0].address));
+    //6 periods, firts is 950k
+    //after is 300k
+    let blockNumBefore = await ethers.provider.getBlockNumber();
+        let blockBefore = await ethers.provider.getBlock(blockNumBefore);
+        let timestampBefore = blockBefore.timestamp;
+        console.log("block eth", blockNumBefore);
+        console.log("time eth", timestampBefore);
+        let wda = 1000000*10**18;
+        let wdb = 400000*10**18;
+
+        let bal=0;
+        let periods = [0,1,7,8];
+        let wds = [wda,wda + wdb,wdb];
+        const timeDeployed = (await ico_deployed.timeDEPLOYED()).toNumber();
+        console.log("deployed ",timeDeployed);
+        let timeForward = timeDeployed;
+        for(let i=0;i<3;i++){
+          for(let j = 0; j<3; j++){
+                if(j == 0){
+                    await ico_deployed.burnPeriod(wds[i].toLocaleString('fullwide', {useGrouping:false}));
+                    console.log("period ",i);
+                     console.log("section ",j);
+                }
+                if(j == 1){
+                    if(i<2){
+                    await expect(ico_deployed.burnPeriod(wds[i].toLocaleString('fullwide', {useGrouping:false}))).to.be.revertedWith("trying to burn too much");
+                    }
+                    console.log("period ",i);
+                     console.log("section ",j);
+                }
+                if(j==2){
+                    timeForward = timeDeployed + periods[i+1]*unix_month;
+                    console.log(timeForward);
+                    await ethers.provider.send("evm_mine", [timeForward]);
+                    console.log("period ",i);
+                     console.log("section ",j);
+                     bal = await ico_deployed.totalBurned();
+                console.log('bURNED!!! ',ethers.utils.formatEther(bal));
+                }
+
+          }
+          }
+
+
+
+    });//end it withdraw
+
 
     it("Test vote", async function () {
         const {ico_deployed,adrs } = await loadFixture(DeployFixture);
