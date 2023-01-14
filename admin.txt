@@ -1,4 +1,14 @@
 digital ocean --- M@H@v1shnu
 namecheap ---- darkproton
 		Bonds257301
-		
+github server access key
+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
+--then do git clone https://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@github.com/<your account or organization>/<repo>.git
+
+--pip install helpful 
+--below will go line by line and not stop on failure
+cat requirements.txt | sed -e '/^\s*#.*$/d' -e '/^\s*$/d' | xargs -n 1 python -m pip install
+
+--install pip-tools 
+--make sure using python3>
+--remove version numbers from requirements file
