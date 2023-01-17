@@ -5,10 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, debugging">
+      <change afterPath="$PROJECT_DIR$/graphics/1378540120.or.73060.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/F24VWRYGM9QKQ1O.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/FX330P5JD4UNBZI.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/Window-Frame-Template.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/Window-Frame-Template.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/bg-generic.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/bg-genric3.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/bg1.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/bgmain.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/graphicsWebsite.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/win dowsbg.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/admin.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/reqs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/reqs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/metis/metis.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/metis/metis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,24 +80,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;editorconfig.notification&quot;: &quot;lf;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/destro/Desktop/oracle/uniswapLocal2/node_modules&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "editorconfig.notification": "lf;",
+    "last_opened_file_path": "/home/destro/Desktop/oracle/flaskWebsite/app/static/assets",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "editor.preferences.appearance"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/flaskWebsite/app/static/assets" />
       <recent name="$PROJECT_DIR$/uniswapLocal2/node_modules" />
       <recent name="$PROJECT_DIR$/ethOracle/src" />
       <recent name="$PROJECT_DIR$/uniswapLocal2" />
       <recent name="$PROJECT_DIR$/flaskWebsite/app/templates" />
-      <recent name="$PROJECT_DIR$/flaskWebsite/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/uniswapLocal2/contracts" />
@@ -517,7 +530,21 @@
       <option name="project" value="LOCAL" />
       <updated>1673653279043</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="most up2date, debugging">
+      <created>1673733016128</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1673733016128</updated>
+    </task>
+    <task id="LOCAL-00041" summary="most up2date, debugging">
+      <created>1673733040253</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1673733040253</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

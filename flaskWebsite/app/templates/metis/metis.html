@@ -3,20 +3,32 @@
 {% extends "main/base.html" %}
 
 {% block services %}
+<link href="{{url_for('static', filename='assets/7.css/dist/7.css')}}" rel="stylesheet">
 
-
-     <section id="services" class="services">
+     <section id="services" class="services" style="background-image:url('{{url_for('static', filename='assets/img/bg-genric2.png')}}')">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
           <h2>Metis Links</h2>
         </div>
           <div class="row mb-3">
-              <div class="box recommended" data-aos="fade-down" data-aos-delay="100">
+              <div class="window">
+                   <div class="title-bar">
+    <div class="title-bar-text">A window with contents</div>
+    <div class="title-bar-controls">
+      <button aria-label="Minimize"></button>
+      <button aria-label="Maximize"></button>
+      <button aria-label="Close"></button>
+    </div>
+  </div>
+  <div class="window-body has-space">
+<!--              <div class="box recommended" data-aos="fade-down" data-aos-delay="100">-->
                   Metis is an Ethereum Layer 2 optimistic rollup platform originally forked from Optimism and launched on mainnet on 19 November 2021.
 
 It is an easy-to-use, highly scalable, low-cost, and fully functional Layer 2 framework that supports a wide range of use cases, including yield farming, DEX trading, and powering the gig economy via dApps that offer cheap and fast micropayments.
 
+<!--              </div>-->
+                  </div>
               </div>
           </div>
       <div class="row p-3 justify-content-evenly">
@@ -58,7 +70,7 @@ It is an easy-to-use, highly scalable, low-cost, and fully functional Layer 2 fr
       </div>
     </section>
 
-    <section id="more_services" class="pricing">
+    <section id="more_services" class="pricing" style="background-image:url('{{url_for('static', filename='assets/img/bg-genric3.png')}}')">
       <div class="container">
 
         <div class="section-title" data-aos="fade-up">
