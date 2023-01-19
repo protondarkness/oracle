@@ -5,9 +5,11 @@
 {% block services %}
 <link href="{{url_for('static', filename='assets/7.css/dist/7.css')}}" rel="stylesheet">
 
-     <section id="services" class="services" style="background-image:url('{{url_for('static', filename='assets/img/bg-genric2.png')}}')">
-      <div class="container">
+     <section id="services" class="services" style="background-image:url('{{url_for('static', filename='assets/img/testBG.png')}}')">
 
+      <div class="container">
+<!--            <div class="footer-img" style="background-image:url('{{url_for('static', filename='assets/img/taskbar.png')}}'); bottom: 0;-->
+<!--        height: 60px; "></div>-->
         <div class="section-title" data-aos="fade-up">
           <h2>Metis Links</h2>
         </div>
@@ -32,15 +34,35 @@ It is an easy-to-use, highly scalable, low-cost, and fully functional Layer 2 fr
               </div>
           </div>
       <div class="row p-3 justify-content-evenly">
-            <div class="col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><img src="{{url_for('static', filename='assets/img/metis/metis-logo-1.png')}}"></img></div>
-              <h4 class="title"><a href="">Metis</a></h4>
-              <p class="description">All the information straight from Metis</p>
-               <p></br> <a class="button-standard" href="https://metis.io/">Go To Metis</a></p>
+<!--            <div class="col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">-->
+<!--            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">-->
+<!--              <div class="icon"><img src="{{url_for('static', filename='assets/img/metis/metis-logo-1.png')}}"></img></div>-->
+<!--              <h4 class="title"><a href="">Metis</a></h4>-->
+<!--              <p class="description">All the information straight from Metis</p>-->
+<!--               <p></br> <a class="button-standard" href="https://metis.io/">Go To Metis</a></p>-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="col-md-3 col-lg-3  mb-5 mb-lg-0">
+            <div class="window " data-aos="fade-up" data-aos-delay="100" >
+  <div class="title-bar">
+    <div class="title-bar-text">Metis </div>
+  </div>
+  <div class="window-body has-space">
+     <p class="description">All the information straight from Metis</p>
+    <ul>
+      <li>A Task Manager</li>
+      <li>A Notepad</li>
+      <li>Or even a File Explorer!</li>
+    </ul>
+  </div>
+  <div class="status-bar">
+    <p class="status-bar-field">Press F1 for help</p>
+    <p class="status-bar-field">Slide 1</p>
+    <p class="status-bar-field">CPU Usage: 44%</p>
+  </div>
+</div>
             </div>
-          </div>
-            <div class="col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
               <div class="icon"><img src="{{url_for('static', filename='assets/img/metis/bridge.png')}}"></img></div>
               <h4 class="title"><a href="">Bridge</a></h4>
@@ -68,6 +90,7 @@ It is an easy-to-use, highly scalable, low-cost, and fully functional Layer 2 fr
 
 
       </div>
+                     <div class="footer-img col-12"><img src="{{url_for('static', filename='assets/img/taskbar.png')}}"></div>
     </section>
 
     <section id="more_services" class="pricing" style="background-image:url('{{url_for('static', filename='assets/img/bg-genric3.png')}}')">
