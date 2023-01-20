@@ -4,8 +4,12 @@
   <link href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
    <script src="{{url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <link href="{{url_for('static', filename='assets/7.css/dist/7.css')}}" rel="stylesheet">
-  <style>
 
+  <style>
+@font-face {
+  font-family: winfont;
+  src: url({{url_for('static', filename='assets/98.css/fonts/src/ms-sans-serif/MS Sans Serif.ttf')}});
+}
     .navbar-custom {
             background-color: #c3c3c3;
         }
@@ -40,6 +44,16 @@
 -o-background-size: cover;
  background-position:center center;
 }
+.nav-link{
+
+padding-bottom:2px;
+}
+.icon-desc{
+font-family:winfont;
+font-size:14px;
+padding-bottom:6px;
+}
+
   </style>
 </head>
 <body>
@@ -105,35 +119,41 @@
                     <img src="{{url_for('static', filename='assets/img/icons/eftt.png')}}">
                 </a>
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                    <li class="nav-item item-spec">
+                        <a href="#" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                        <img src="{{url_for('static', filename='assets/img/icons/help_book_cool-4.png')}}">
                         </a>
+                        <div class="icon-desc">Help</div>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
                          <img src="{{url_for('static', filename='assets/img/icons/modem-5.png')}}">
                         </a>
+                        <div class="icon-desc">Help</div>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
                            <img src="{{url_for('static', filename='assets/img/icons/internet_connection_wiz-4.png')}}">
                         </a>
+                        <div class="icon-desc">Help</div>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
                          <img src="{{url_for('static', filename='assets/img/icons/write_yellow-1.png')}}">
                         </a>
+                        <div class="icon-desc">Help</div>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                            <img src="{{url_for('static', filename='assets/img/icons/Metis-Coin.png')}}">
                         </a>
+                        <div class="icon-desc">Help</div>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                            <img src="{{url_for('static', filename='assets/img/icons/chart1-5.png')}}">
                         </a>
+                        <div class="icon-desc">Help</div>
                     </li>
                 </ul>
                 <div class="dropdown">
