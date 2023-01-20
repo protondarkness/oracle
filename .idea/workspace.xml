@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, debugging">
-      <change afterPath="$PROJECT_DIR$/graphics/bgmain1.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/Metis-Coin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/computer-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/help_book_cool-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/internet_connection_wiz-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/modem-5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/users_green-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/write_yellow-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/win98start.xcf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/layers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/deskbg.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/deskbg.xcf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/static/assets/img/eftf.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/static/assets/img/eftf.xcf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/about/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/bgmain.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/bgmain.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/twitter.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/twitter.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/bgmain1.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/bgmain1.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphics/newbg1.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/newbg1.xcf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -80,6 +74,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "editorconfig.notification": "lf;",
@@ -569,7 +564,21 @@
       <option name="project" value="LOCAL" />
       <updated>1674146768875</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="most up2date, debugging">
+      <created>1674237819737</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1674237819737</updated>
+    </task>
+    <task id="LOCAL-00047" summary="most up2date, debugging">
+      <created>1674237834662</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1674237834662</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
