@@ -1,184 +1,53 @@
-<html xmlns="http://www.w3.org/1999/html">
-<head>
 
-  <link href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-   <script src="{{url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <link href="{{url_for('static', filename='assets/7.css/dist/7.css')}}" rel="stylesheet">
+{% extends "about/main.html" %}
+{%block background%}
+ <div id="landing" class="d-flex " style="background-image:url('{{url_for('static', filename='assets/img/deskbg1.png')}}')" >
 
-  <style>
-@font-face {
-  font-family: winfont;
-  src: url({{url_for('static', filename='assets/98.css/fonts/src/ms-sans-serif/MS Sans Serif.ttf')}});
-}
-    .navbar-custom {
-            background-color: #c3c3c3;
-        }
-         .start-menu {
+{% endblock %}
 
-        position: relative;
-        display: inline-block;
-        padding:0px !important
-    }
-    .start-menu .img-top {
-        display: none;
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        z-index: 99;
-    }
-    .start-menu:hover .img-top {
-        display: inline;
-    }
-    .startmenubutton{
-    padding:0px;
-    }
-    .dropdown-menu{
-    padding:0px;
-    }
-    #landing {
-  background-repeat: no-repeat;
-  background-size: cover;
-  height:100%;!important
-  -webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
- background-position:center center;
-}
-.nav-link{
+{% block content %}
+<div class="container lander px-4 py-5">
+    <div class="row d-flex   ">
 
-padding-bottom:2px;
-}
-.icon-desc{
-font-family:winfont;
-font-size:14px;
-padding-bottom:6px;
-}
-
-  </style>
-</head>
-<body>
-<!--menu below-->
- <div id="landing" class="d-flex align-items-center" style="background-image:url('{{url_for('static', filename='assets/img/bgmain1.png')}}')" >
-
-     <nav class="navbar navbar-custom fixed-bottom navbar-expand-lg  " >
-
-
-    <!-- Navbar brand -->
-
-    <div class="start-menu dropup"  >
-<button type="button" class="startmenubutton"  data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="{{url_for('static', filename='assets/img/win98start.png')}}">
-     <img class="img-top" src="{{url_for('static', filename='assets/img/win98start_hover.png')}}">
-        </button>
-   <div class="dropdown-menu" >
-          <ul role="menu" class="can-hover" style="width: 200px">
-  <li role="menuitem" tabindex="0" aria-haspopup="true">View</li>
-  <li role="menuitem" tabindex="0" aria-haspopup="true">
-    Sort by
-    <ul role="menu">
-      <li role="menuitem"><a href="#menu">Name</a></li>
-      <li role="menuitem"><a href="#menu">Size</a></li>
-      <li role="menuitem"><a href="#menu">Item type</a></li>
-      <li role="menuitem"><a href="#menu">Date modified</a></li>
-    </ul>
-  </li>
-  <li role="menuitem" class="has-divider"><a href="#menu">Refresh</a></li>
-  <li role="menuitem" aria-disabled="true"><a href="#menu">Paste</a></li>
-  <li role="menuitem" aria-disabled="true" class="has-divider">
-    <a href="#menu">Paste shortcut</a>
-  </li>
-  <li role="menuitem">
-    <img src="https://img.icons8.com/color/18/000000/monitor--v1.png"/>
-    <a href="#menu">Screen resolution</a>
-  </li>
-  <li role="menuitem">
-    <img src="https://img.icons8.com/color/18/000000/virtual-machine2.png"/>
-    <a href="#menu">Gadgets</a>
-  </li>
-  <li role="menuitem">
-    <img src="https://img.icons8.com/color/18/000000/remote-desktop.png"/>
-    <a href="#menu">Personalize</a>
-  </li>
-</ul>
-        </div>
-
-    </div>
-
-    <div class="d-flex ms-auto">
-        <img src="{{url_for('static', filename='assets/img/win98start.png')}}">
-    </div>
-
-</nav>
-
-     <div class="icons-menu">
-    <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-auto  sticky-top">
-            <div class="d-flex flex-sm-column flex-row flex-nowrap  align-items-center sticky-top">
-                <a href="#" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-                    <img src="{{url_for('static', filename='assets/img/icons/eftt.png')}}">
-                </a>
-                <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
-                    <li class="nav-item item-spec">
-                        <a href="#" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                       <img src="{{url_for('static', filename='assets/img/icons/help_book_cool-4.png')}}">
-                        </a>
-                        <div class="icon-desc">Help</div>
-                    </li>
-                     <li class="nav-item item-spec">
-                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                         <img src="{{url_for('static', filename='assets/img/icons/modem-5.png')}}">
-                        </a>
-                        <div class="icon-desc">Help</div>
-                    </li>
-                     <li class="nav-item item-spec">
-                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                           <img src="{{url_for('static', filename='assets/img/icons/internet_connection_wiz-4.png')}}">
-                        </a>
-                        <div class="icon-desc">Help</div>
-                    </li>
-                     <li class="nav-item item-spec">
-                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
-                         <img src="{{url_for('static', filename='assets/img/icons/write_yellow-1.png')}}">
-                        </a>
-                        <div class="icon-desc">Help</div>
-                    </li>
-                     <li class="nav-item item-spec">
-                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                           <img src="{{url_for('static', filename='assets/img/icons/Metis-Coin.png')}}">
-                        </a>
-                        <div class="icon-desc">Help</div>
-                    </li>
-                     <li class="nav-item item-spec">
-                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                           <img src="{{url_for('static', filename='assets/img/icons/chart1-5.png')}}">
-                        </a>
-                        <div class="icon-desc">Help</div>
-                    </li>
-                </ul>
-                <div class="dropdown">
-                    <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi-person-circle h2"></i>
-                    </a>
-                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                    </ul>
+        <div class="col-lg-6 pt-5 pt-lg-0 d-flex flex-column ">
+            <div class=" window glass active" >
+              <div class="title-bar">
+                <div class="title-bar-text">A window with contents</div>
+                <div class="title-bar-controls">
+                  <button aria-label="Minimize"></button>
+                  <button aria-label="Maximize"></button>
+                  <button aria-label="Close"></button>
                 </div>
+              </div>
+              <div class="window-body has-space">
+                <p>There's so much room for activities!</p>
+              </div>
             </div>
         </div>
-        <div class="col-sm p-3 min-vh-100">
-            <!-- content -->
+    </div>
+    <div class="row d-flex   ">
+        <div class="col-lg-6 offset-md-6 " data-aos="fade-left" data-aos-delay="200">
+              <div class=" window glass active" >
+                <div class="title-bar">
+            <div class="title-bar-text">A window with contents</div>
+            <div class="title-bar-controls">
+              <button aria-label="Minimize"></button>
+              <button aria-label="Maximize"></button>
+              <button aria-label="Close"></button>
+            </div>
+          </div>
+          <div class="window-body has-space">
+            <p>There's so much room for activities!</p>
+          </div>
+        </div>
+
+
         </div>
     </div>
-</div>
-</div>
- </div>
 
 
 
-</body>
+ <!-- End Hero -->
 
-
-</html>
+      </div>
+{% endblock %}

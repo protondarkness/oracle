@@ -1,0 +1,51 @@
+{% extends "about/main.html" %}
+{%block background%}
+ <div id="landing" class="d-flex " style="background-image:url('{{url_for('static', filename='assets/img/deskbg.png')}}')" >
+
+{% endblock %}
+
+{% block content %}
+<div class="container lander px-4 py-5">
+    <div class="row d-flex   ">
+
+        <div class="col-lg-6 pt-5 pt-lg-0 d-flex flex-column ">
+            <div class=" window glass active" >
+              <div class="title-bar">
+                <div class="title-bar-text">A window with contents</div>
+                <div class="title-bar-controls">
+                  <button aria-label="Minimize"></button>
+                  <button aria-label="Maximize"></button>
+                  <button aria-label="Close"></button>
+                </div>
+              </div>
+              <div class="window-body has-space">
+                <p>There's so much room for activities!</p>
+              </div>
+            </div>
+        </div>
+    </div> <div class="row d-flex   ">
+        <div class="col-lg-6 offset-md-6 " data-aos="fade-left" data-aos-delay="200">
+              <div class=" window glass active" >
+                <div class="title-bar">
+            <div class="title-bar-text">A window with contents</div>
+            <div class="title-bar-controls">
+              <button aria-label="Minimize"></button>
+              <button aria-label="Maximize"></button>
+              <button aria-label="Close"></button>
+            </div>
+          </div>
+          <div class="window-body has-space">
+            <p>There's so much room for activities!</p>
+          </div>
+        </div>
+
+
+        </div>
+    </div>
+
+
+
+ <!-- End Hero -->
+
+      </div>
+{% endblock %}

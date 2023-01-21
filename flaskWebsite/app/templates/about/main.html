@@ -1,0 +1,254 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+
+  <link href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+   <script src="{{url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <link href="{{url_for('static', filename='assets/7.css/dist/7.css')}}" rel="stylesheet">
+
+  <style>
+@font-face {
+  font-family: winfont;
+  src: url({{url_for('static', filename='assets/98.css/fonts/src/ms-sans-serif/MS Sans Serif.ttf')}});
+}
+    .navbar-custom {
+        height:84px;
+            background-color: #c3c3c3;
+        }
+         .start-menu {
+
+        position: relative;
+        display: inline-block;
+        padding:0px !important
+    }
+    .start-menu .img-top {
+        display: none;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        z-index: 99;
+    }
+    .start-menu:hover .img-top {
+        display: inline;
+    }
+    .startmenubutton{
+    padding:0px;
+    }
+    .dropdown-menu{
+    padding:0px;
+    }
+    #landing {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:100%;!important
+  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+ background-position:center center;
+}
+.nav-link{
+
+padding-bottom:2px;
+}
+.icon-desc{
+font-family:winfont;
+font-size:14px;
+padding-bottom:6px;
+}
+
+.menu-group{
+display:inline-block;
+
+}
+a.startmenuicons img{
+margin-right:5px;
+width:60px;
+}
+a.startmenuicons img:hover{
+opacity:50%;
+}
+
+.icons-menu-desktop{
+width:120px;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.lander .window {
+               width:300px;
+
+}
+.lander{
+margin-top:75px;
+
+}
+
+
+  </style>
+<script>
+window.addEventListener('load', (event) => {
+    var list = document.getElementsByClassName("window");
+for (var i = 0; i < list.length; i++) {
+    console.log(list[i]);
+    list[i].querySelectorAll("button[aria-label='Close']")[0].addEventListener('click', closer);
+    list[i].querySelectorAll("button[aria-label='Minimize']")[0].addEventListener('click', minimize);
+    list[i].querySelectorAll("button[aria-label='Maximize']")[0].addEventListener('click', maximize);
+}
+
+function closer(){
+    this.parentNode.parentNode.parentNode.style.visibility = "hidden";
+}
+function minimize(){
+    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.visibility = "hidden";
+    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.height = 0;
+}
+function maximize(){
+    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.visibility = null;
+    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.height = null;
+}
+})
+
+
+</script>
+</head>
+<body>
+<!--menu below-->
+{%block background%}
+{% endblock %}
+    <div class="icons-menu-desktop">
+    <div class="d-flex flex-column flex-shrink-0 p-3" >
+                <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                      <img src="{{url_for('static', filename='assets/img/icons/eftt.png')}}">
+                        </a>
+                        <div class="icon-desc">Help</div>
+                    </li>
+                    <li class="nav-item item-spec">
+                        <a href="tokenomics.html" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                       <img src="{{url_for('static', filename='assets/img/icons/help_book_cool-4.png')}}">
+                        </a>
+                        <div class="icon-desc">Help</div>
+                    </li>
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+                         <img src="{{url_for('static', filename='assets/img/icons/modem-5.png')}}">
+                        </a>
+                        <div class="icon-desc">Help</div>
+                    </li>
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+                           <img src="{{url_for('static', filename='assets/img/icons/internet_connection_wiz-4.png')}}">
+                        </a>
+                        <div class="icon-desc">Help</div>
+                    </li>
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+                         <img src="{{url_for('static', filename='assets/img/icons/write_yellow-1.png')}}">
+                        </a>
+                        <div class="icon-desc">Help</div>
+                    </li>
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                           <img src="{{url_for('static', filename='assets/img/icons/Metis-Coin.png')}}">
+                        </a>
+                        <div class="icon-desc">Help</div>
+                    </li>
+                     <li class="nav-item item-spec">
+                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                           <img src="{{url_for('static', filename='assets/img/icons/chart1-5.png')}}">
+                        </a>
+                        <div class="icon-desc">Help</div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+
+
+
+<!--     all menu and navigation below-->
+     <nav class="navbar navbar-custom fixed-bottom navbar-expand-lg  " >
+
+
+    <!-- Navbar brand -->
+
+    <div class="start-menu dropup"  >
+<button type="button" class="startmenubutton"  data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{{url_for('static', filename='assets/img/win98start.png')}}">
+     <img class="img-top" src="{{url_for('static', filename='assets/img/win98start_hover.png')}}">
+        </button>
+         <div class="dropdown-menu" >
+
+          <ul role="menu" class="can-hover" style="width: 200px">
+  <li role="menuitem" tabindex="0" aria-haspopup="true">View</li>
+  <li role="menuitem" tabindex="0" aria-haspopup="true">
+    Sort by
+    <ul role="menu">
+      <li role="menuitem"><a href="#menu">Name</a></li>
+      <li role="menuitem"><a href="#menu">Size</a></li>
+      <li role="menuitem"><a href="#menu">Item type</a></li>
+      <li role="menuitem"><a href="#menu">Date modified</a></li>
+    </ul>
+  </li>
+  <li role="menuitem" class="has-divider"><a href="#menu">Refresh</a></li>
+  <li role="menuitem" aria-disabled="true"><a href="#menu">Paste</a></li>
+  <li role="menuitem" aria-disabled="true" class="has-divider">
+    <a href="#menu">Paste shortcut</a>
+  </li>
+  <li role="menuitem">
+    <img src="https://img.icons8.com/color/18/000000/monitor--v1.png"/>
+    <a href="#menu">Screen resolution</a>
+  </li>
+  <li role="menuitem">
+    <img src="https://img.icons8.com/color/18/000000/virtual-machine2.png"/>
+    <a href="#menu">Gadgets</a>
+  </li>
+  <li role="menuitem">
+    <img src="https://img.icons8.com/color/18/000000/remote-desktop.png"/>
+    <a href="#menu">Personalize</a>
+  </li>
+</ul>
+        </div>
+</div>
+  <div class="start-menu menu-group">
+        <img src="{{url_for('static', filename='assets/img/DeskBar_Options_Windows_98.png')}}">
+        <a href="#" class="startmenuicons" data-toggle="tooltip" data-placement="top" title="github codebase">
+        <img src="{{url_for('static', filename='assets/img/icons/github.png')}}">
+        </a>
+       <a href="#"  class="startmenuicons" data-toggle="tooltip" data-placement="top" title="email address to contact">
+        <img src="{{url_for('static', filename='assets/img/icons/email.png')}}">
+        </a>
+       <a href="#" class="startmenuicons" data-toggle="tooltip" data-placement="top" title="Instagram page">
+        <img class="rounded" src="{{url_for('static', filename='assets/img/icons/insta.png')}}">
+        </a>
+       <a href="#"  class="startmenuicons" data-toggle="tooltip" data-placement="top" title="Twitter">
+        <img src="{{url_for('static', filename='assets/img/icons/twit.png')}}">
+        </a>
+       <a href="#" class="startmenuicons" data-toggle="tooltip" data-placement="top" title="Telegram page">
+        <img src="{{url_for('static', filename='assets/img/icons/teleg.png')}}">
+        </a>
+  </div>
+
+
+
+
+    <div class="d-flex ms-auto">
+        <img src="{{url_for('static', filename='assets/img/win98start.png')}}">
+    </div>
+
+</nav>
+     {% block content %}{% endblock %}
+
+
+ </div>
+</body>
+
+
+</html>
