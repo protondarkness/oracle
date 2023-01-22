@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+    <section id="hero" class="d-flex align-items-center pricing" data-aos="fade-left" style="background-image:url('{{url_for('static', filename='assets/img/bg4.png')}}')" >
+
+    <div class="container"  >
+
+      <div class="row" >
+
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Get Paid to tweet</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Have your voice heard</h2>
+          <div data-aos="fade-up" data-aos-delay="800">
+            <img src="{{url_for('static', filename='assets/img/eftf.png')}}" class="img-fluid animated" alt="">
+            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+<!--          <img src="{{url_for('static', filename='assets/img/elon.png')}}" class="img-fluid " alt="">-->
+          <h2>Participate In the Newest Exciting ICO!!!</h2>
+          <h3>Only on Metis!!!!</h3>
+          <h4>Follow these links to bridge tokens to Metis</h4>
+
+        </div>
+      </div>
+
+
+  </section><!-- End Hero -->
+
+
+
+    <!-- ======= Clients Section ======= -->
+{% block icobanner %}
+    <section id="clients" class="clients clients">
+         <h1 style="background-color:red" id="countDownClock"></h1>
+    </section>
+{% endblock %}
+{% endblock %}
+{% block script %}
+<script src="{{url_for('static', filename='assets/js/countdown.js')}}"></script>
+{%endblock%}

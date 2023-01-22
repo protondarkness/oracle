@@ -14,23 +14,35 @@
 <script>
 window.addEventListener('load', (event) => {
     var list = document.getElementsByClassName("window");
+    var minwin = document.getElementById('min-win');
+    minwin.addEventListener('click', maximize);
 for (var i = 0; i < list.length; i++) {
-    console.log(list[i]);
+    //console.log(list[i]);
+    try{
     list[i].querySelectorAll("button[aria-label='Close']")[0].addEventListener('click', closer);
     list[i].querySelectorAll("button[aria-label='Minimize']")[0].addEventListener('click', minimize);
     list[i].querySelectorAll("button[aria-label='Maximize']")[0].addEventListener('click', maximize);
+ } catch (err) {
+
+    }
 }
 
 function closer(){
     this.parentNode.parentNode.parentNode.style.visibility = "hidden";
 }
 function minimize(){
-    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.visibility = "hidden";
-    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.height = 0;
+  //  this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.visibility = "hidden";
+   // this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.height = 0;
+    this.parentNode.parentNode.parentNode.parentNode.getElementsByClassName("window")[0].style.visibility = "hidden";
+    minwin.style.visibility = "visible";
 }
 function maximize(){
-    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.visibility = null;
-    this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.height = null;
+    //this.parentNode.parentNode.parentNode.getElementsByClassName("window")[0].style.visibility = null;
+    //this.parentNode.parentNode.parentNode.getElementsByClassName("window-body")[0].style.height = null;
+    minwin.style.visibility = "hidden";
+    for (var i = 0; i < list.length; i++) {
+        list[i].style.visibility = "visible";
+    }
 }
 })
 
@@ -47,16 +59,16 @@ function maximize(){
     <div class="d-flex flex-column flex-shrink-0 p-3" >
                 <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
                      <li class="nav-item item-spec">
-                        <a href="#" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                        <a href="{{url_for('about.index')}}" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                       <img src="{{url_for('static', filename='assets/img/icons/eftt.png')}}">
                         </a>
-                        <div class="icon-desc">Help</div>
+                        <div class="icon-desc">About</div>
                     </li>
                     <li class="nav-item item-spec">
-                        <a href="about/tokenomics.html" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                        <a href="{{url_for('about.index')}}" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                        <img src="{{url_for('static', filename='assets/img/icons/help_book_cool-4.png')}}">
                         </a>
-                        <div class="icon-desc">Help</div>
+                        <div class="icon-desc">About</div>
                     </li>
                      <li class="nav-item item-spec">
                         <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
@@ -71,10 +83,10 @@ function maximize(){
                         <div class="icon-desc">Help</div>
                     </li>
                      <li class="nav-item item-spec">
-                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+                        <a href="{{url_for('tokenomics.index')}}" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
                          <img src="{{url_for('static', filename='assets/img/icons/write_yellow-1.png')}}">
                         </a>
-                        <div class="icon-desc">Help</div>
+                        <div class="icon-desc">Tokenomics</div>
                     </li>
                      <li class="nav-item item-spec">
                         <a href="{{url_for('metis.index')}}" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
@@ -150,6 +162,9 @@ function maximize(){
         </a>
        <a href="#" class="startmenuicons" data-toggle="tooltip" data-placement="top" title="Telegram page">
         <img src="{{url_for('static', filename='assets/img/icons/teleg.png')}}">
+        </a>
+       <a href="#" id="min-win" class="startmenuicons" data-toggle="tooltip" data-placement="top" style="visibility:hidden" title="minimized windo">
+        <img src="{{url_for('static', filename='assets/img/winicon.png')}}">
         </a>
   </div>
 

@@ -1,243 +1,137 @@
 
+{% extends "main/main.html" %}
 
-{% extends "main/base.html" %}
+{%block javascript%}
+<script>
+window.onload = innerTabs;
 
-{% block tokenomics %}
-
-<style>
-    body{margin-top:20px;}
-.rounded-circle {
-    border-radius: 50% !important;
-}
-img {
-    max-width: 100%;
-    height: auto;
-    vertical-align: top;
-}
-
-.sub-info{
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    color: #004975;
-}
-
-.display-30 {
-    font-size: 0.9rem;
-}
-.badge {
-  font-size:23px;
-  color:black;
-
-}
-.y{
-background:yellow;
-}
-.pur{
-background:purple;
-color:white;
-}
-.gre{
-background:green;
-}
-.blu{
-background:blue;
-color:white;
-}
-.re{
-background:red;
-}
-.gr{
-background:orange;
-}
-.borderover {
-
-<!--    opacity:50%;-->
-}
-.selectBack{
-
-     background-color:rgba(286, 181, 181, 0.5) !important;
-}
-</style>
+function innerTabs(){
+    const buttonTabs = document.getElementsByClassName("tabs");
+    for(let i=0;i<buttonTabs.length;i++){
+        //console.log(buttonTabs[i].getAttribute("aria-controls"));
+        buttonTabs[i].addEventListener('click', switchTabs, false);
+                }
 
 
-     <section id="tokenomics" class="pricing">
-      <div class="container">
 
-        <div class="section-title" data-aos="fade-up">
-          <h2>Tokenomics</h2>
-        </div>
-          <div class="row mb-3">
-             <div class="container">
-                 <div class=" mb-2 mb-lg-6" data-aos="fade-in">
-                     <div class="box recommended">
+    function switchTabs(){
+    const tabTabs = document.querySelectorAll("article[role='tabpanel']");
+        let thisID = this.getAttribute('aria-controls');
+        for(let i=0;i<tabTabs.length;i++){
+            let idz =tabTabs[i].getAttribute("id");
+            console.log(idz);
+           document.getElementById(idz).setAttribute('hidden','');
+           buttonTabs[i].setAttribute('aria-selected','false');
+            }
+        document.getElementById(thisID).removeAttribute('hidden');
+        this.setAttribute('aria-selected','true');
 
-                         <div class=" clearfix">
-                             <h1 class="float-md-start mb-3 ms-md-3">Phase Ⅰ:</h1>
-                     <p> During
-                     the 1st phase, the ICO will be active as well as an active burn campaign. Tweet the hashtag 05980134 and it will count towards
-                     burning up to 10% of the total supply. More tweets, more tokens burned. </p>
-                         </div>
-                          <hr/>
-                          <div class=" clearfix">
-                             <h1 class="float-md-start mb-3 ms-md-3">Phase Ⅱ:</h1>
-                     <p>Immediatly after the ICO, another burn will begin and last 6 months. The community will get to vote on hashtags of their choosing
-                     to count towards burning. As they tweet the hashtag, that will count towards burning more tokens</p>
-                         </div>
-                          <hr/>
-                          <div class=" clearfix">
-                             <h1 class="float-md-start mb-3 ms-md-3">Phase Ⅲ:</h1>
-                     <p>After Phase II, a staking period will begin and work similarly as the burn worked. However, instead of burning tokens,
-                         the community will instead use the same voting process to earn a percent for the tokens they have staked.</p>
-                         </div>
+    }
+    }
+</script>
+
+{%endblock %}
+
+{%block background%}
+ <div id="Metis" class="d-flex landing landerA" style="background-image:url('{{url_for('static', filename='assets/img/deskbg1.png')}}')" >
+
+{% endblock %}
+
+{% block content %}
+<div class="container  px-4 py-5">
+    <div class="row d-flex   ">
+
+        <div class="col-lg-6 pt-5 pt-lg-0 d-flex flex-column ">
+            <div class=" window glass active" >
+              <div class="title-bar">
+                <div class="title-bar-text">About Metis</div>
+                <div class="title-bar-controls">
+                  <button aria-label="Minimize"></button>
+                  <button aria-label="Maximize"></button>
+                  <button aria-label="Close"></button>
+                </div>
+              </div>
+
+                 <div class="window-body has-space">
+
+                     <div class="field-row">
+                           <img style="width: 100%"
+        src="{{url_for('static', filename='assets/img/metis/metisHead.png')}}">
                      </div>
-                </div>
-                <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-auto col-sm-auto  mb-2 mb-sm-0" data-aos="fade-right">
-                    <div class="pr-md-3">
-                        <div class="box recommended text-center text-sm-right mb-2">
-                        <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge y"> 14%</div>
-                        </div>
-                        <h6 class="sub-info">Second Burn Period</h6>
-                        <p class="display-30 mb-0">After the ICO, a second burn period will emerge and last 6 months. Voting will take place at scheduled times
-                        to select a community hashtag. It is then up to the community to tweet the hashtag to burn tokens</p>
-                        </div>
-                        <div class="box recommended text-center text-sm-right mb-2">
-                         <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge re"> 25%</div>
-                        </div>
-                        <h6 class="sub-info">Early Investors, Devs and Social team </h6>
-                        <p class="display-30 mb-0">%25 is allocated with 10% minted at creation. The remaining 15% will be subject to the ICO burn.
-                            The remainder will be split into tranches that
-                        will be allocated every 4 months for 6 months.</p>
-                        </div>
-                        <div class="box recommended text-center text-sm-right mb-2">
-                       <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge blu"> 12.5%</div>
-                        </div>
-                        <h6 class="sub-info">Automatic Liquidity Pool</h6>
-                        <p class="display-30 mb-0">Half of the Metis used in the ICO will be sent along with the corresponding amount of EFTT to create
-                        a Liquidity Pool on Netswap. The liquidity will remain locked for 6 months after ICO end. What EFTT isn't used to create liquidity will
-                        be burned.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-none d-lg-block align-self-center" >
-                <div class="why-choose-center-image">
+                     <fieldset>
+                    <div class="field-row" >
+                <p> Metis is an Ethereum Layer 2 optimistic rollup platform originally forked from Optimism and launched on mainnet on 19 November 2021.
 
-                    <canvas id="myChart"></canvas>
+It is an easy-to-use, highly scalable, low-cost, and fully functional Layer 2 framework that supports a wide range of use cases, including yield farming, DEX trading, and powering the gig economy via dApps that offer cheap and fast micropayments.
+</p>
+                    </div></fieldset>
+                     <menu role="tablist">
+      <button class="tabs" role="tab" aria-controls="Resources" aria-selected="true">Resources</button>
+      <button class="tabs" role="tab" aria-controls="Bridging" aria-selected="false">Bridging</button>
+      <button class="tabs" role="tab" aria-controls="Buy" aria-selected="false">Buy Metis</button>
+    </menu>
 
-                </div>
-                </div>
-                    <div class="col-lg-4 col-md-auto col-sm-auto" data-aos="fade-left">
-                <div class="pl-md-3">
-                    <div class="box recommended text-center text-sm-left mb-2">
-                        <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge pur"> 14%</div>
-                        </div>
-                        <h6 class="sub-info">Staking</h6>
-                        <p class="display-30 mb-0">At least 14% will be used for staking, though this is variable and could be more. It depends on how much is burned in the
-                        2 burn periods. </p>
-                    </div>
+                       <article role="tabpanel" id="Resources">
 
-                <div class="box recommended text-center text-sm-left mb-2">
-                     <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge gre"> 25%</div>
-                        </div>
-                    <h6 class="sub-info">Total ICO amount </h6>
-                    <p class="display-30 mb-0">25% or 2,500,000 will be up for sale. What isn't sold will be burned. Furthermore, that percentage
-                    will be burnt from the rest of the supply, affecting: Burn 2, Stake, Dev/Invs</p>
-                </div>
-                    <div class="box recommended text-center text-sm-left mb-2">
-                     <div class="mb-4 d-flex justify-content-center">
-                            <div class=" badge gr"> 10%</div>
-                        </div>
-                    <h6 class="sub-info">First Burn during ICO</h6>
-                    <p class="display-30 mb-0">The more tweets of the hashtag, the more tokens burnt.
-                    Up to 10% of initial supply or 1,000,000 tokens. What is burned will trickle into stake pool.</p>
-                </div>
+                    <fieldset>
+        <legend>Metis Informational Resources</legend>
+        <div class="field-row">
+         <li><a href="https://metis.io/">Metis Official Home</a></li>
+
+        </div>
+        <div class="field-row">
+           <li><a href="https://coinmarketcap.com/view/metisdao-ecosystem/">Coinmarketcap</a></li>
+        </div>
+        <div class="field-row">
+           <li><a href="https://l2beat.com/scaling/projects/metis">L2Beat</a></li>
+        </div>
+      </fieldset>
+                     </article>
+                     <article role="tabpanel" hidden id="Bridging">
+
+                    <fieldset>
+        <legend>Metis Bridging Resources</legend>
+        <div class="field-row">
+         <li><a href="https://bridge.metis.io/home">Metis Official bridge</a></li>
+
+        </div>
+        <div class="field-row">
+           <li><a href="https://metis.io/bridge/#3rd-party">List of 3rd party Bridges</a></li>
+        </div>
+      </fieldset>
+                     </article>
+
+
+              </div>
             </div>
         </div>
     </div>
-             </div>
 
 
-
+<!---->
+    <div class="row d-flex   ">
+        <div class="col-lg-6 offset-md-6 " data-aos="fade-left" data-aos-delay="200">
+              <div class=" window glass active" >
+                <div class="title-bar">
+            <div class="title-bar-text">A window with contents</div>
+            <div class="title-bar-controls">
+              <button aria-label="Minimize"></button>
+              <button aria-label="Maximize"></button>
+              <button aria-label="Close"></button>
+            </div>
           </div>
+          <div class="window-body has-space">
+            <p>There's so much room for activities!</p>
+          </div>
+        </div>
+
+
+        </div>
+    </div>
+
+
+
+ <!-- End Hero -->
+
       </div>
-    </section>
-
-
-
 {% endblock %}
-{% block script %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-var xValues = ["Dev/Early Investors", "ICO", "Liquidity", "First Burn", "Second Burn", "Stake"];
-var yValues = [25, 25, 12.5, 10, 14, 14];
-var barColors = ["red", "green","blue","orange","yellow","purple"];
-const colorArr=['re','gre','blu','gr','y','pur'];
-   new Chart("myChart", {
-        type: "pie",
-        data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-            }]
-},
-    options: { hoverOffset: 10,
-             onHover: (event, activeElements) => {
-
-                if (activeElements.length > 0) {
-
-            // get active chart element
-            let elt = activeElements[0];
-            //console.log(elt);
-            // retrieve element label
-            let lbl = elt.index;
-
-
-
-                        if(document.getElementsByClassName(colorArr[lbl] + " borderover").length ==0){
-                            if(document.getElementsByClassName("borderover").length !=0){
-                                document.getElementsByClassName("borderover")[0].classList.remove("borderover");
-                                document.getElementsByClassName("selectBack")[0].classList.remove("selectBack");
-                                }
-                            var element = document.getElementsByClassName(colorArr[lbl]);
-                            element[0].classList.add("borderover");
-                            element[0].parentNode.parentNode.classList.add("selectBack");
-                            }
-
-       }
-       else {
-           // No active elements
-       }},
-        plugins: {
-
-         legend: {
-              position: 'right',
-              display: false,
-          }
-
-        }
-
-      },
-      plugins: [{
-    id: 'myEventCatcher',
-    beforeEvent(chart, args, pluginOptions) {
-      const event = args.event;
-
-      if (event.type === 'mouseout') {
-        var element = document.getElementsByClassName("borderover");
-        element[0].classList.remove("borderover");
-        var element = document.getElementsByClassName("selectBack");
-        element[0].classList.remove("selectBack");
-      }
-    }
-  }]
-
-});
-
-</script>
-{%endblock%}

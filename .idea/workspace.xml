@@ -5,21 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, debugging">
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/static/new_style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/metis/metisA.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/MetisDAO2.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/how-to-add-metis-to-metamask-wallet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/check-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/msg_error-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/install1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/install2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/installation.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/metamask-fox-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/metamask.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/main/indexA.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/tokenomics/tokenomicsA.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/graphics/winicon.xcf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/about/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/about/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/main/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/main/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/main/main.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/metis/metis.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/metis/metis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/tokenomics/tokenomics.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/tokenomics/tokenomics.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,18 +73,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "editorconfig.notification": "lf;",
-    "last_opened_file_path": "/home/destro/Desktop/oracle/flaskWebsite/app/templates/metis",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;editorconfig.notification&quot;: &quot;lf;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/destro/Desktop/oracle/flaskWebsite/app/templates/metis&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.appearance&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/flaskWebsite/app/templates/metis" />

@@ -1,42 +1,171 @@
-{% extends "main/base.html" %}
+
+{% extends "main/main.html" %}
+
+{%block javascript%}
+    <script src="{{url_for('static', filename='assets/vendor/ethers/dist/ethers.umd.min.js')}}"
+        type="application/javascript"></script>
+   <script type="module">
+
+
+
+
+const connectButton = document.getElementById('connector');
+const purchaseButton = document.getElementById('purchase');
+const connectIcon = document.getElementById('icon-connected');
+const accountAddress = document.getElementById('account_address');
+const fieldIcon = document.getElementById('field-connected');
+const network  = document.getElementById('network');
+const MetisChainID = '0x440';
+var chainId;
+var networkId;
+var accounts;
+
+
+
+connectButton.addEventListener('click', () => {
+  getAccount();
+});
+
+async function checkAccts(){
+
+}
+async function  switchToMetis(){
+
+        let ethereum = window.ethereum;
+        const data = [{
+            chainId: MetisChainID,
+            chainName: 'Metis Andromeda Mainnet',
+            nativeCurrency:
+                {
+                    name: 'Metis',
+                    symbol: 'Metis',
+                    decimals: 18
+                },
+           blockExplorerUrls: ['https://andromeda-explorer.metis.io/'],
+            rpcUrls: ['https://andromeda.metis.io/?owner=1088'],
+        }]
+        /* eslint-disable */
+        const tx = await ethereum.request({method: 'wallet_addEthereumChain', params:data}).catch()
+        if (tx) {
+            console.log(tx)
+        }
+    }
+async function getNetworkAndChainId() {
+ if (window.ethereum) {
+    try {
+      switchToMetis();
+      //handleNewChain(chainId);
+      let current_chainId = await window.ethereum.request({
+        method: 'eth_chainId',
+      });
+        //network.value = current_chainId;
+       networkId = await window.ethereum.request({
+        method: 'net_version',
+      });
+      //handleNewNetwork(networkId);
+
+    //console.log( chainId);
+//      handleEIP1559Support(block.baseFeePerGas !== undefined);
+    } catch (err) {
+      console.error(err);
+    }
+    }else{
+    console.error('err2');
+    }
+  }
+
+async function getAccount() {
+if(window.ethereum){
+        try {
+        getNetworkAndChainId();
+  accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+  const account = accounts[0];
+ // console.log(account);
+  if(accounts!=null){
+    account_address.innerHTML = account;
+    fieldIcon.innerHTML = 'Connected'
+    connectIcon.src = "{{url_for('static', filename='assets/img/icons/check-0.png')}}";
+    purchaseButton.removeAttribute("disabled");
+    connectButton.setAttribute("disabled", "");
+  }
+  } catch (err) {
+      console.error(err);
+    }
+}else{
+    fieldIcon.innerHTML = 'Not Connected'
+    account_address.innerHTML = '';
+    connectIcon.src = "{{url_for('static', filename='assets/img/icons/msg_error-0.png')}}";
+    connectButton.removeAttribute("disabled");
+    purchaseButton.setAttribute("disabled", "");
+    }
+}
+</script>
+{%endblock%}
+
+{%block background%}
+ <div id="main" class="d-flex landing" style="background-image:url('{{url_for('static', filename='assets/img/deskbg1.png')}}')" >
+
+{% endblock %}
 
 {% block content %}
+<div class="container landerA px-4 py-5">
+    <div class="row d-flex   ">
 
-    <section id="hero" class="d-flex align-items-center pricing" data-aos="fade-left" style="background-image:url('{{url_for('static', filename='assets/img/bg4.png')}}')" >
+        <div class="col-lg-6 pt-5 pt-lg-0 d-flex flex-column ">
+            <div class=" window glass active" >
+              <div class="title-bar">
+                <div class="title-bar-text">Connect To Metis Network</div>
+                <div class="title-bar-controls">
+                  <button aria-label="Minimize"></button>
+                  <button aria-label="Maximize"></button>
+                  <button aria-label="Close"></button>
+                </div>
+              </div>
 
-    <div class="container"  >
+                 <div class="window-body ">
+                    <section class="field-row" >
+                     <img style="width: 100%"
+        src="{{url_for('static', filename='assets/img/installation.png')}}">
 
-      <div class="row" >
+                    </section>
 
-        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1 data-aos="fade-up">Get Paid to tweet</h1>
-          <h2 data-aos="fade-up" data-aos-delay="400">Have your voice heard</h2>
-          <div data-aos="fade-up" data-aos-delay="800">
-            <img src="{{url_for('static', filename='assets/img/eftf.png')}}" class="img-fluid animated" alt="">
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                     <div class="status-bar has-space mt-2">
+    <p class="status-bar-field">Connection Status</p>
+                         <p  class="status-bar-field"><img id="icon-connected" src="{{url_for('static', filename='assets/img/icons/msg_error-0.png')}}"></p>
+    <p id="field-connected" class="status-bar-field">Not connected</p>
+  </div>
+                     <section class="field-row" style="justify-content: flex-end">
+                         <span id="account_address"></span>
+      <button id="connector" class="default">Connect</button>
+      <button disabled id="purchase">Purchase EFT</button>
+    </section>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex   ">
+        <div class="col-lg-6 offset-md-6 " data-aos="fade-left" data-aos-delay="200">
+              <div class=" window glass active" >
+                <div class="title-bar">
+            <div class="title-bar-text">A window with contents</div>
+            <div class="title-bar-controls">
+              <button aria-label="Minimize"></button>
+              <button aria-label="Maximize"></button>
+              <button aria-label="Close"></button>
+            </div>
+          </div>
+          <div class="window-body has-space">
+            <p>There's so much room for activities!</p>
           </div>
         </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-<!--          <img src="{{url_for('static', filename='assets/img/elon.png')}}" class="img-fluid " alt="">-->
-          <h2>Participate In the Newest Exciting ICO!!!</h2>
-          <h3>Only on Metis!!!!</h3>
-          <h4>Follow these links to bridge tokens to Metis</h4>
+
 
         </div>
+    </div>
+
+
+
+ <!-- End Hero -->
+
       </div>
-
-
-  </section><!-- End Hero -->
-
-
-
-    <!-- ======= Clients Section ======= -->
-{% block icobanner %}
-    <section id="clients" class="clients clients">
-         <h1 style="background-color:red" id="countDownClock"></h1>
-    </section>
 {% endblock %}
-{% endblock %}
-{% block script %}
-<script src="{{url_for('static', filename='assets/js/countdown.js')}}"></script>
-{%endblock%}

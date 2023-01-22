@@ -78,29 +78,36 @@ if(window.ethereum){
   accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
   const account = accounts[0];
  // console.log(account);
-  if(accounts!=null){
-    account_address.innerHTML = account;
-    fieldIcon.innerHTML = 'Connected'
-    connectIcon.src = "{{url_for('static', filename='assets/img/icons/check-0.png')}}";
-    purchaseButton.removeAttribute("disabled");
-    connectButton.setAttribute("disabled", "");
-  }
-  } catch (err) {
+         if(accounts!=null){
+           account_address.innerHTML = account;
+           fieldIcon.innerHTML = 'Connected'
+           connectIcon.src = "{{url_for('static', filename='assets/img/icons/check-0.png')}}";
+           purchaseButton.removeAttribute("disabled");
+           connectButton.setAttribute("disabled", "");
+         }
+         } catch (err) {
       console.error(err);
     }
 }else{
+
     fieldIcon.innerHTML = 'Not Connected'
     account_address.innerHTML = '';
     connectIcon.src = "{{url_for('static', filename='assets/img/icons/msg_error-0.png')}}";
     connectButton.removeAttribute("disabled");
     purchaseButton.setAttribute("disabled", "");
+                     console.log(window.ethereum);
+    if (typeof window.ethereum == 'undefined') {
+              console.log('here');
+              document.getElementById('dialog-demo').style.visibility='visible';
+              document.getElementById('dialog-demo').style.opacity=1;
+    }
     }
 }
 </script>
 {%endblock%}
 
 {%block background%}
- <div id="main" class="d-flex landing" style="background-image:url('{{url_for('static', filename='assets/img/deskbg1.png')}}')" >
+ <div id="main" class="d-flex landing" style="background-image:url('{{url_for('static', filename='assets/img/bgmain1.png')}}')" >
 
 {% endblock %}
 
@@ -160,7 +167,29 @@ if(window.ethereum){
         </div>
     </div>
 
+<script>
 
+    function closerInner(){
+    document.getElementById("dialog-demo").style.visibility = "hidden";
+}
+</script>
+
+<div class=" window active is-bright" id="dialog-demo" role="dialog" aria-labelledby="dialog-title">
+  <div class="title-bar">
+    <div class="title-bar-text" id="dialog-title">Problem Diagnostics</div>
+    <div class="title-bar-controls">
+      <button aria-label="Close" ></button>
+    </div>
+  </div>
+  <div class="window-body has-space">
+    <h2 class="instruction instruction-primary">Identifying your problem...</h2>
+      <h2 class="instruction "> Please install Metamask to continue or click below for contract address</h2>
+    <div role="progressbar" class="marquee"></div>
+  </div>
+  <footer style="text-align: right">
+    <button onclick="closerInner()">Cancel</button>
+  </footer>
+</div>
 
  <!-- End Hero -->
 
