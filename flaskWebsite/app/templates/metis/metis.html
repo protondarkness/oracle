@@ -1,194 +1,137 @@
 
+{% extends "main/main.html" %}
 
-{% extends "main/base.html" %}
+{%block javascript%}
+<script>
+window.onload = innerTabs;
 
-{% block services %}
-<link href="{{url_for('static', filename='assets/7.css/dist/7.css')}}" rel="stylesheet">
+function innerTabs(){
+    const buttonTabs = document.getElementsByClassName("tabs");
+    for(let i=0;i<buttonTabs.length;i++){
+        //console.log(buttonTabs[i].getAttribute("aria-controls"));
+        buttonTabs[i].addEventListener('click', switchTabs, false);
+                }
 
-     <section id="services" class="services" style="background-image:url('{{url_for('static', filename='assets/img/testBG.png')}}')">
 
-      <div class="container">
-<!--            <div class="footer-img" style="background-image:url('{{url_for('static', filename='assets/img/taskbar.png')}}'); bottom: 0;-->
-<!--        height: 60px; "></div>-->
-        <div class="section-title" data-aos="fade-up">
-          <h2>Metis Links</h2>
-        </div>
-          <div class="row mb-3">
-              <div class="window">
-                   <div class="title-bar">
-    <div class="title-bar-text">A window with contents</div>
-    <div class="title-bar-controls">
-      <button aria-label="Minimize"></button>
-      <button aria-label="Maximize"></button>
-      <button aria-label="Close"></button>
-    </div>
-  </div>
-  <div class="window-body has-space">
-<!--              <div class="box recommended" data-aos="fade-down" data-aos-delay="100">-->
-                  Metis is an Ethereum Layer 2 optimistic rollup platform originally forked from Optimism and launched on mainnet on 19 November 2021.
+
+    function switchTabs(){
+    const tabTabs = document.querySelectorAll("article[role='tabpanel']");
+        let thisID = this.getAttribute('aria-controls');
+        for(let i=0;i<tabTabs.length;i++){
+            let idz =tabTabs[i].getAttribute("id");
+            console.log(idz);
+           document.getElementById(idz).setAttribute('hidden','');
+           buttonTabs[i].setAttribute('aria-selected','false');
+            }
+        document.getElementById(thisID).removeAttribute('hidden');
+        this.setAttribute('aria-selected','true');
+
+    }
+    }
+</script>
+
+{%endblock %}
+
+{%block background%}
+ <div id="Metis" class="d-flex landing" style="background-image:url('{{url_for('static', filename='assets/img/bgmain2.png')}}')" >
+
+{% endblock %}
+
+{% block content %}
+<div class="container  px-4 py-5">
+    <div class="row d-flex   ">
+
+        <div class="col-lg-6 pt-5 pt-lg-0 d-flex flex-column ">
+            <div class=" window glass active" >
+              <div class="title-bar">
+                <div class="title-bar-text">About Metis</div>
+                <div class="title-bar-controls">
+                  <button aria-label="Minimize"></button>
+                  <button aria-label="Maximize"></button>
+                  <button aria-label="Close"></button>
+                </div>
+              </div>
+
+                 <div class="window-body has-space">
+
+                     <div class="field-row">
+                           <img style="width: 100%"
+        src="{{url_for('static', filename='assets/img/metis/metisHead.png')}}">
+                     </div>
+                     <fieldset>
+                    <div class="field-row" >
+                <p> Metis is an Ethereum Layer 2 optimistic rollup platform originally forked from Optimism and launched on mainnet on 19 November 2021.
 
 It is an easy-to-use, highly scalable, low-cost, and fully functional Layer 2 framework that supports a wide range of use cases, including yield farming, DEX trading, and powering the gig economy via dApps that offer cheap and fast micropayments.
-
-<!--              </div>-->
-                  </div>
-              </div>
-          </div>
-      <div class="row p-3 justify-content-evenly">
-<!--            <div class="col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">-->
-<!--            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">-->
-<!--              <div class="icon"><img src="{{url_for('static', filename='assets/img/metis/metis-logo-1.png')}}"></img></div>-->
-<!--              <h4 class="title"><a href="">Metis</a></h4>-->
-<!--              <p class="description">All the information straight from Metis</p>-->
-<!--               <p></br> <a class="button-standard" href="https://metis.io/">Go To Metis</a></p>-->
-<!--            </div>-->
-<!--          </div>-->
-          <div class="col-md-3 col-lg-3  mb-5 mb-lg-0">
-            <div class="window " data-aos="fade-up" data-aos-delay="100" >
-  <div class="title-bar">
-    <div class="title-bar-text">Metis </div>
-  </div>
-  <div class="window-body has-space">
-     <p class="description">All the information straight from Metis</p>
-    <ul>
-      <li>A Task Manager</li>
-      <li>A Notepad</li>
-      <li>Or even a File Explorer!</li>
-    </ul>
-  </div>
-  <div class="status-bar">
-    <p class="status-bar-field">Press F1 for help</p>
-    <p class="status-bar-field">Slide 1</p>
-    <p class="status-bar-field">CPU Usage: 44%</p>
-  </div>
-</div>
-            </div>
-          <div class="col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><img src="{{url_for('static', filename='assets/img/metis/bridge.png')}}"></img></div>
-              <h4 class="title"><a href="">Bridge</a></h4>
-              <p class="description">Resources on all the bridging needs</p>
-                <ul class="metis">
-                    <li><a href="https://bridge.metis.io/home">Metis Official bridge</a></li>
-                    <li><a href="https://metis.io/bridge/#3rd-party">List of 3rd party</a></li>
-                </ul>
-            </div>
-          </div>
-           <div class="col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><img src="{{url_for('static', filename='assets/img/metis/save-money.png')}}"></img></div>
-              <h4 class="title"><a href="">Purchase Metis</a></h4>
-              <p class="description">A few places to buy Metis on the web.
-                  <ul class="metis">
-          <li>  <a href="https://app.uniswap.org/#/tokens/ethereum/0x9E32b13ce7f2E80A01932B42553652E053D6ed8e">Uniswap</a></li>
-                 <li>    <a href="https://app.1inch.io/#/1/unified/swap/ETH/Metis">1inch</a></li>
-           <li>        <a href="https://pancakeswap.finance/swap?chain=eth&outputCurrency=0x9e32b13ce7f2e80a01932b42553652e053d6ed8e">Pancake swap</a></li>  </ul></p>
-
-            </div>
-          </div>
-        </div>
-
-
-
-      </div>
-                     <div class="footer-img col-12"><img src="{{url_for('static', filename='assets/img/taskbar.png')}}"></div>
-    </section>
-
-    <section id="more_services" class="pricing" style="background-image:url('{{url_for('static', filename='assets/img/bg-genric3.png')}}')">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Connecting to Metis With Metamask</h2>
-        </div>
-      <div class="row p-3 justify-content-evenly">
-
-           <div class="box recommended col-5 m-3" >
-
-  <div class="card-body">
-    <h5 class="card-title">Step 1</h5>
-    <p class="card-text">Install the Metamask Extension on desktop or visit your app store to download the MetaMask app.
-        You will be prompted to Create a MetaMask Wallet or Import One.
 </p>
-  </div>
-             <img src="{{url_for('static', filename='assets/img/metis/metis3.webp')}}" class="figure-img img-fluid rounded" >
-</div>
-                    <div class="box recommended col-5 m-3" >
- <img src="{{url_for('static', filename='assets/img/metis/metis4.webp')}}" class="figure-img img-fluid rounded" >
-  <div class="card-body">
-    <h5 class="card-title">Step 2</h5>
+                    </div></fieldset>
+                     <menu role="tablist">
+      <button class="tabs" role="tab" aria-controls="Resources" aria-selected="true">Resources</button>
+      <button class="tabs" role="tab" aria-controls="Bridging" aria-selected="false">Bridging</button>
+      <button class="tabs" role="tab" aria-controls="Buy" aria-selected="false">Buy Metis</button>
+    </menu>
 
-    <p class="card-text">Setup MetaMask to connect to Metis Network
-Switch the connected blockchain by clicking on the tab saying Main Ethereum Network, we need to add Metis Network.
-    Scroll down until you find Custom RPC.</p>
- <img src="{{url_for('static', filename='assets/img/metis/metis5.webp')}}" class="figure-img img-fluid rounded" >
-  </div>
+                       <article role="tabpanel" id="Resources">
 
-</div>
-         </div>
-        <div class="row p-3 justify-content-evenly">
+                    <fieldset>
+        <legend>Metis Informational Resources</legend>
+        <div class="field-row">
+         <li><a href="https://metis.io/">Metis Official Home</a></li>
 
-
-          <div class="box recommended col-10" >
-
-  <div class="card-body">
-    <h5 class="card-title mb-3">Step 3</h5>
-      <div class="row ">
-      <div class="col-5 offset-md-1">
-                <p class="card-text">Enter in the Metis Network settings as follows:
-            <ul>
-                <li>Network Name: Metis Network</li>
-                <li>New RPC URL: https://andromeda.metis.io/?owner=1088</li>
-                <li>ChainID: 1088</li>
-            <li>Symbol: Metis</li>
-            <li>Block Explorer URL: https://andromeda-explorer.metis.io/</li>
-            <li>Click Save.</li>
-            </ul>
-            </p>
-      </div>
-
-         <div class="col-5">
-          <img src="{{url_for('static', filename='assets/img/metis/metis6.webp')}}" class="figure-img img-fluid rounded" >
         </div>
+        <div class="field-row">
+           <li><a href="https://coinmarketcap.com/view/metisdao-ecosystem/">Coinmarketcap</a></li>
+        </div>
+        <div class="field-row">
+           <li><a href="https://l2beat.com/scaling/projects/metis">L2Beat</a></li>
+        </div>
+      </fieldset>
+                     </article>
+                     <article role="tabpanel" hidden id="Bridging">
+
+                    <fieldset>
+        <legend>Metis Bridging Resources</legend>
+        <div class="field-row">
+         <li><a href="https://bridge.metis.io/home">Metis Official bridge</a></li>
+
+        </div>
+        <div class="field-row">
+           <li><a href="https://metis.io/bridge/#3rd-party">List of 3rd party Bridges</a></li>
+        </div>
+      </fieldset>
+                     </article>
+
+
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+<!---->
+    <div class="row d-flex   ">
+        <div class="col-lg-6 offset-md-6 " data-aos="fade-left" data-aos-delay="200">
+              <div class=" window glass active" >
+                <div class="title-bar">
+            <div class="title-bar-text">A window with contents</div>
+            <div class="title-bar-controls">
+              <button aria-label="Minimize"></button>
+              <button aria-label="Maximize"></button>
+              <button aria-label="Close"></button>
+            </div>
           </div>
-  </div>
-</div>
+          <div class="window-body has-space">
+            <p>There's so much room for activities!</p>
+          </div>
+        </div>
+
 
         </div>
-<!--        <div class="row">-->
-<!--          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">-->
-<!--            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">-->
-<!--              <div class="icon"><i class="bx bxl-dribbble"></i></div>-->
-<!--              <h4 class="title"><a href="">Lorem Ipsum</a></h4>-->
-<!--              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>-->
-<!--            </div>-->
-<!--          </div>-->
+    </div>
 
-<!--          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">-->
-<!--            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">-->
-<!--              <div class="icon"><i class="bx bx-file"></i></div>-->
-<!--              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>-->
-<!--              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>-->
-<!--            </div>-->
-<!--          </div>-->
 
-<!--          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">-->
-<!--            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">-->
-<!--              <div class="icon"><i class="bx bx-tachometer"></i></div>-->
-<!--              <h4 class="title"><a href="">Magni Dolores</a></h4>-->
-<!--              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>-->
-<!--            </div>-->
-<!--          </div>-->
 
-<!--          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">-->
-<!--            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">-->
-<!--              <div class="icon"><i class="bx bx-world"></i></div>-->
-<!--              <h4 class="title"><a href="">Nemo Enim</a></h4>-->
-<!--              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>-->
-<!--            </div>-->
-<!--          </div>-->
-
-<!--        </div>-->
+ <!-- End Hero -->
 
       </div>
-    </section><!-- End Services Section -->
-
 {% endblock %}

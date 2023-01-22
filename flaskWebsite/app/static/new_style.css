@@ -1,0 +1,90 @@
+
+
+    .navbar-custom {
+        height:84px;
+            background-color: #c3c3c3;
+        }
+         .start-menu {
+
+        position: relative;
+        display: inline-block;
+        padding:0px !important
+    }
+    .start-menu .img-top {
+        display: none;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        z-index: 99;
+    }
+    .start-menu:hover .img-top {
+        display: inline;
+    }
+    .startmenubutton{
+    padding:0px;
+    }
+    .dropdown-menu{
+    padding:0px;
+    }
+    .landing {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:100%;!important
+  -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+ background-position:center center;
+
+}
+.nav-link{
+
+padding-bottom:2px;
+}
+.icon-desc{
+font-family:winfont;
+font-size:14px;
+padding-bottom:6px;
+}
+
+.menu-group{
+display:inline-block;
+
+}
+a.startmenuicons img{
+margin-right:5px;
+width:60px;
+}
+a.startmenuicons img:hover{
+opacity:50%;
+}
+
+.icons-menu-desktop{
+width:120px;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+#main .icon-desc {
+    color: white;
+}
+.lander .window {
+               width:300px;
+
+}
+.landerA .window {
+               width:450px;
+
+}
+.lander{
+margin-top:75px;
+
+}
+
+/*
+metis
+*/
+

@@ -4,90 +4,13 @@
   <link href="{{url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
    <script src="{{url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <link href="{{url_for('static', filename='assets/7.css/dist/7.css')}}" rel="stylesheet">
-
-  <style>
-@font-face {
+    <link href="{{url_for('static', filename='new_style.css')}}" rel="stylesheet">
+<style>
+    @font-face {
   font-family: winfont;
   src: url({{url_for('static', filename='assets/98.css/fonts/src/ms-sans-serif/MS Sans Serif.ttf')}});
 }
-    .navbar-custom {
-        height:84px;
-            background-color: #c3c3c3;
-        }
-         .start-menu {
-
-        position: relative;
-        display: inline-block;
-        padding:0px !important
-    }
-    .start-menu .img-top {
-        display: none;
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        z-index: 99;
-    }
-    .start-menu:hover .img-top {
-        display: inline;
-    }
-    .startmenubutton{
-    padding:0px;
-    }
-    .dropdown-menu{
-    padding:0px;
-    }
-    #landing {
-  background-repeat: no-repeat;
-  background-size: cover;
-  height:100%;!important
-  -webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
- background-position:center center;
-}
-.nav-link{
-
-padding-bottom:2px;
-}
-.icon-desc{
-font-family:winfont;
-font-size:14px;
-padding-bottom:6px;
-}
-
-.menu-group{
-display:inline-block;
-
-}
-a.startmenuicons img{
-margin-right:5px;
-width:60px;
-}
-a.startmenuicons img:hover{
-opacity:50%;
-}
-
-.icons-menu-desktop{
-width:120px;
-  display: flex;
-  flex-wrap: nowrap;
-  height: 100vh;
-  height: -webkit-fill-available;
-  max-height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.lander .window {
-               width:300px;
-
-}
-.lander{
-margin-top:75px;
-
-}
-
-
-  </style>
+</style>
 <script>
 window.addEventListener('load', (event) => {
     var list = document.getElementsByClassName("window");
@@ -113,23 +36,8 @@ function maximize(){
 
 
 </script>
-    <script src="{{url_for('static', filename='assets/vendor/ethers/dist/ethers.umd.min.js')}}"
-        type="application/javascript"></script>
-   <script type="module">
-// import { ethers } from src="{{url_for('static', filename='/assets/vendor/ethers/dist/ethers.esm.min.js')}}";
-      const provider = new ethers.providers.Web3Provider(
-        window.ethereum,
-        "any"
-      );
-      await provider.send("eth_requestAccounts", []);
-      const signer = provider.getSigner();
-
-      (async function () {
-        let userAddress = await signer.getAddress();
-        document.getElementById("wallet").innerText =
-          "Your wallet is " + userAddress;
-      })();
-    </script>
+{%block javascript%}
+{% endblock %}
 </head>
 <body>
 <!--menu below-->
@@ -145,7 +53,7 @@ function maximize(){
                         <div class="icon-desc">Help</div>
                     </li>
                     <li class="nav-item item-spec">
-                        <a href="tokenomics.html" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                        <a href="about/tokenomics.html" class="nav-link px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                        <img src="{{url_for('static', filename='assets/img/icons/help_book_cool-4.png')}}">
                         </a>
                         <div class="icon-desc">Help</div>
@@ -169,10 +77,10 @@ function maximize(){
                         <div class="icon-desc">Help</div>
                     </li>
                      <li class="nav-item item-spec">
-                        <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                        <a href="{{url_for('metis.index')}}" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
                            <img src="{{url_for('static', filename='assets/img/icons/Metis-Coin.png')}}">
                         </a>
-                        <div class="icon-desc">Help</div>
+                        <div class="icon-desc">Metis Information</div>
                     </li>
                      <li class="nav-item item-spec">
                         <a href="#" class="nav-link  px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
@@ -204,20 +112,12 @@ function maximize(){
          <div class="dropdown-menu" >
 
           <ul role="menu" class="can-hover" style="width: 200px">
-  <li role="menuitem" tabindex="0" aria-haspopup="true">View</li>
-  <li role="menuitem" tabindex="0" aria-haspopup="true">
-    Sort by
-    <ul role="menu">
-      <li role="menuitem"><a href="#menu">Name</a></li>
-      <li role="menuitem"><a href="#menu">Size</a></li>
-      <li role="menuitem"><a href="#menu">Item type</a></li>
-      <li role="menuitem"><a href="#menu">Date modified</a></li>
-    </ul>
-  </li>
-  <li role="menuitem" class="has-divider"><a href="#menu">Refresh</a></li>
-  <li role="menuitem" aria-disabled="true"><a href="#menu">Paste</a></li>
-  <li role="menuitem" aria-disabled="true" class="has-divider">
-    <a href="#menu">Paste shortcut</a>
+   <li role="menuitem" ><a href="#menu">Home</a></li>
+   <li role="menuitem" ><a href="#menu">Buy EFT</a></li>
+  <li role="menuitem" class="has-divider"><a href="#menu">About</a></li>
+  <li role="menuitem" ><a href="#menu">Tokenomics</a></li>
+  <li role="menuitem"  class="has-divider">
+    <a href="#menu">Roadmap</a>
   </li>
   <li role="menuitem">
     <img src="https://img.icons8.com/color/18/000000/monitor--v1.png"/>
