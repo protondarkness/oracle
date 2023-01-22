@@ -4,34 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/tokenomics.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/DALL·E 2023-01-21 12.51.13 - computer workspace vaporwave.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/DeskBar_Options_Windows_98.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/bgmain1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/bgmain3.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/bgmaybe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/bluescreem.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/computer-office-desk-modern.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/efttITLE.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/github (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/github.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/gmail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/instagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/telegram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/icons/twitter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/installation.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/menuicons.xcf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/mtfuji1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphics/mtfuji2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/static/assets/img/bgmain1.png" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/static/assets/img/bgmain1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/about/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/about/layers.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/layers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/bgmain1.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/bgmain1.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/deskbg.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/deskbg.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/musk_vhs.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/musk_vhs.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graphics/newbg1.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/graphics/newbg1.xcf" afterDir="false" />
+    <list default="true" id="e9e0264f-bd39-4857-8953-2535d99fa7a1" name="Default Changelist" comment="most up2date, debugging">
+      <change afterPath="$PROJECT_DIR$/graphics/menuicons1.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flaskWebsite/app/templates/about/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/flaskWebsite/app/templates/about/main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "editorconfig.notification": "lf;",
-    "last_opened_file_path": "/home/darkproton/Desktop/newEthProject/oracle/flaskWebsite/app/static/assets/img/icons",
+    "last_opened_file_path": "/home/destro/Desktop/oracle/flaskWebsite/app/static/assets/img/icons",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "editor.preferences.appearance"
   }
